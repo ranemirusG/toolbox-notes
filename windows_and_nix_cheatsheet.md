@@ -818,7 +818,8 @@ del -Recurse -Force path/to/dir
 [System.IO.File]::Delete('testing.txt')
 
 # Empty Recycle Bin
-Clear-RecycleBin -Force
+Clear-RecycleBin
+
 
 # Rename
 Rename-Item
