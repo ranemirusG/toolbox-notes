@@ -555,19 +555,47 @@ cd hklm:
 #### PowerShell
 
 ```
-Get-Location
-pwd
+ii . # open current dir in File Explorer
+dir # cmd
 Get-ChildItem
 gci
-dir # cmd
-ls
+ls # unix alias
+Get-Location
+gl
+pwd # unix alias
+dir (Get-Location)
 
 dir | Where-Object {$_.PsIsContainer}
 gci | where {$_.PsIsContainer}
 gci -dir
 ls -directory
+Get-ChildItem -Force # show hidden files
 Get-ChildItem -File -Recurse
+dir -recurse | fl
+dir -Directory -Recurse | ForEach-Object { $_.fullname }
 
+# list empty directories
+dir -Directory -Recurse | where { $_.GetFileSystemInfos().Count -eq 0 }
+
+
+# list, sort, show first 5 elements
+dir | sort | select -first 5
+
+# list file with creation time
+dir -file | sort CreationTime | Format-Table Name, CreationTime
+
+# list file with last write time greater than 24 hours ago
+dir -file -recurse | where {$_.LastWriteTime -gt (Get-Date).AddDays(-1)}
+
+# list files whose creation date is greater than a given date
+dir -file -recurse | where { $_.CreationTime -gt [datetime]"2014/05/28" } | sort CreationTime | Format-Table Name, CreationTime
+
+# return just the file name
+Split-Path -Leaf path\to\file
+
+
+# check if file/folder exist
+test-path C:\path\file
 
 
 # copy directory to clipboard
@@ -591,7 +619,11 @@ dir /ad &REM only directories
 dir/a-d &REM only files
 dir /A-D /S /B  &REM recursive with list formatted output
 
+REM open current dir in File Explorer
+explorer .
+
 TREE
+TREE /F
 
 REM file content
 type file
@@ -629,6 +661,10 @@ less file
 #### PowerShell
 
 ```
+
+# list all attributes of a file/dir
+Get-ItemProperty -Path "path\to\dir\or\file" -Name Attributes
+
 
 "{0:N2}" -f ((dir -Recurse | measure -Property Length -sum).sum / 1MB)
 ls | Select-Object Name, @{Name="MegaBytes";Expression={$_.Length / 1MB}}
@@ -793,6 +829,7 @@ ls -l /path/to/file/*foo*
 New-Item -Path c:\dir\file.txt
 New-Item file
 ni file
+ni file | Out-Null # without output message	
 Set-Content -Path c:\test.txt -Value ''
 
 # Create an empty file using .NET Base Class Library
