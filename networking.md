@@ -1,5 +1,23 @@
-## Networking
+# Networking
 
+
+## Table of Contents
+
+1. [Preliminary Notes](#preliminary-notes)
+2. [Software](#software)
+3. [Websites](#websites)
+4. [Inspect](#inspect)
+
+
+
+
+5. [Cross-Platform Utilities](#cross-platform-utilities)
+
+
+
+## Software
+
+### Windows
 Nirsoft `cports.exe`
 
 Sysinternals `tcpview.exe`
@@ -8,11 +26,38 @@ Resource Monitor `C:\Windows\System32\resmon.exe`
 
 
 
-### Utilities
+
+## Websites
+<shodan.io>
+
+<zoomeye.org>
+
+
+
+
+
+## Inspect
+
+### Open Ports
 
 #### PowerShell
 
 ```
+
+
+netstat -aon | find /i "listening" # cmd
+
+
+
+
+
+
+
+
+
+
+
+
 
 # view configured network interfaces
 # displays the current configuration of the installed IP stack on a networked computer using TCP/IP
@@ -28,7 +73,7 @@ arp -a
 
 
 Get-NetTCPSetting
-
+Get-NetIPConfiguration
 
 
 
@@ -36,6 +81,7 @@ Get-NetTCPSetting
 # Manipulates network routing tables
 # Add and delete static routes
 route
+
 # display routing table for a Windows machine
 route print
 netstat -r
@@ -51,11 +97,24 @@ ipconfig /all; route print  ; arp -a
 NbtStat
 
 
-# cmd scripting utility. Display or modify the network config of local and remote computers
+# Netsh # cmd
+Netsh is a command-line scripting utility that allows you to, either locally or remotely, display or modify the network configuration of a currently running computer. 
+Used without parameters, netsh opens the Netsh.exe command prompt (that is, netsh>).
+
 netsh
 netsh int ipv4 show excludedportrange protocol=tcp
 netsh firewall show state
 netsh firewall show config
+
+
+
+
+
+
+
+Get-Process -Id (Get-NetTCPConnection -LocalPort YourPortNumberHere).OwningProcess
+Get-Process -Id (Get-NetUDPEndpoint -LocalPort YourPortNumberHere).OwningProcess
+
 
 
 Test-Connection
@@ -157,30 +216,10 @@ sudo networksetup -listallhardwareports
 
 ```
 
-### netstat
-Powershell, CMD and \*NIX
-
-Display active TCP connections, open ports, incoming and outgoing network connections
-Display network connections (TCP, UDP), routing tables, number of network interface and network protocol statistics
-(Add -n to stop it trying to resolve hostnames, which will make it a lot faster.)
-
-<https://www.howtogeek.com/513003/how-to-use-netstat-on-linux/>
-
-```
-netstat -ab
-netstat -o # PID (then you can search for it in Task Manager)
-netstat -0 | findstr 28604 # show only the connections that are using a specific PID
-netstat -aon # open ports
-netstat -ne
-netstat -s -p tcp -f # Protocol-Specific Stats (-f for FQDN)
-netstat -sp tcp
-netstat -sp udp
-netstat -e -t 5 # Updated Network Stats
-netstat -an | grep LISTEN # list open network ports
-```
 
 
-### Invoke-WebRequest (In Powershell `curl` is an alias for this command)
+
+## Invoke-WebRequest (In Powershell `curl` is an alias for this command)
 
 ```
 
@@ -202,10 +241,8 @@ $myip.Content
 
 
 
+## Cross-Platform Utilities
 
-### Recon
-
-#### Passive Recon
 
 `whois`
 Looks up the registration record associated with a domain name
@@ -253,7 +290,7 @@ dig www.ekoparty.org +short
 https://dnsdumpster.com/
 
 
-#### Active Recon
+
 
 
 `ping` (Packet Internet Groper)
@@ -320,3 +357,27 @@ the communication channel, to steal the login credentials. The secure alternativ
 
 *Note that both telnet and Test-NetConnection are primarily used to check connectivity to a specific port on a remote host. They are not 
 exhaustive port scanners like dedicated tools such as Nmap, but they can be useful for basic port testing.*
+
+
+
+
+## netstat (Network Statistics)
+
+Display active TCP connections, open ports, incoming and outgoing network connections
+
+
+
+```
+# active ports and name of processes
+netstat -ab
+
+netstat -o # PID (then you can search for it in Task Manager)
+netstat -0 | findstr 28604 # show only the connections that are using a specific PID
+netstat -aon # open ports
+netstat -ne
+netstat -s -p tcp -f # Protocol-Specific Stats (-f for FQDN)
+netstat -sp tcp
+netstat -sp udp
+netstat -e -t 5 # Updated Network Stats
+netstat -an | grep LISTEN # list open network ports
+```
