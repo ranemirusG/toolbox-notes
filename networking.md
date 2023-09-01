@@ -24,7 +24,8 @@ Sysinternals `tcpview.exe`
 
 Resource Monitor `C:\Windows\System32\resmon.exe`
 
-
+### macOS
+LanScan
 
 
 ## Websites
@@ -38,42 +39,66 @@ Resource Monitor `C:\Windows\System32\resmon.exe`
 
 ## Inspect
 
-### Open Ports
+### IP Configuration
 
 #### PowerShell
 
 ```
 
 
-netstat -aon | find /i "listening" # cmd
-
-
-
-
-
-
-
-
-
-
-
-
-
-# view configured network interfaces
-# displays the current configuration of the installed IP stack on a networked computer using TCP/IP
-# Get Private IP address
-# Can be used to refresh DHCP and DNS settings
 ipconfig
 ipconfig /all
 
+Get-NetTCPSetting
+Get-NetIPConfiguration
+
+
+
+
+
+# Public IP
+curl.exe www.ifconfig.me
+Invoke-WebRequest ifconfig.me/ip
+(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
+(Invoke-WebRequest -UseBasicParsing -URI ifconfig.me).Content
+
+https://whatismyipaddress.com
+https://ip4.me/
+https://cualesmiip.com
+https://ifconfig.me
+https://www.arin.net/ (nice detail in the top bar)
+
+
+
+
+# display routing table for a Windows machine
+route print
+netstat -r
 
 # Display the arp table
 arp -a
 
 
+ipconfig /all; route print  ; arp -anetsh
 
-Get-NetTCPSetting
-Get-NetIPConfiguration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -82,12 +107,10 @@ Get-NetIPConfiguration
 # Add and delete static routes
 route
 
-# display routing table for a Windows machine
-route print
-netstat -r
 
 
-ipconfig /all; route print  ; arp -a
+
+
 
 
 
@@ -102,6 +125,8 @@ Netsh is a command-line scripting utility that allows you to, either locally or 
 Used without parameters, netsh opens the Netsh.exe command prompt (that is, netsh>).
 
 netsh
+netsh wlan show interfaces
+netsh interface ipv4 show interfaces
 netsh int ipv4 show excludedportrange protocol=tcp
 netsh firewall show state
 netsh firewall show config
@@ -217,6 +242,65 @@ sudo networksetup -listallhardwareports
 ```
 
 
+### Open Ports
+
+#### PowerShell
+
+```
+netstat -aon | find /i "listening" # cmd
+
+
+```
+
+#### CMD
+
+```
+
+```
+
+#### \*NIX
+
+```
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Invoke-WebRequest (In Powershell `curl` is an alias for this command)
@@ -230,12 +314,7 @@ iwr "google.com" -outfile xx.html
 (new-object System.Net.WebClient).DownloadFile('http://xx.xx.xx.xx/file.txt','destination/path/file.txt')
 
 
-# Retrieve public IP address
-(Invoke-WebRequest -UseBasicParsing -URI ifconfig.me).Content
 
-# or use it in a variable:
-$myip = Invoke-WebRequest -UseBasicParsing -URI ifconfig.me
-$myip.Content
 
 ```
 

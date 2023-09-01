@@ -428,13 +428,13 @@ sudo pfctl -s state
 
 
 
-### Power Options
+### Energy Options
 
 #### PowerShell
 
 ```
 #lock
-psshutdown.exe -l -t 0
+psshutdown.exe -l -t 0 #sysinternals
 #sleep
 psshutdown -d -t 0
 
@@ -1012,6 +1012,10 @@ sl $env:SystemDrive/users # go to Users directory
 # enable/disable the built-in Administrator:
 net user administrator /active:yes
 net user administrator /active:no
+
+# add/delete user
+net user "username" "p@ssw0rd" /add
+net user "username" /delete
 
 
 # list all SIDs on a system
