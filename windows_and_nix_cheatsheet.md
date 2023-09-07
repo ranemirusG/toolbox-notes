@@ -148,20 +148,21 @@ info command
 
 
 ### Resources
+Besides the official documentation, here are some websites that may help.
 
 #### Windows
 
-https://lolbas-project.github.io/
-
-https://4sysops.com/tag/powershell/
+- https://lolbas-project.github.io/
+- https://4sysops.com/tag/powershell/
+- https://powershellmagazine.com/
+- https://activedirectorypro.com/
+- https://www.thewindowsclub.com/
 
 
 #### \*NIX
-https://gtfobins.github.io/
-
-http://mywiki.wooledge.org/Bashism
-
-https://catonmat.net/books
+- https://gtfobins.github.io/
+- http://mywiki.wooledge.org/Bashism
+- https://catonmat.net/books
 
 
 
@@ -284,7 +285,8 @@ printenv
 
 ### System Information
 
-systeminfo.exe
+- systeminfo.exe
+- msinfo32.exe
 
 
 #### PowerShell
@@ -324,7 +326,15 @@ Get-WmiObject -class win32_quickfixengineering
 	| Format-Table –AutoSize > systeminformation.txt
 
 
+
+
+
 systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+
+
+systeminfo | find /i "Install Date" #cmd
+([WMI]'').ConvertToDateTime((Get-WmiObject Win32_OperatingSystem).InstallDate)
+
 
 
 # Product key
@@ -428,11 +438,12 @@ sudo pfctl -s state
 
 
 
-### Energy Options
+### Energy / Power
 
 #### PowerShell
 
 ```
+
 #lock
 psshutdown.exe -l -t 0 #sysinternals
 #sleep
@@ -457,6 +468,14 @@ Hibernate:
 %windir%\System32\rundll32.exe powrprof.dll,SetSuspendState Hibernate
 
 
+# find System Uptime
+(get-date) - (gcim Win32_OperatingSystem).LastBootUpTime
+
+
+
+
+
+
 
 
 
@@ -465,6 +484,13 @@ Hibernate:
 #### CMD
 
 ```
+powercfg.exe /sleepstudy
+
+
+
+net stats workstation
+REM  The timestamp in "Statics Since..." is the time when the computer started from a complete shutdown.
+
 
 ```
 
@@ -520,7 +546,7 @@ Passive reconnaissance.
 # change directory
 Set-Location path/to/dir
 sl
-cd # cmd and unix
+cd path/to/dir/ # cmd and unix
 
 Push-Location
 pushd # cmd and unix
@@ -556,13 +582,13 @@ cd hklm:
 
 ```
 ii . # open current dir in File Explorer
-dir # cmd
 Get-ChildItem
 gci
 ls # unix alias
 Get-Location
 gl
 pwd # unix alias
+dir # cmd
 dir (Get-Location)
 
 dir | Where-Object {$_.PsIsContainer}
@@ -837,6 +863,8 @@ Set-Content -Path c:\test.txt -Value ''
 
 "Hello, this is the content." | Set-Content -Path "C:\path\to\file.txt"
 Add-Content # to append	
+Get-Content -Path "file1" | Add-Content -Path "file2"
+
 
 # Create directory
 New-Item -Path c:\test -ItemType Directory
@@ -921,6 +949,30 @@ Copy-Item -Path "C:\Source" -Destination "D:\Destination" -Recurse
 Move-Item
 move
 mv
+
+
+# idea to move long path items (1)
+$sourcePath = "C:\long\path\origin"
+$destinationPath = "D:\another\path\destination"
+$filesToMove = @("file1", "file2")
+foreach ($file in $filesToMove) {
+    Move-Item -Path "$sourcePath\$file" -Destination $destinationPath
+}
+
+
+# idea to move long path items (2)
+$sourcePath = "C:\long\path\origin"
+$destinationPath = "D:\another\path\destination"
+Move-Item -LiteralPath "$sourcePath\file1", "$sourcePath\file2" -Destination $destinationPath
+<# Note:
+	after you write $sourcePath\ you can press tab and the variable automatically show its content (C:\long\path\origin)
+	it's a nice feature
+#>
+
+
+
+
+
 
 # Move all files under the SOURCE directory to the DEST directory you can do this:
 Get-ChildItem -Path SOURCE -Recurse -File | Move-Item -Destination DEST
@@ -1191,18 +1243,37 @@ procexp.exe (Sysinternals)
 
 ```
 
-get event id
-Get-EventLog -LogName system -EntryType Error
-Get-EventLog -LogName system -EntryType Information
-
+# get executable location
+(Get-Command program.exe).Path
 
 
 Get-Process
+ps # alias
+
+# get path of all running processes
+ps | % {$_.Path}
+Get-Process | ForEach-Object {$_.Path}
+
+(Get-Process | Select-Object Path).path
+(Get-Process -Name firefox).path
+(Get-Process -Id 1234).path
+
+
 Get-Process | Group-Object -Property Name                   # Group objects by property name
 Get-Process | Sort-Object -Property Id                      # Sort objects by a given property name
 Get-Process | Where-Object -FilterScript { $PSItem.Name -match '^c' } # Filter objects based on a property matching a value
 gps | where Name -match '^c'                                # Abbreviated form of the previous statement
 
+
+
+
+
+
+
+
+get event id
+Get-EventLog -LogName system -EntryType Error
+Get-EventLog -LogName system -EntryType Information
 
 
 

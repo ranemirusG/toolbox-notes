@@ -28,6 +28,10 @@ https://medium.com/@mkozlows/why-atom-cant-replace-vim-433852f4b4d1
 https://www.arp242.net/effective-vimscript.html
 
 ## Help
+
+### Man pages
+Move the cursor to the word you want to find help on and press ress 'K'
+
 ### Command-line arguments
 :r!vim -h
 
@@ -155,15 +159,24 @@ Fold can be created in Normal mode by typing zf{motion}. For example, zf'a will 
 
 ## Files
 
-open file under cursor in split window
+### open file under cursor in split window
 :vert belowright split <cfile>
 :vert sfind <cfile>
 
 
-Rename current file
+### Rename current file
 :saveas
 
 or do it with Netrw, just press "R"
+
+### Delete current file
+:call delete(expand('%')) "you may want to map this
+
+:call delete(@%) "shorter and if you don't want to map it
+
+:call delete(expand('%')) | bdelete! "to complete purge the current buffer also
+
+
 
 
 
