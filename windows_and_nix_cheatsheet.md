@@ -628,6 +628,11 @@ test-path C:\path\file
 Resolve-Path 'path/to/dir' | Select-Object -ExpandProperty Path | Set-Clipboard
 
 
+# Search for files in directory which have been modified in the last 24 hs
+Get-ChildItem -Recurse | Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-1) }
+# Search for files in directory which have been modified between two dates
+Get-ChildItem -File | Where-Object { $_.CreationTime -ge '2023-09-01' -and $_.CreationTime -le '2023-09-04' -or $_.LastWriteTime -ge '2023-09-01' -and $_.LastWriteTime -le '2023-09-04' }
+
 
 # file content
 Get-Content file
@@ -667,6 +672,9 @@ lsof
 ls -R # recursive
 ls -larth
 dir # equivalent to `ls -C -b` (see `info dir`)
+# file content
+cat file
+less file
 
 # get full path of filename
 realpath file
@@ -675,10 +683,17 @@ basename file | clip
 # Copy dir
 pwd | pbcopy # macOS
 
+# Search for files in directory which have been modified in the last 24 hs
+find /directory -mtime 0
+# Search for files in directory which have been modified between two dates
+find . -type f \( -newermt '2023-09-01' -a ! -newermt '2023-09-05' \)
 
-# file content
-cat file
-less file
+
+
+
+
+
+
 
 ```
 
@@ -710,6 +725,10 @@ ls | Select-Object Name, @{Name="KiloBytes";Expression={$_.Length / 1KB}}
 #### CMD
 
 ```
+REM get size of file
+dir file
+
+
 ATTRIB file
 
 ```
