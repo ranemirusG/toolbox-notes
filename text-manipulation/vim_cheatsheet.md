@@ -11,21 +11,22 @@
 
 ## Resources
 
-https://www.youtube.com/watch?v=WfyXKnQ9kAQ
-https://learnvimscriptthehardway.stevelosh.com
-http://yyahnwiki.appspot.com/Vim
-http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html
-http://robertames.com/files/vim-editing.html
-http://derekwyatt.org/vim/
-https://rgz.ee
-https://blog.sanctum.geek.nz
-https://github.com/mhinz/vim-galore
-https://vimways.org
-https://www.cduan.com/technical/vi/vi-2.shtml
-https://www.freecodecamp.org/news/vim-isnt-that-scary-here-are-5-free-resources-you-can-use-to-learn-it-ab78f5726f8d/
-https://stackoverflow.com/questions/5400806/what-are-the-most-used-vim-commands-keypresses 
-https://medium.com/@mkozlows/why-atom-cant-replace-vim-433852f4b4d1
-https://www.arp242.net/effective-vimscript.html
+- https://www.youtube.com/watch?v=WfyXKnQ9kAQ
+- https://learnvimscriptthehardway.stevelosh.com
+- http://yyahnwiki.appspot.com/Vim
+- http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html
+- http://robertames.com/files/vim-editing.html
+- http://derekwyatt.org/vim/
+- https://rgz.ee
+- https://blog.sanctum.geek.nz
+- https://github.com/mhinz/vim-galore
+- https://vimways.org
+- https://www.cduan.com/technical/vi/vi-2.shtml
+- https://www.freecodecamp.org/news/vim-isnt-that-scary-here-are-5-free-resources-you-can-use-to-learn-it-ab78f5726f8d/
+- https://stackoverflow.com/questions/5400806/what-are-the-most-used-vim-commands-keypresses 
+- https://medium.com/@mkozlows/why-atom-cant-replace-vim-433852f4b4d1
+- https://www.arp242.net/effective-vimscript.html
+- Arnold Robbins, Elbert Hannah, and Linda Lamb (2008). "Simple Editing". Learning the vi and Vim Editors. O'Reilly Media, Inc.. ISBN 9781449313258
 
 ## Help
 
@@ -62,8 +63,7 @@ CTRL-D    un-indent current line
 
 
 
-
-### Surrounding
+### Surround
 cw(<C-r><C-o>")<ESC>
 
 
@@ -76,7 +76,7 @@ cw(<C-r><C-o>")<ESC>
 
 
 ### split wrapped lines
-gq
+`gq` in Visual Mode
 
 :s/\v(.{80})/\1\r/g
 
