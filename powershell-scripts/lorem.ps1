@@ -1,4 +1,16 @@
-# LOREM IMPSUM (using LibreOffice Autotex)
+<# LOREM IMPSUM (using LibreOffice Autotex)
+It has 233 words in total
+
+example:
+`> lorem.ps1 10`
+It will copy the first 10 words to clipboard
+
+#>
+
+
+
+
+
 param (
     [int]$numWords
 )
