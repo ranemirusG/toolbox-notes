@@ -877,6 +877,8 @@ ni file
 ni file | Out-Null # without output message	
 Set-Content -Path c:\test.txt -Value ''
 
+# Create file with content from clipboard
+
 # Create an empty file using .NET Base Class Library
 [System.IO.File]::WriteAllText('testing.txt', '')
 
@@ -946,6 +948,11 @@ touch file
 echo "foo" > file
 mkdir
 mkdir -p ~/nested/path/to/dir/
+
+# Create file with content from clipboard
+cat > file << EOF #paste + Enter + EOF
+pbpaste > file # macOS
+
 
 # Delete
 rm file

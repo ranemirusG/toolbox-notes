@@ -7,15 +7,14 @@
 2. [Software](#software)
 3. [Websites](#websites)
 4. [Inspect](#inspect)
-
-
-
-
 5. [Cross-Platform Utilities](#cross-platform-utilities)
 
 
 
-## Software
+## Preliminary Notes
+
+List of commands and tools to deal with networking.
+
 
 ### Windows
 Nirsoft `cports.exe`
@@ -33,7 +32,11 @@ LanScan
 
 <zoomeye.org>
 
-
+### Speed
+- http://fast.com
+- https://www.dslreports.com/
+- https://www.speedtest.net/
+- https://www.dnsperf.com/
 
 
 
@@ -240,6 +243,20 @@ sudo networksetup -listallhardwareports
 
 
 ```
+### DNS
+
+#### PowerShell
+```
+ipconfig /displaydns # cmd
+
+Get-DnsClientCache
+
+Get-DnsClientCache | Format-Table -AutoSize
+
+
+
+
+```
 
 
 ### Open Ports
@@ -343,15 +360,7 @@ use: `nslookup OPTIONS DOMAIN_NAME SERVER`
 
 Also as an interactive prompt, just `nslookup`
 
-Options:
-	A 	IPv4 Addresses
-	AAAA 	IPv6 Addresses
-	CNAME 	Canonical Name
-	MX 	Mail Servers
-	SOA 	Start of Authority
-	TXT 	TXT Records
-
-example: mail configur
+example:
 `nslookup -type=MX tryhackme.com`
 
 
