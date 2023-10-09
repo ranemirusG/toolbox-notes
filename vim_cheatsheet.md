@@ -6,7 +6,7 @@
 2. [Help](#help)
 3. [Useful moves](#useful-moves)
 4. [Formatting](#formatting)
-5. [Windows](#windows)
+5. [Windows and Tabs](#windows-and-tabs)
 6. [Files](#files)
 
 ## Resources
@@ -105,28 +105,17 @@ g&
 
 
 
-## Windows
+## Windows and Tabs
 
-### Maximize splitted window:
+### Open buffer in tab
+```
+<C-W>T "open current buffer in new tab
+:tab sb 2
+:tabnew | b 2
+:tab sball "open all buffers
+:bufdo tab split "open all buffers
 
-Example: you have a help splitted window and want to open in a full size
-
-	1) `:only`
-
-	2) move it to a tab and the restore the original layout
-
-	<C-w>T
-
-	...enjoy the reading...
-
-	before close set a mark ('a' in this case'): ma
-
-	then close the tab: ZZ
-
-	now restore it where you began: <C-w>s`a
-
-
-
+```
 
 
 

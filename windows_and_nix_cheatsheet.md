@@ -20,6 +20,28 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Preliminary Notes
 
 PowerShell, CMD, and shell commands for common tasks. Primarily for my personal use in administrative tasks, troubleshooting, 
@@ -69,6 +91,27 @@ wsl ls -lh
 
 
 To start a cmd or bash interpreter in PowerShell type `cmd` or `bash`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -274,6 +317,27 @@ env
 printenv
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -533,6 +597,27 @@ DRIVERQUERY
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Search / Explore
 Look around and find stuff.
 Enumeration activities.
@@ -602,7 +687,6 @@ dir -Directory -Recurse | ForEach-Object { $_.fullname }
 
 # list empty directories
 dir -Directory -Recurse | where { $_.GetFileSystemInfos().Count -eq 0 }
-
 
 # list, sort, show first 5 elements
 dir | sort | select -first 5
@@ -690,12 +774,37 @@ find . -type f \( -newermt '2023-09-01' -a ! -newermt '2023-09-05' \)
 
 
 
+```
 
 
 
 
+
+### Variables
+
+#### PowerShell
 
 ```
+
+```
+
+#### CMD
+
+```
+
+```
+
+#### \*NIX
+
+```
+# environment variables
+printenv
+
+# show a list including the shell variables and environment variables
+( set -o posix ; set ) | less
+
+```
+
 
 ### Metadata
 
@@ -851,6 +960,34 @@ find /path/to/dir -name "*.txt" -size +1M # large files criteria
 ls -l /path/to/file/*foo* 
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1242,7 +1379,32 @@ accesschk -k hklm\software
 
 ```
 
+
+# list allowed commands for current user
+`sudo -l`
+
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1291,8 +1453,8 @@ Get-Process | Where-Object -FilterScript { $PSItem.Name -match '^c' } # Filter o
 gps | where Name -match '^c'                                # Abbreviated form of the previous statement
 
 
-
-
+# list all apps with active GUI windows
+Get-Process | Where-Object { $_.MainWindowHandle -ne 0 }
 
 
 

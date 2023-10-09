@@ -4,28 +4,54 @@
 - GNU Sreen (prefix ^a)
 - tmux (prefix ^b)
 
+### template
+#### Screen
+```
+
+```
+#### tmux
+```
+
+```
+
 
 ## Scrollback
 
-### Screen
+### Enter COPY MODE
+#### Screen
 ```
 ^a Esc
 ```
-
-### tmux
+#### tmux
 ```
 ^b [
 ```
 
-Write the entire contents of the scrollback buffer to a file
+### Select and Paste
+#### Screen
+```
+space (start selection)
+enter (end)
 
-### Screen
+```
+#### tmux
+```
+ctrl+space (start selection)
+ctrl+w (end selection)
+^b ] (paste)
+
+
+```
+
+
+
+### Write the entire contents of the scrollback buffer to a file
+#### Screen
 ```
 (command mode)
 : hardcopy -h <filename>
 ```
-
-### tmux
+#### tmux
 ```
 (command mode)
 : capture-pane -S -
