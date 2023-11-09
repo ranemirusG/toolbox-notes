@@ -51,3 +51,18 @@ print "$decoded_text\n";
 
 # HTML
 https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references
+
+
+
+# Unicode
+Leftwards Arrow U+2190 ←
+Upwards Arrow U+2191 ↑
+Rightwards Arrow U+2192 →
+Downwards Arrow U+2193 ↓
+
+
+
+
+
+# Windows
+`charmap.exe` on command line or `WIN + R` and type charmap

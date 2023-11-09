@@ -1,8 +1,8 @@
 # Multiplexers
 
-
 - GNU Sreen (prefix ^a)
 - tmux (prefix ^b)
+
 
 ### template
 #### Screen
@@ -32,6 +32,7 @@
 ```
 space (start selection)
 enter (end)
+^a ] (paste)
 
 ```
 #### tmux

@@ -5,9 +5,18 @@
 1. [Resources](#resources)
 2. [Help](#help)
 3. [Useful moves](#useful-moves)
-4. [Formatting](#formatting)
-5. [Windows and Tabs](#windows-and-tabs)
-6. [Files](#files)
+4. [Search](#search)
+6. [Formatting](#formatting)
+7. [Windows and Tabs](#windows-and-tabs)
+8. [Macros](#macros)
+9. [Folding](#folding)
+10. [Files](#files)
+11. [Variables](#variables)
+12. [Ex commands](#ex-commands)
+13. [Tags](#tags)
+
+
+
 
 ## Resources
 
@@ -30,6 +39,9 @@
 
 ## Help
 
+### Open in new tab
+:tab help foo
+
 ### Man pages
 Move the cursor to the word you want to find help on and press ress 'K'
 
@@ -40,6 +52,11 @@ Move the cursor to the word you want to find help on and press ress 'K'
 
 ## Useful moves
 Common actions, vanilla solutions and tricks.
+
+### Exit Insert mode
+<esc>
+<c-c>
+<c-[>
 
 
 ### Control keys in insert mode: that will eliminate many wasteful switches back to normal mode.
@@ -67,6 +84,24 @@ CTRL-D    un-indent current line
 cw(<C-r><C-o>")<ESC>
 
 
+
+
+## Search
+```
+"  list all occurrences of the word under the cursor
+[I
+
+
+" search patter in all files from current dir
+:vimgrep/pattern/*
+" then use Quickfix navigation
+:copen
+:cnext
+
+
+
+
+```
 
 
 ## Formatting and Editing
@@ -148,6 +183,9 @@ Fold can be created in Normal mode by typing zf{motion}. For example, zf'a will 
 
 ## Files
 
+### load all files from directory
+`:args path/to/dir/*`
+
 ### open file under cursor in split window
 :vert belowright split <cfile>
 :vert sfind <cfile>
@@ -163,11 +201,96 @@ or do it with Netrw, just press "R"
 
 :call delete(@%) "shorter and if you don't want to map it
 
-:call delete(expand('%')) | bdelete! "to complete purge the current buffer also
+:call delete(@%) | bdelete! "to complete purge the current buffer also
+
+
+
+### clear buffers
+```
+"all buffers
+:%bd[elete]
+:bd <c-a>
+
+"buffers 3 to 5
+:3,5bd[elete]   
+
+"buffers 3 and 5
+:bd 3 5
+
+
+"buffers from the current one to last but one
+:.,$-bd[elete]
 
 
 
 
+```
+
+### switch to alternate buffer
+<c-6>
+
+
+
+
+
+
+## Variables
+```
+:echo mapleader
+"(if it is the default value "E121: Undefined variable: mapleader")
+
+
+" vim binary
+:echo v:progpath
+
+
+
+```
+
+
+
+## Ex commands
+
+```
+" Copy all lines matching a pattern to end of file
+:g/pattern/t$
+
+
+" Copy all lines matching a pattern to register 'a'
+" (qaq is a trick to clear register a before)
+qaq:g/pattern/y A
+
+
+
+" Reverse a file 
+:g/^/m0
+
+
+" Fast delete of all lines matching a pattern (avoid copying to the unnamed register)
+:g/pattern/d _
+
+" Over a range defined by marks a and b, replace each pattern2 with string on each line containing pattern1
+:'a,'bg/pattern1/s/pattern2/string/gi
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+## Tags
+
+### open tag in new window
+`<c-w>]` or `<c-w><c-]>`
+`<c-w>} "as Preview, to close it <c-w>z`
+`<c-w>]<c-w>T "in new Tab`
 
 
 

@@ -676,6 +676,13 @@ pwd # unix alias
 dir # cmd
 dir (Get-Location)
 
+
+
+# Open all pdf files in current dir
+Get-ChildItem -Filter *.pdf | ForEach-Object { Invoke-Item $_.FullName }
+
+
+
 dir | Where-Object {$_.PsIsContainer}
 gci | where {$_.PsIsContainer}
 gci -dir
@@ -1022,6 +1029,9 @@ Set-Content -Path c:\test.txt -Value ''
 "Hello, this is the content." | Set-Content -Path "C:\path\to\file.txt"
 Add-Content # to append	
 Get-Content -Path "file1" | Add-Content -Path "file2"
+
+# Multiline string
+"Hello,`n(This is line number 2) because...`nthis is the way to have multine in Powershell.`nThe end (line 4)" | Set-Content foo.txt
 
 
 # Create directory
