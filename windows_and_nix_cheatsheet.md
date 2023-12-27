@@ -261,6 +261,11 @@ $env:APPDATA
 reg query HKEY_CURRENT_USER\Environment
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
 
+
+# find executable path
+(Get-Command -Name <executable>).Source
+
+
 # Expand variables
 gci (or dir) env:
 
@@ -667,6 +672,7 @@ cd hklm:
 
 ```
 ii . # open current dir in File Explorer
+Invoke-Item .
 Get-ChildItem
 gci
 ls # unix alias
@@ -676,11 +682,17 @@ pwd # unix alias
 dir # cmd
 dir (Get-Location)
 
-
+# Open all files in current dir with it default program
+gci|ii
 
 # Open all pdf files in current dir
 Get-ChildItem -Filter *.pdf | ForEach-Object { Invoke-Item $_.FullName }
 
+
+dir | ?{!$_.PSIsContainer} | %{$_.Name}
+dir -file | % Name
+# Alias           % -> ForEach-Object
+# Alias           ? -> Where-Object
 
 
 dir | Where-Object {$_.PsIsContainer}
@@ -928,6 +940,11 @@ Get-ChildItem -Recurse | Select-String -Pattern "string"
 Get-ChildItem -Path "C:\Path\To\Directory" -Filter *.txt -Recurse | Select-String -Pattern "string"
 Get-ChildItem -Recurse | Where-Object { ! $_.PSIsContainer -and ($_.Extension -eq '' -or $_.Extension -eq '.txt') } | Select-String -Pattern "string"
 Get-ChildItem -Recurse | Where-Object { ! $_.Extension -ne ".pdf",".gz" } | Select-String -Pattern "string"
+
+# search for "TTP" and "TTPS" but exclude instances like "HTTP" or "HTTPS
+# \b menas boundary and ensures that "TTP" and "TTPS" are matched as whole words and not as part of other words
+Get-ChildItem -Recurse | Select-String -Pattern "\bTTPS?\b"
+
 
 # output the name of the files containing the match
 Get-ChildItem -Recurse |
