@@ -23,6 +23,13 @@ Sysinternals `tcpview.exe`
 
 Resource Monitor `C:\Windows\System32\resmon.exe`
 
+#### Troubleshooting
+
+https://answers.microsoft.com/en-us/windows/forum/all/i-believe-ive-been-ip-banned-how-can-i-fix-this/9f6dd98c-ad9c-4f0f-9a68-eff4f360551a
+
+
+
+
 ### macOS
 LanScan
 
@@ -87,7 +94,8 @@ netstat -r
 arp -a
 
 
-ipconfig /all; route print  ; arp -anetsh
+ipconfig /all;route print;arp -a;
+netsh
 
 
 
@@ -131,12 +139,23 @@ NbtStat
 # Netsh # cmd
 Netsh is a command-line scripting utility that allows you to, either locally or remotely, display or modify the network configuration of a currently running computer. 
 Used without parameters, netsh opens the Netsh.exe command prompt (that is, netsh>).
+https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts
 
 netsh
+
+netsh wlan show profile
+netsh wlan show profile "Network Example 5GHz" &REM Shows the password and info
+
+
+
+
 netsh wlan show interfaces
 netsh interface ipv4 show interfaces
 netsh int ipv4 show excludedportrange protocol=tcp
+
+	
 netsh firewall show state
+netsh advfirewall firewall
 netsh firewall show config
 
 
@@ -187,6 +206,8 @@ for ($port = $startPort; $port -le $endPort; $port++) {
 
 ```
 
+curl checkip.amazonaws.com
+
 for /L %i in (<start_port>,1,<end_port>) do echo "" | nc -vz <host> %i
 
 
@@ -199,7 +220,7 @@ for /L %i in (<start_port>,1,<end_port>) do echo "" | nc -vz <host> %i
 # information about the network interfaces and their IP addresses configured on a device 
 ip
 ip addr
-
+ip addr show tun0
 
 iwconfig
 ifconfig

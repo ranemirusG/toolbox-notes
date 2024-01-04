@@ -1,5 +1,8 @@
 # Notepad++
 
+############
+#TODO ----> index
+############
 
 
 Switch between views
@@ -31,3 +34,16 @@ To be sure you won't modify anyhting accidentally in a text file –if you only 
 
 ##  Add sequential numbers to selected lines
 ALT+C (column editor)
+
+
+## Files
+
+autocompletion when writing like Vim `omni-compli`
+CTRL+ALT+Space
+
+
+### Edit the file whose name is under or after the cursor
+Left click anywhere over the path > Open File
+or with the keybaord
+Shift+F10 (Context menu) > Open File
+	si no funciona probar ctrl+shift+F10 o ctrl+fn+F10 ----> no checkeado

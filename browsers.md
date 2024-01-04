@@ -6,6 +6,17 @@
 
 <https://peter.sh/experiments/chromium-command-line-switches/>
 
+
+
+
+
+## Common Shortcuts
+view-source: `ctrl+U`
+
+
+
+
+
 ## Microsoft Edge
 
 `msedge.exe`

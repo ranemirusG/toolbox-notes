@@ -138,6 +138,26 @@ REM I'll use this for inline comments in this guide
 See: <https://stackoverflow.com/questions/2997578/how-do-i-comment-on-the-windows-command-line>
 
 
+
+`F7` to see the command history
+or `doskey /history`
+
+
+Batch Files: <https://en.wikipedia.org/wiki/Batch_file>
+
+<https://ss64.com/nt/>
+
+
+
+
+
+
+
+
+
+
+
+
 #### \*NIX
 
 ```
@@ -193,6 +213,9 @@ info command
 ### Resources
 Besides the official documentation, here are some websites that may help.
 
+- https://jvns.ca/blog/2023/08/08/what-helps-people-get-comfortable-on-the-command-line-/
+- https://furbo.org/2014/09/03/the-terminal/
+
 #### Windows
 
 - https://lolbas-project.github.io/
@@ -206,6 +229,12 @@ Besides the official documentation, here are some websites that may help.
 - https://gtfobins.github.io/
 - http://mywiki.wooledge.org/Bashism
 - https://catonmat.net/books
+
+
+
+
+
+
 
 
 
@@ -236,6 +265,9 @@ PROMPT "new prompt >>>"
 COLOR  &REM Sets the default console foreground and background colors
 TIME
 DATE
+
+
+curl wttr.in/BuenosAires &REM shows the wheater in the command line!
 
 ```
 
@@ -737,7 +769,7 @@ Get-ChildItem -Recurse | Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(
 Get-ChildItem -File | Where-Object { $_.CreationTime -ge '2023-09-01' -and $_.CreationTime -le '2023-09-04' -or $_.LastWriteTime -ge '2023-09-01' -and $_.LastWriteTime -le '2023-09-04' }
 
 
-# file content
+# read file content
 Get-Content file
 gc file
 more file
@@ -755,6 +787,7 @@ dir /A-D /S /B  &REM recursive with list formatted output
 
 REM open current dir in File Explorer
 explorer .
+start .
 
 TREE
 TREE /F
@@ -768,12 +801,42 @@ type file
 
 ```
 
+# read file content
+less file.txt
+more file.txt
+cat file.txt
+head
+tail
+echo "$(less file.txt)"
+echo "$(cat file.txt)"
+tac file.txt # `tac` is `cat` in reverse line order
+rev file.txt # reversed characters
+nl file.txt # line numbers
+tr -d '\0' < file.txt
+paste -s file.txt
+fold -w 80 file.txt
+fmt file.txt
+cut -f 1,3 file.txt
+comm file.txt file.txt
+strings file.txt
+while read line; do echo $line; done < file.txt
+while IFS= read -r line; echo "$line"; done < file.txt
+grep '' file.txt
+grep '.' file.txt
+awk '{print}' file.txt
+sed -n 'p' file.txt
+hexdump -C file.txt
+od -c file.txt
+xxd file.txt
+
+
 # lists open files (lsof), including network connections
 lsof
 
 
 ls -R # recursive
 ls -larth
+ll # may be a default alias of `ls -l`
 dir # equivalent to `ls -C -b` (see `info dir`)
 # file content
 cat file
@@ -841,6 +904,10 @@ ls | Select-Object Name, @{Name="KiloBytes";Expression={$_.Length / 1KB}}
 
 # Get the size of a file in bytes
 (Get-Item myfile.txt).Length
+(Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum # bytes
+(Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum / 1MB # megabytes
+(Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum / 1GB # gigabytes
+
 
 # Get the number of lines in a file
 (Get-Content myfile.txt | Measure-Object -Line).Lines
@@ -858,6 +925,7 @@ dir file
 
 
 ATTRIB file
+
 
 ```
 
@@ -947,6 +1015,10 @@ Get-ChildItem -Recurse | Select-String -Pattern "\bTTPS?\b"
 
 
 # output the name of the files containing the match
+
+Get-ChildItem -Recurse | Select-String -Pattern "string" | Select-Object -ExpandProperty Path -Unique
+
+
 Get-ChildItem -Recurse |
 Where-Object { ! $_.PSIsContainer -and ($_.Extension -eq '' -or $_.Extension -eq '.txt') } |
 Select-String -Pattern "string" |
@@ -1070,6 +1142,12 @@ del -Recurse -Force path/to/dir
 # Empty Recycle Bin
 Clear-RecycleBin
 
+# Delete temporary files
+del /q /f /s %temp%\*
+del /q /f /s C:\Windows\temp\*
+
+
+
 
 # Rename
 Rename-Item
@@ -1089,6 +1167,7 @@ REM Create new file
 copy NUL EmptyFile.txt
 copy /b NUL EmptyFile.txt
 echo. 2>EmptyFile.txt
+echo jaja>test.txt
 copy nul file.txt > nul
 
 REM Delete
@@ -1193,7 +1272,26 @@ mv
 ```
 
 
-### Other Actions
+### Compression / ZIP / Encryption
+
+TAR files retains permission and ZIP may not
+
+`binwalk`: tool for searching binary images for embedded files and executable code
+
+
+
+
+
+#### 7-Zip commands <https://7-zip.org/>
+```
+7z l -slt file.zip
+
+7z x *.zip -o* # extracts all *.zip archives to subfolders with names of these archives.
+```
+
+
+
+
 
 #### PowerShell
 
@@ -1207,6 +1305,26 @@ Expand-Archive
 
 ```
 
+
+REM Compress and "disguise" as an image. Example:
+	>dir
+	test1.txt
+	test2.txt
+	first.zip &REM test1.txt and test2.txt zipped
+	img.png
+	>copy /b img.png+first.zip second.png &REM now second.png is a zipped dir that seems like a png ;)
+
+
+
+compact
+REM Displays or alters the compression of files or directories on NTFS partitions. If used without parameters, compact displays the compression state of the current directory and any files it contains.
+
+
+cipher
+REM cipher is not supported on Home editions of Windows as it uses the Encrypting File System (EFS)
+
+
+
 ```
 
 #### \*NIX
@@ -1216,7 +1334,54 @@ Expand-Archive
 # Zip directory
 zip -r myzipfile my_folder_name
 
+
+# tar
+tar cvzf backup.gz exampleDir/
+tar -xvf backup.gz
+
+
 ```
+
+
+
+
+
+
+### Hide File
+
+#### PowerShell
+
+```
+
+
+```
+
+#### CMD
+
+```
+REM Hide
+attrib +h +s +r .
+REM Unhide
+attrib -h -s -r .
+
+```
+
+#### \*NIX
+
+```
+
+
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1244,6 +1409,15 @@ Local Group Policy Editor: `gpedit.msc`
 #### PowerShell
 
 ```
+
+
+# run as administrator
+Start-Process powershell -Verb runas
+start powershell -Verb runas
+
+
+
+
 whoami /USER # cmd
 net user # cmd
 Get-LocalUser
@@ -1502,8 +1676,16 @@ Get-Service | Where-Object {$_.Status -eq "Running"}
 #### CMD
 
 ```
-
 schtasks /query /fo LIST /v
+
+tasklist &REM This tool displays a list of currently running processes on either a local or remote machine
+
+taskkill /F /IM CalculatorApp.exe
+
+
+
+
+
 
 
 
@@ -1512,6 +1694,15 @@ schtasks /query /fo LIST /v
 #### \*NIX
 
 ```
+
+
+jobs # list jobs
+kill %1 # kill job by number
+
+
+
+
+
 # display sorted information about processes
 top
 

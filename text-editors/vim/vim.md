@@ -17,7 +17,6 @@
 
 
 
-
 ## Resources
 
 - https://www.youtube.com/watch?v=WfyXKnQ9kAQ
@@ -183,6 +182,12 @@ Fold can be created in Normal mode by typing zf{motion}. For example, zf'a will 
 
 ## Files
 
+
+### autocomplete path in Insert Mode. See: `help omni-compli`
+CTRL-X CTRL-F
+(and with CTRL-N and CTRL-P cycle through the options)
+
+
 ### load all files from directory
 `:args path/to/dir/*`
 
@@ -195,6 +200,9 @@ Fold can be created in Normal mode by typing zf{motion}. For example, zf'a will 
 :saveas
 
 or do it with Netrw, just press "R"
+
+
+
 
 ### Delete current file
 :call delete(expand('%')) "you may want to map this
@@ -227,7 +235,12 @@ or do it with Netrw, just press "R"
 ```
 
 ### switch to alternate buffer
-<c-6>
+`<c-6>` or `:e #`
+
+
+### Edit the file whose name is under or after the cursor
+`gf`
+`gF` if a number follows the file name, the cursor is positioned on that line. Ex: `eval.c:10`
 
 
 

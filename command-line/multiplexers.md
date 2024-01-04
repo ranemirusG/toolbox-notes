@@ -15,6 +15,66 @@
 ```
 
 
+
+
+
+
+
+
+
+## Basics
+
+### Windows and Panes
+#### Screen
+```
+
+
+Split:
+
+C-a |     // Create a split
+C-a <Tab> // Move to the split
+C-a c     // Create a new window within the split
+
+
+
+
+
+
+
+	
+```
+#### tmux
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Scrollback
 
 ### Enter COPY MODE
