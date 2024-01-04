@@ -22,11 +22,22 @@ function Convert-VCFtoCSV {
         $vcardEntry = $match.Groups[1].Value
 
         # Extract relevant information from vCard entry
+        $birthdayMatch = [regex]::Match($vcardEntry, "BDAY;.*?:(.*?)\r")
+        $birthday = $null
+
+        if ($birthdayMatch.Success) {
+            $birthdayValue = $birthdayMatch.Groups[1].Value
+            if ($birthdayValue -match '^\d{4}-(\d{2}-\d{2})$') {
+                $birthday = $matches[1]
+            }
+        }
+
         $csvEntry = @{
-            'Name'    = [regex]::Match($vcardEntry, "FN:(.*?)\r").Groups[1].Value
-            'Email'   = [regex]::Match($vcardEntry, "EMAIL;.*?:(.*?)\r").Groups[1].Value
-            'Phone'   = [regex]::Match($vcardEntry, "TEL;.*?:(.*?)\r").Groups[1].Value
-            'Address' = [regex]::Match($vcardEntry, "ADR;.*?:(.*?)\r").Groups[1].Value
+            'Name'     = [regex]::Match($vcardEntry, "FN:(.*?)\r").Groups[1].Value
+            'Email'    = [regex]::Match($vcardEntry, "EMAIL;.*?:(.*?)\r").Groups[1].Value
+            'Phone'    = [regex]::Match($vcardEntry, "TEL;.*?:(.*?)\r").Groups[1].Value
+            'Address'  = [regex]::Match($vcardEntry, "ADR;.*?:(.*?)\r").Groups[1].Value
+            'Birthday' = $birthday
         }
 
         # Add CSV entry to the array
@@ -43,11 +54,12 @@ function Convert-VCFtoCSV {
     }
 }
 
+
 # VCF file path
-$vcfFile = "C:\Path\To\Your\File.vcf)"
+$vcfFile = "path\to\file.vcf"
 
 # CSV file path
-$csvFile = "C:\Path\To\Your\Output\File.csv)
+$csvFile = "path\to\file.csv"
 
 # Call the function with user-provided paths
 Convert-VCFtoCSV -vcfFilePath $vcfFile -csvFilePath $csvFile
