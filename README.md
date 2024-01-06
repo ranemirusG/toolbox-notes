@@ -7,7 +7,6 @@
 - and who knows what else!
 
 
-
 ## In this repository, you will find this topics with this scheme:
 
 
