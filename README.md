@@ -1,5 +1,15 @@
 # toolbox-notes
 
-In this repository, you will find my handy notes, snippets and more.
+## Mainly oriented towards:
+- text manipulation (editors, formats, portability)
+- domestic sysadmin
+- tooling (networking, online resources, etc)
+- and who knows what else!
 
-Mainly oriented towards maintenance and editing tasks, but also covering networking and who knows what else!
+
+
+## In this repository, you will find this topics with this scheme:
+
+
+
+

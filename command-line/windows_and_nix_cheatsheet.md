@@ -393,13 +393,16 @@ printenv
 #### PowerShell
 
 ```
+# PowerShell version
+$PSVersionTable.PSVersion
 
 # Disk
 wmic logicaldisk get size,freespace,caption # wmic is DEPRECATED
 
 
 # Programs
-get installed programs
+
+#get installed programs
 Get-WmiObject -Class Win32_Product
 
 Get-Counter
