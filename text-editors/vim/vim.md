@@ -19,6 +19,8 @@
 
 ## Resources
 
+
+- https://blauaraujo.com/comandos-e-teclas-essenciais-do-vim/
 - https://www.youtube.com/watch?v=WfyXKnQ9kAQ
 - https://learnvimscriptthehardway.stevelosh.com
 - http://yyahnwiki.appspot.com/Vim

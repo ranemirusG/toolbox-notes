@@ -4,22 +4,6 @@
 - tmux (prefix ^b)
 
 
-### template
-#### Screen
-```
-
-```
-#### tmux
-```
-
-```
-
-
-
-
-
-
-
 
 
 ## Basics
@@ -35,44 +19,14 @@ C-a |     // Create a split
 C-a <Tab> // Move to the split
 C-a c     // Create a new window within the split
 
-
-
-
-
-
-
 	
 ```
+
 #### tmux
+
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 ## Scrollback
@@ -82,6 +36,8 @@ C-a c     // Create a new window within the split
 ```
 ^a Esc
 ```
+
+
 #### tmux
 ```
 ^b [
@@ -89,18 +45,20 @@ C-a c     // Create a new window within the split
 
 ### Select and Paste
 #### Screen
+
 ```
 space (start selection)
 enter (end)
 ^a ] (paste)
 
 ```
+
+
 #### tmux
 ```
 ctrl+space (start selection)
 ctrl+w (end selection)
 ^b ] (paste)
-
 
 ```
 
@@ -112,6 +70,7 @@ ctrl+w (end selection)
 (command mode)
 : hardcopy -h <filename>
 ```
+
 #### tmux
 ```
 (command mode)
