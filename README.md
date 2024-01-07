@@ -7,6 +7,8 @@
 - and who knows what else!
 
 
+## This repo has the following scheme:
+
 \n.gitignore
 README.md
 browsers.md
