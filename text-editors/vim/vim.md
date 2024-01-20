@@ -153,6 +153,13 @@ g&
 
 ```
 
+gf - Edit existing file under cursor in same window
+C-W f - Edit existing file under cursor in split window
+C-W C-F - Edit existing file under cursor in split window
+C-W gf - Edit existing file under cursor in new tabpage
+
+
+
 
 
 

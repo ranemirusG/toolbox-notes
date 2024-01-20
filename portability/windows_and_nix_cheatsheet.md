@@ -683,6 +683,8 @@ popd # cmd and unix
 cd hkcu:
 cd hklm:
 
+ii . # open current dir in File Explorer
+Invoke-Item .
 
 ```
 
@@ -706,8 +708,6 @@ cd hklm:
 #### PowerShell
 
 ```
-ii . # open current dir in File Explorer
-Invoke-Item .
 Get-ChildItem
 gci
 ls # unix alias
