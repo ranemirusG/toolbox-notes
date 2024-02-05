@@ -108,6 +108,8 @@ https://en.wikipedia.org/wiki/CalDAV
 
 
 
+
+
 ## Days
 
 <https://www.timeanddate.com/calendar/days/first-day-of-the-week.html>
@@ -154,3 +156,23 @@ https://en.wikipedia.org/wiki/CalDAV
 
 ## Powershell
 <https://devblogs.microsoft.com/scripting/create-custom-date-formats-with-powershell/>
+
+
+
+
+
+
+## Tools
+
+### convert from unix time to normal
+
+``` python
+import datetime
+
+unix_time = 1644081339  # Replace this with your Unix time
+
+# Convert Unix time to a datetime object
+normal_date = datetime.datetime.utcfromtimestamp(unix_time)
+
+print("Normal Date:", normal_date)
+```

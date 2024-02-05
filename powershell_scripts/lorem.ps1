@@ -48,6 +48,8 @@ if ($words.Count -gt $numWords) {
 # Set the selected text to the clipboard
 $selectedText = $selectedWords -join ' '
 $selectedText | Set-Clipboard
+Write-Host "Copied to clipboard:"
+Get-Clipboard
 
 # Display the selected text
 # $selectedText

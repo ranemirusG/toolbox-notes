@@ -14,29 +14,47 @@
 11. [Variables](#variables)
 12. [Ex commands](#ex-commands)
 13. [Tags](#tags)
-
+14. [Run] (#run)
+15. [Insert] (#insert)
 
 
 ## Resources
 
+### Ed
+- `info ed`
 
-- https://blauaraujo.com/comandos-e-teclas-essenciais-do-vim/
-- https://www.youtube.com/watch?v=WfyXKnQ9kAQ
-- https://learnvimscriptthehardway.stevelosh.com
-- http://yyahnwiki.appspot.com/Vim
-- http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html
-- http://robertames.com/files/vim-editing.html
-- http://derekwyatt.org/vim/
-- https://rgz.ee
-- https://blog.sanctum.geek.nz
-- https://github.com/mhinz/vim-galore
-- https://vimways.org
-- https://www.cduan.com/technical/vi/vi-2.shtml
-- https://www.freecodecamp.org/news/vim-isnt-that-scary-here-are-5-free-resources-you-can-use-to-learn-it-ab78f5726f8d/
-- https://stackoverflow.com/questions/5400806/what-are-the-most-used-vim-commands-keypresses 
-- https://medium.com/@mkozlows/why-atom-cant-replace-vim-433852f4b4d1
-- https://www.arp242.net/effective-vimscript.html
+### Ex
+- `help ex-cmd-index`
+- <https://vi.stackexchange.com/questions/457/does-ex-mode-have-any-practical-use>
+- <https://renenyffenegger.ch/notes/development/vim/commands/index>
+- <https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/ex.html>
+- <https://www.ibm.com/docs/en/zos/2.3.0?topic=descriptions-ex-use-ex-text-editor>
+
+### Vim
+- <https://blauaraujo.com/comandos-e-teclas-essenciais-do-vim/>
+- <https://www.youtube.com/watch?v=WfyXKnQ9kAQ>
+- <https://learnvimscriptthehardway.stevelosh.com>
+- <http://yyahnwiki.appspot.com/Vim>
+- <http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html>
+- <http://robertames.com/files/vim-editing.html>
+- <http://derekwyatt.org/vim/>
+- <https://rgz.ee>
+- <https://blog.sanctum.geek.nz>
+- <https://github.com/mhinz/vim-galore>
+- <https://vimways.org>
+- <https://www.cduan.com/technical/vi/vi-2.shtml>
+- <https://www.freecodecamp.org/news/vim-isnt-that-scary-here-are-5-free-resources-you-can-use-to-learn-it-ab78f5726f8d/>
+- <https://stackoverflow.com/questions/5400806/what-are-the-most-used-vim-commands-keypresses> 
+- <https://medium.com/@mkozlows/why-atom-cant-replace-vim-433852f4b4d1>
+- <https://www.arp242.net/effective-vimscript.html>
 - Arnold Robbins, Elbert Hannah, and Linda Lamb (2008). "Simple Editing". Learning the vi and Vim Editors. O'Reilly Media, Inc.. ISBN 9781449313258
+
+
+
+
+
+
+
 
 ## Help
 
@@ -50,6 +68,17 @@ Move the cursor to the word you want to find help on and press ress 'K'
 :r!vim -h
 
 :h vim-arguments
+
+
+
+
+
+
+
+
+
+
+
 
 ## Useful moves
 Common actions, vanilla solutions and tricks.
@@ -83,6 +112,16 @@ CTRL-D    un-indent current line
 
 ### Surround
 cw(<C-r><C-o>")<ESC>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -141,6 +180,23 @@ g&
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Windows and Tabs
 
 ### Open buffer in tab
@@ -157,6 +213,18 @@ gf - Edit existing file under cursor in same window
 C-W f - Edit existing file under cursor in split window
 C-W C-F - Edit existing file under cursor in split window
 C-W gf - Edit existing file under cursor in new tabpage
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -307,6 +375,16 @@ qaq:g/pattern/y A
 
 
 
+
+
+
+
+
+
+
+
+
+
 ## Tags
 
 ### open tag in new window
@@ -316,3 +394,19 @@ qaq:g/pattern/y A
 
 
 
+
+## Run
+
+Run current file
+
+
+
+
+## Insert
+
+### From file
+`:r ~/path/to/file`
+
+### External command
+`:.!` or just `!!` then execute shell command and the output will appear in the
+buffer

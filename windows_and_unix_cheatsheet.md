@@ -333,8 +333,10 @@ Remove-Variable -Name firstname -Force                    # Remove a variable, w
 ```
 
 #### CMD
+<https://ss64.com/nt/syntax-variables.html>
 
 ```
+
 %USERPROFILE%
 %APPDATA%
 
@@ -489,6 +491,8 @@ VER
 uname -a
 uname -mrs
 
+
+lsb_release -a # Linux Standard Base
 
 df # display free disk space
 
@@ -1022,6 +1026,7 @@ Get-ChildItem -Recurse | Select-String -Pattern "\bTTPS?\b"
 Get-ChildItem -Recurse | Select-String -Pattern "string" | Select-Object -ExpandProperty Path -Unique
 
 
+
 Get-ChildItem -Recurse |
 Where-Object { ! $_.PSIsContainer -and ($_.Extension -eq '' -or $_.Extension -eq '.txt') } |
 Select-String -Pattern "string" |
@@ -1172,6 +1177,9 @@ copy /b NUL EmptyFile.txt
 echo. 2>EmptyFile.txt
 echo jaja>test.txt
 copy nul file.txt > nul
+
+REM Create directory
+mkdir DIR
 
 REM Delete
 RMDIR directory

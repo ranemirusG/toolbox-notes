@@ -1,3 +1,7 @@
+
+
+
+
 # hex to utf-8
 
 
@@ -54,15 +58,86 @@ https://html.spec.whatwg.org/multipage/named-characters.html#named-character-ref
 
 
 
+
+# ASCII
+From "Pequeno Manual do Programador GNU/Bash" (Blau Araujo, 2020):
+
+    Quando trabalhamos com faixas de caracteres, especialmente com strings que
+    contenham caracteres não utilizados na língua inglesa, é muito importante ter
+    em mente que a tabela ASCII não contém caracteres acentuados nem cedilha.
+    Por exemplo:
+    ```
+    :~$ var=maçã
+    :~$ [[ $var == ma[a-z][a-z] ]]; echo $?
+    1
+    ```
+    Não houve casamento com o padrão porque ç e ã não existem na tabela
+    ASCII.
+
+<https://asciiflow.com>
+
+
+
+
+
+## get ASCII value of the character
+
+``` bash
+	
+```
+
+``` powershell
+[int][char]"I"
+```
+
+``` python
+print(ord('I'))
+```
+
+
+
+
+
+
+
+
+
+
+# POSIX
+
+Classes:
+[:alnum:]
+[:alpha:]
+
+
+
+
+
+
+
+
+
+
+
+
 # Unicode
-Leftwards Arrow U+2190 ←
-Upwards Arrow U+2191 ↑
-Rightwards Arrow U+2192 →
-Downwards Arrow U+2193 ↓
+- Examples:
+    Leftwards Arrow U+2190 ←
+    Upwards Arrow U+2191 ↑
+    Rightwards Arrow U+2192 →
+    Downwards Arrow U+2193 ↓
 
 
+# Linux
+- Use `ctrl+shift+U` then type the four-character code and press Space or Enter
+- Settings > Keyboard > Compose Keys
 
 
 
 # Windows
 `charmap.exe` on command line or `WIN + R` and type charmap
+
+On `notepad` and `WordPad` and `LibreOfficeWriter` you can write the alt code in hexadecimal. Example: `40` then select it and press `Alt+x` and it converts to `@`.
+
+# Notepad++
+<https://github.com/notepad-plus-plus/notepad-plus-plus/issues/10581>
