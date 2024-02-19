@@ -5,3 +5,8 @@
 
 # Spell Checking Oriented Word Lists (SCOWL)
 <http://wordlist.aspell.net/scowl-readme/>
+
+
+
+# Pentesting
+- <https://wordlists.assetnote.io/>

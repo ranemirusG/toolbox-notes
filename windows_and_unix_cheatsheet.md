@@ -1,9 +1,11 @@
 # Windows and *nix Command-Line Cheat Sheet
 
-
-[comment]: <> "change introduction name? add h3 to table of content? ask chatgpt for a script to do that"
-[comment]: <> "style for code blocks and <h4>"
-[comment]: <> "style franjas para powershell, cmd y unix"
+[//]: # ############################################
+[//]: # TODO
+[//]: # change introduction name? add h3 to table of content? ask chatgpt for a script to do that
+[//]: # style for code blocks and <h4>
+[//]: # style franjas para powershell, cmd y unix
+[//]: # ############################################
 
 
 
@@ -173,14 +175,7 @@ See: <https://stackoverflow.com/questions/43158140/way-to-create-multiline-comme
 
 ```
 
-# list all the commands available to PowerShell (native binaries in $env:PATH + cmdlets / functions from PowerShell modules)
-Get-Command
-
-# list of all the PowerShell commands exported from modules named Microsoft*
-Get-Command -Module Microsoft*
-
-# list of all commands (native binaries + PowerShell commands) ending in "foo"
-Get-Command -Name *foo
+help [COMMAND] # simpler way
 
 
 # specific about_* topic (aka. man page)
@@ -192,6 +187,14 @@ Get-Help -Name Get-Command
 # specific parameter on a specific command
 Get-Help -Name Get-Command -Parameter Module
 
+# list all the commands available to PowerShell (native binaries in $env:PATH + cmdlets / functions from PowerShell modules)
+Get-Command
+
+# list of all the PowerShell commands exported from modules named Microsoft*
+Get-Command -Module Microsoft*
+
+# list of all commands (native binaries + PowerShell commands) ending in "foo"
+Get-Command -Name *foo
 
 ```
 
@@ -199,7 +202,9 @@ Get-Help -Name Get-Command -Parameter Module
 
 ```
 command /?
-HELP
+help <command>
+help &REM list all commands
+
 ```
 
 #### \*NIX
@@ -267,7 +272,7 @@ TIME
 DATE
 
 
-curl wttr.in/BuenosAires &REM shows the wheater in the command line!
+
 
 ```
 
@@ -479,6 +484,7 @@ SYSTEMINFO
 
 REM Display Windows version
 VER
+winver
 
 
 
@@ -552,39 +558,17 @@ sudo pfctl -s state
 
 ```
 
+# Sysinternals' psshutdown.exe (see: psshutdown.exe -help)
 #lock
-psshutdown.exe -l -t 0 #sysinternals
+psshutdown.exe -l -t 0
 #sleep
 psshutdown -d -t 0
 
-Shutdown:
-%windir%\System32\shutdown.exe -s
 
-Reboot:
-%windir%\System32\shutdown.exe -r
-
-Logoff:
-%windir%\System32\shutdown.exe -l
-
-Standby (disable hibernation, execute the standby command, then re-enable hibernation after 2 seconds):
-powercfg -hibernate off  &&  start /min "" %windir%\System32\rundll32.exe powrprof.dll,SetSuspendState Standby  &&  ping -n 3 127.0.0.1  &&  powercfg -hibernate on
-
-Sleep (same method as STANDBY, but this command):
-%windir%\System32\rundll32.exe powrprof.dll,SetSuspendState 0,1,0
-
-Hibernate:
-%windir%\System32\rundll32.exe powrprof.dll,SetSuspendState Hibernate
 
 
 # find System Uptime
 (get-date) - (gcim Win32_OperatingSystem).LastBootUpTime
-
-
-
-
-
-
-
 
 
 ```
@@ -592,8 +576,27 @@ Hibernate:
 #### CMD
 
 ```
-powercfg.exe /sleepstudy
 
+REM Shutdown:
+%windir%\System32\shutdown.exe -s
+
+REM Reboot:
+%windir%\System32\shutdown.exe -r
+
+REM Logoff:
+%windir%\System32\shutdown.exe -l
+
+REM Standby (disable hibernation, execute the standby command, then re-enable hibernation after 2 seconds):
+powercfg -hibernate off  &&  start /min "" %windir%\System32\rundll32.exe powrprof.dll,SetSuspendState Standby  &&  ping -n 3 127.0.0.1  &&  powercfg -hibernate on
+
+REM Sleep (same method as STANDBY, but this command):
+%windir%\System32\rundll32.exe powrprof.dll,SetSuspendState 0,1,0
+
+REM Hibernate:
+%windir%\System32\rundll32.exe powrprof.dll,SetSuspendState Hibernate
+
+
+powercfg.exe /sleepstudy
 
 
 net stats workstation
@@ -781,6 +784,11 @@ Get-Content file
 gc file
 more file
 cat file
+Invoke-WebRequest file:///$env:USERPROFILE/path/to/file
+curl file:///$env:USERPROFILE/file.txt
+curl file:///%USERPROFILE%/file.txt # CMD
+curl file:///Users/useraname/file.txt # CMD
+curl file:///Users/useraname/file.txt # CMD curl on Windows also allows this incorrect format (with only 2 slashes)
 
 
 ```
@@ -835,6 +843,7 @@ sed -n 'p' file.txt
 hexdump -C file.txt
 od -c file.txt
 xxd file.txt
+curl file:///home/username/file.txt
 
 
 # lists open files (lsof), including network connections
@@ -945,7 +954,7 @@ du -ah
 ls -A -R -g -o "$@" | awk '{n1 += $3} END {print n1}'
 du -sch
 du -hd 1 # the number is the depth of directory levels to be displayed
-
+du -bch
 
 # shows how much disk space you have left on the current drive and then tells you how much every file/directory takes up
 df -h .; du -sh -- * | sort -hr
@@ -1433,6 +1442,8 @@ whoami /USER # cmd
 net user # cmd
 Get-LocalUser
 Get-LocalUser | Format-Table Name, Enabled, LastLogon
+net user john | findstr /B /C:"Last logon"
+
 Get-LocalUser | Sort-Object -Property Enabled | Format-Table Name, Enabled, LastLogon
 sl $env:SystemDrive/users # go to Users directory
 
@@ -1511,6 +1522,7 @@ net &REM only used on local computer
 
 net localgroup administrators
 net user Administrator &REM (o cualquier user)
+net user john
 
 cd %SystemDrive%\Users &REM go to Users directory
 
@@ -1540,6 +1552,7 @@ net localgroup # cmd
 
 # List group members
 Get-LocalGroupMember -Group "Administrators"
+(Get-LocalGroupMember “Administrators”).Name
 
 # Create new group
 New-LocalGroup -Name "Group Name"

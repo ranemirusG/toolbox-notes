@@ -11,6 +11,8 @@ F8
 Open current file in new instance
 Alt + F6
 
+`notepad++.exe FILE -nosession -multiInst`
+
 
 
 

@@ -12,8 +12,10 @@ nmap
 
 - find out about files and directories on the server
 
-/robots.txt
+/robots.txt (see <http://www.robotstxt.org/robotstxt.html>)
+/.well-known/
 /README.txt
+
 
 dirsearch
 dirbuster

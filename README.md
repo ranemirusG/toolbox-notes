@@ -17,9 +17,15 @@ README.md
 
 browsers.md
 
+clipboard.md
+
 filetypes.md
 
+formats/data_interchange.md
+
 formats/datetime.md
+
+formats/file_extensions.md
 
 formats/notes_formats.md
 
@@ -30,6 +36,16 @@ formats/utf-8/original_utf-8_paper.md
 formats/utf-8/utf-8_history_by_Rob_Pike.md
 
 git.md
+
+infosec/nmap.md
+
+infosec/osint/osint_tools.xlsx
+
+infosec/reverse_shell.md
+
+infosec/scanning_and_enumeration.md
+
+keyboard.md
 
 multiplexers.md
 
@@ -44,8 +60,6 @@ portability/notes.md
 portability/vCard/from_vcf_to_csv.ps1
 
 portability/vCard/notes_vCards.md
-
-portability/windows_and_nix_cheatsheet.md
 
 portability/zotero.md
 
@@ -75,25 +89,35 @@ search_engines.md
 
 spreadsheets/libreoffice_calc.md
 
-text-editors/BBEdit.md
+text_editors/BBEdit.md
 
-text-editors/gnome_text_editor.md
+text_editors/equivalences.md
 
-text-editors/nano.md
+text_editors/gnome_text_editor.md
 
-text-editors/notepad++.md
+text_editors/nano/nano.md
 
-text-editors/sublime_text.md
+text_editors/nano/quick-nanorc
 
-text-editors/vim/quick-vimrc.vim
+text_editors/notepad++.md
 
-text-editors/vim/vim.md
+text_editors/sublime_text.md
 
-text-editors/vim/vim_scripts/delete_swap.vim
+text_editors/vim/quick-vimrc.vim
 
-text-editors/vim/vim_scripts/whitespaces.vim
+text_editors/vim/vim.md
+
+text_editors/vim/vim_scripts/delete_swap.vim
+
+text_editors/vim/vim_scripts/whitespaces.vim
+
+utilities/curl_wget.md
 
 utilities/sed_awk.md
 
 windows/windows_runbox.md
+
+windows_and_unix_cheatsheet.md
+
+wordlists.md
 

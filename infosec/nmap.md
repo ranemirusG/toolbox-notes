@@ -2,17 +2,35 @@
 
 
 ## First scan
+
+### List scan
+`nmap -sL $IP` eg: `nmap -sL 6.209.24.0/24 6.207.0.0/22`
+	- This feature simply enumerates every IP address in the given target netblock(s) and does a reverse-DNS lookup (unless -n was specified) on each. One reason to do this first is stealth. The names of the hosts can hint at potential vulnerabilities and allow for a better understanding of the target network, all without raising alarm bells.
+
+
+`-oA [output filename]-[date]`
+	- output 	in every format (normal, XML, grepable) 
+
+
+
+
 ```
 # Create a nmap dir in the project and save the output in a file there
 mkdir ./nmap
-nmap -sC -sV -oN nmap/initial [IP]
+nmap -sC -sV -oN nmap/initial $IP
 ```
 
 ### Commands and flags for first scan
-nmap -sC -sV -oN nmap/initial [IP]
-nmap -sS -sV -A -O -Pn [IP]
-nmap -T4 -A -p- [IP]
+nmap -sC -sV -oN output.txt $IP
+nmap -sS -p- -oN all-ports.txt $IP
+	 run a version scan with default scripts to enumerate these ports further:
+	 example: nmap -sC -sV 80,6379 $IP
+nmap -sS -sV -A -O -Pn $IP
+nmap -T4 -A -p- $IP
 
+
+# A typical nmap scan
+nmap -A -T4 scanme.nmap.org
 
 
 
@@ -35,7 +53,7 @@ https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-
 
 https://nmap.org/nsedoc/scripts/http-wordpress-enum.html
 
-###switches ----> flags
+
 
 -h
 Print a help summary page

@@ -9,21 +9,13 @@ autocmd FileType vim nnoremap <buffer> <leader>s :update<CR>:source %<CR>
 "nnoremap <Leader>nc :tabnew ~/.config/nvim/init.vim<CR>
 
 
+autocmd BufReadPost *
+	\ if line("'\"") >= 1 && line("'\"") <= line("$")
+	\ |   exe "normal! g`\""
+	\ | endif
 
 
 
-"""""""""""""""""""""""""""""""""""
-" this may be already by default
-" but just in case...
-
-" set nocompatible
-" set encoding=utf-8
-" set backspace=indent,eol,start
-" syntax on
-" set wrap
-" set ruler
-filetype plugin indent on
-"""""""""""""""""""""""""""""""""""
 
 
 
@@ -35,9 +27,10 @@ if has('termguicolors')
 endif
 
 " colorscheme habamax
-color default
+" color default
 " colo wildcharm
 " colo zellner
+colo elflord
 
 
 
@@ -50,20 +43,22 @@ set cc=+1 " colorcolumn
 set linebreak
 set showcmd
 set laststatus=2
+set timeout
+set ttimeoutlen=100
 
 set cursorline
 let &t_SI="\e[6 q"
 let &t_EI="\e[2 q"
-set splitbelow
-set splitright
+" set splitbelow
+" set splitright
 set mouse=a
 
 
-
+" Folding
+set foldmethod=marker
 
 
 " Indentation
-" TODO set 8 spaces for Assembly
 set autoindent
 set smartindent
 set expandtab
@@ -73,6 +68,8 @@ set shiftwidth=4
 set nolist       " Negado para o mapeamento dos caracteres invisíveis... 
 set listchars=tab:›-,space:·,trail:⋯,eol:↲
 set fillchars=vert:│,fold:\ ,eob:~,lastline:@
+" Assembly
+autocmd FileType asm setlocal tabstop=8 shiftwidth=8 expandtab
 
 
 " Search
@@ -94,30 +91,31 @@ set completeopt=menuone,longest
 set shortmess-=S
 
 " Files and filesystem
-set hidden
+" set hidden
 set path+=**
 set noswapfile
 set nobackup
 " set undodir=~/.vim/undodir
 " set undofile
 
-" let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+
+" netrw
+" let g:netrw_banner = 0 
+" let g:netrw_preview = 1 "vertical
 
 
 
+noremap <F5> <ESC> :w <CR> :make <CR>
+inoremap <F5> <ESC> :w <CR> :make <CR>
+
+filetype on
+filetype plugin on
+autocmd FileType cpp setlocal makeprg=g\+\+\ %\ \-g\ \-std\=c\+\+17\ \-Wall
+autocmd FileType haskell setlocal makeprg=ghci\ %
+autocmd FileType python setlocal makeprg=python3\ %
+autocmd FileType sh setlocal makeprg=%
 
 
-
-
-
-autocmd BufReadPost *
-	\ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-	\ |   exe "normal! g`\""
-	\ | endif
-
-
-set timeout
-set ttimeoutlen=100
 
 
 
@@ -143,5 +141,16 @@ nnoremap . :bn<cr>
 " hi Comment cterm=italic gui=italic
 " terminal color settings... 
 " hi Normal guibg=NONE ctermbg=NONE
+
+
+" this doesn't work because Vim won't recognize:bel
+" nnoremap <C-`> :bel term<CR>
+nnoremap <Leader>t :bel term<CR>
+tnoremap <Leader>t exit<CR>
+" inoremap <Leader>t <Esc>:bel term<CR>
+
+
+
+
 
 " End of Quick vimrc

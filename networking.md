@@ -73,6 +73,13 @@ Get-NetIPConfiguration
 
 # Public IP
 curl.exe www.ifconfig.me
+curl ifconfig.me
+curl myexternalip.com/raw
+curl ipecho.net/plain
+curl ifcfg.me
+curl icanhazip.com
+nslookup myip.opendns.com. resolver1.opendns.com
+
 Invoke-WebRequest ifconfig.me/ip
 (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
 (Invoke-WebRequest -UseBasicParsing -URI ifconfig.me).Content
@@ -82,6 +89,7 @@ https://ip4.me/
 https://cualesmiip.com
 https://ifconfig.me
 https://www.arin.net/ (nice detail in the top bar)
+
 
 
 
@@ -155,8 +163,9 @@ netsh int ipv4 show excludedportrange protocol=tcp
 
 	
 netsh firewall show state
-netsh advfirewall firewall
 netsh firewall show config
+netsh advfirewall firewall
+netsh advfirewall firewall show rule name=all
 
 
 
@@ -304,6 +313,18 @@ netstat -aon | find /i "listening" # cmd
 #### \*NIX
 
 ```
+ss
+
+lsof
+
+netstat -lntu
+	# -l = only services which are listening on some port
+	# -n = show port number, don't try to resolve the service name
+	# -t = tcp ports
+	# -u = udp ports
+	# -p = name of the program
+	
+	
 
 ```
 

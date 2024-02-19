@@ -30,6 +30,9 @@
 - <https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/ex.html>
 - <https://www.ibm.com/docs/en/zos/2.3.0?topic=descriptions-ex-use-ex-text-editor>
 
+### Vi
+- An Introduction to Display Editing with Vi (Joy & Horton) <https://docs-archive.freebsd.org/44doc/usd/12.vi/paper.html>
+
 ### Vim
 - <https://blauaraujo.com/comandos-e-teclas-essenciais-do-vim/>
 - <https://www.youtube.com/watch?v=WfyXKnQ9kAQ>
@@ -48,7 +51,9 @@
 - <https://medium.com/@mkozlows/why-atom-cant-replace-vim-433852f4b4d1>
 - <https://www.arp242.net/effective-vimscript.html>
 - Arnold Robbins, Elbert Hannah, and Linda Lamb (2008). "Simple Editing". Learning the vi and Vim Editors. O'Reilly Media, Inc.. ISBN 9781449313258
-
+- <https://richsoni.com/posts/2014-12-21-vimscript-overview> 
+- Celebrated Vimscript authors: <https://github.com/tpop>,
+  <https://github.com/tommcdo>, <https://github.com/AndrewRadev>.   
 
 
 
