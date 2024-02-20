@@ -9,10 +9,6 @@
 
 ## This repo has the following scheme:
  
-.gitignore
-
-.stignore
-
 README.md
 
 clipboard.md
