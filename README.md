@@ -57,7 +57,9 @@ keyboard.md
 
 multiplexers.md
 
-networking.md
+networks/nc_ncat.md
+
+networks/networking_tools.md
 
 portability/iCalendar/notes_calendar.md
 
