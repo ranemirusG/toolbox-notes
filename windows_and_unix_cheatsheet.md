@@ -832,6 +832,7 @@ paste -s file.txt
 fold -w 80 file.txt
 fmt file.txt
 cut -f 1,3 file.txt
+view file.txt
 comm file.txt file.txt
 strings file.txt
 while read line; do echo $line; done < file.txt
@@ -844,6 +845,9 @@ hexdump -C file.txt
 od -c file.txt
 xxd file.txt
 curl file:///home/username/file.txt
+nano file
+vim file
+vi file
 
 
 # lists open files (lsof), including network connections

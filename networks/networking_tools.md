@@ -40,8 +40,8 @@ LanScan
 <zoomeye.org>
 
 ### Internet Speed
-- http://fast.com
 - Google's built-in speed test (search "internet speed test" in Google)
+- http://fast.com
 - https://www.dslreports.com/
 - https://www.speedtest.net/
 - https://www.dnsperf.com/
