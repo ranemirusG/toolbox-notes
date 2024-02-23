@@ -73,7 +73,7 @@ Any feedback is welcome ☺
 ### Mixin'em up
 
 PowerShell has several aliases that allow *nix and cmd users to use familiar commands in Windows.
-Use the `Get-Alias` cmdlet to list the aliases available in your environment.
+Use the `Get-Alias` cmdlet to list the aliases available in the environment.
 
 Run CMD commands in PowerShell:
 
@@ -1428,6 +1428,12 @@ Local Security Settings: `secpol.msc`
 
 Local Group Policy Editor: `gpedit.msc`
 
+
+
+
+
+
+
 ### Users
 
 #### PowerShell
@@ -1439,10 +1445,20 @@ Local Group Policy Editor: `gpedit.msc`
 Start-Process powershell -Verb runas
 start powershell -Verb runas
 
+# tell whether it's an elevated permision terminal session
+# 1 - Returns "True" if elevated
+(New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+# 2 - workaround (if NOT elevated returns: "Access is denied.")
+net session # cmd
+
+
+
+
 
 
 
 whoami /USER # cmd
+whoami /priv # cmd / see privileges
 net user # cmd
 Get-LocalUser
 Get-LocalUser | Format-Table Name, Enabled, LastLogon
@@ -1539,7 +1555,15 @@ wmic useraccount where sid="SID_NUMBER" get name
 
 ```
 
+
+
+
+
 ```
+
+
+
+
 
 
 

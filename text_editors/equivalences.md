@@ -132,10 +132,12 @@ Edit > Begin/End Select
 
 ### Vim
 `Ctrl+V`
+`Ctrl+a` to increase number
 
 
 ### Notepad++
 `Alt+Shift+<up/down>`
+`Alt+c` Column / Multi-Selection Editor
 
 
 ### nano

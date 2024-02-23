@@ -1,0 +1,144 @@
+# Email
+
+Email delivery over the Internet requires the following components:
+
+1. Mail Submission Agent (MSA)
+2. Mail Transfer Agent (MTA)
+3. Mail Delivery Agent (MDA)
+4. Mail User Agent (MUA)
+
+
+
+
+
+
+## Protocols
+
+### SMTP
+Simple Mail Transfer Protocol (SMTP) is used to communicate with an MTA server.
+Listens on port 25 by default.
+
+
+
+### POP3
+Default port 110
+RFC 1939
+
+Post Office Protocol version 3 (POP3) is a protocol used to download the email messages from a MDA server.
+The mail client connects to the POP3 server, authenticates, downloads the new email messages before (optionally) deleting them.
+
+Post Office Protocol is an older protocol that was originally designed to be used on only one computer - only supports one-way email synchronization
+
+To keep all mailboxes synchronized, we need to consider other protocols, such as IMAP
+
+
+
+### IMAP (Internet Messaging Access Protocol)
+Default Port 143
+Messages are stored in a remote server
+Users can log in via multiple email clients on computers or mobile device and read the same messages
+All changes made in the mailbox will be synced across multiple devices and messages will only be removed from the server if the user deletes the email
+
+
+IMAP requires each command to be preceded by a random string to be able to track the reply.
+
+
+
+
+
+
+### TLS
+More secure than SSL
+RFC 6101
+
+An existing cleartext protocol can be upgraded to use encryption via SSL/TLS
+
+
+
+
+
+
+
+
+
+
+
+
+
+STARTLS
+
+
+
+
+
+
+
+
+
+
+
+####################################################################
+####################################################################
+TODO: ORDER THIS!!!!
+
+
+
+
+
+
+https://www.reddit.com/r/ProtonMail/comments/z4aqtn/selective_new_mail_notification/
+
+
+https://tutanota.com/blog/posts/gmail-independent-email
+
+
+https://www.lifewire.com/get-free-email-account-1164062
+
+
+
+
+
+
+
+
+#MAIL-CLIENT
+K-9 Mail
+mutt
+https://cock.li/ ---> luke smith tutorial mutt https://www.youtube.com/watch?v=2jMInHnpNfQ
+
+alpine
+
+
+electronmail
+https://itsfoss.com/electronmail/
+
+https://www.33mail.com/
+
+
+
+startmail
+mailfence 
+https://posteo.de/en
+mimestream --->  for gmail in macOS
+sparkmailapp
+fastmail
+https://mailvelope.com/
+https://mailbox.org/en/
+https://roundcube.net/
+https://www.zoho.com
+
+https://countermail.com/
+https://ctemplar.com/
+https://duckduckgo.com/email/
+https://addy.io/
+
+https://10minutemail.com/
+
+
+
+
+
+EASYDEMARC
+
+https://en.wikipedia.org/wiki/DMARC#Alignment
+

@@ -40,6 +40,23 @@ https://en.wikipedia.org/wiki/Binary-coded_decimal
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Conversions
 
 # Decimal to text
@@ -137,20 +154,34 @@ Write-Host "Converted text: $text"
 
 
 
-# hex to binary
+# Hex to Binary
 
 ```python
 hex_string = "aa55"
 binary_string = bin(int(hex_string, 16))[2:].zfill(len(hex_string)*4)
 
 print(binary_string)
+```
 
+```powershell
+$hexNumber = "12"
+$binaryNumber = [convert]::ToString([convert]::ToInt32($hexNumber, 16), 2)
+```
+
+# Binary to Hex
+
+```powershell
+$binaryNumber = "1100"
+# opt 1
+$hexNumber = [convert]::ToString([convert]::ToInt32($binaryNumber, 2), 16)
+# opt 2
+$hexNumber ="{0:X}" -f [convert]::ToInt32($binaryNumber, 2)
 ```
 
 
 
-# hex to utf-8
 
+# hex to utf-8
 
 ```python
 

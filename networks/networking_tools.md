@@ -4,16 +4,82 @@
 ## Table of Contents
 
 1. [Preliminary Notes](#preliminary-notes)
-2. [Software](#software)
-3. [Websites](#websites)
-4. [Inspect](#inspect)
-5. [Cross-Platform Utilities](#cross-platform-utilities)
+2. [Config Files](#config-files)
+3. [Software](#software)
+4. [Websites](#websites)
+5. [Inspect](#inspect)
+6. [Reconnaissance](#reconnaissance)
+7. [Cross-Platform Utilities](#cross-platform-utilities)
 
 
 
 ## Preliminary Notes
 
 List of commands and tools to deal with networking.
+
+
+
+
+
+
+
+###########################################
+
+
+
+
+https://en.wikipedia.org/wiki/Berkeley_Packet_Filter
+https://biot.com/capstats/bpf.html
+https://www.tcpdump.org/manpages/tcpdump.1.html
+
+
+
+
+###########################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Software
+
+Network Sniffing and Packet Analysis
+	- Tcpdump is a free open source command-line interface (CLI) program that has been ported to work on many operating systems.
+	- Wireshark is a free open source graphical user interface (GUI) program available for several operating systems, including Linux, macOS and MS Windows.
+	- Tshark is a CLI alternative to Wireshark.
+	
+Network Monitoring
+	- Zeek
+
+Intrusion Detection and Prevention
+	- <https://www.snort.org/>
+
+Network Forensics
+	- NetworkMiner
+
+Threat Hunting (Brim)
+
+
+
+
+
+
+
+
+
 
 
 ### Windows
@@ -28,15 +94,39 @@ Resource Monitor `C:\Windows\System32\resmon.exe`
 https://answers.microsoft.com/en-us/windows/forum/all/i-believe-ive-been-ip-banned-how-can-i-fix-this/9f6dd98c-ad9c-4f0f-9a68-eff4f360551a
 
 
-
-
 ### macOS
 LanScan
 
 
+
+
+## Config Files
+
+### Windows
+- C:\Windows\System32\drivers\etc or %WINDIR%\System32\drivers\etc
+- C:\inetpub
+
+
+
+
+
+### \*NIX
+- /etc/hosts
+- /etc/hosts.allow
+- /etc/hosts.deny
+
+- /etc/resolve.conf
+
+
+
+
+
+
+
+
 ## Websites
 <shodan.io>
-
+<https://dnsdumpster.com/>
 <zoomeye.org>
 
 ### Internet Speed
@@ -54,24 +144,63 @@ LanScan
 
 ## Inspect
 
+### Snippets
+`ipconfig /all;route print;arp -a;`
+
+
+
+### netstat
+
+```powershell
+netstat -aon | find /i "listening" # cmd
+netstat -aon | findstr :8000 # cmd
+
+
+#### \*NIX
+
+```
+ss
+
+lsof
+
+netstat -lntu
+	# -l = only services which are listening on some port
+	# -n = show port number, don't try to resolve the service name
+	# -t = tcp ports
+	# -u = udp ports
+	# -p = name of the program
+	
+```
+
+
+
+
+
+
+
+
+
 ### IP Configuration
 
 #### PowerShell
 
 ```
-
-
 ipconfig
 ipconfig /all
-
-Get-NetTCPSetting
 Get-NetIPConfiguration
 
 
+Get-NetTCPSetting
+Get-NetTCPConnection
 
 
 
-# Public IP
+
+
+# Get Public IP
+Invoke-WebRequest ifconfig.me/ip
+(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
+(Invoke-WebRequest -UseBasicParsing -URI ifconfig.me).Content
 curl.exe www.ifconfig.me
 curl ifconfig.me
 curl myexternalip.com/raw
@@ -80,9 +209,6 @@ curl ifcfg.me
 curl icanhazip.com
 nslookup myip.opendns.com. resolver1.opendns.com
 
-Invoke-WebRequest ifconfig.me/ip
-(Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
-(Invoke-WebRequest -UseBasicParsing -URI ifconfig.me).Content
 
 https://whatismyipaddress.com
 https://ip4.me/
@@ -94,16 +220,7 @@ https://www.arin.net/ (nice detail in the top bar)
 
 
 
-# display routing table for a Windows machine
-route print
-netstat -r
 
-# Display the arp table
-arp -a
-
-
-ipconfig /all;route print;arp -a;
-netsh
 
 
 
@@ -152,10 +269,8 @@ https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/n
 netsh
 
 netsh wlan show profile
-netsh wlan show profile "Network Example 5GHz" &REM Shows the password and info
-
-
-
+netsh wlan show profile "[NETWORK NAME]"
+netsh wlan show profile "[NETWORK NAME]" key=clear &REM Shows the password and info
 
 netsh wlan show interfaces
 netsh interface ipv4 show interfaces
@@ -177,15 +292,20 @@ Get-Process -Id (Get-NetTCPConnection -LocalPort YourPortNumberHere).OwningProce
 Get-Process -Id (Get-NetUDPEndpoint -LocalPort YourPortNumberHere).OwningProcess
 
 
-
-Test-Connection
-Test-NetConnection -ComputerName <host> -Port <port>
-Test-NetConnection -ComputerName example.com -Port 80
-
-
-
-
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 PowerShell: .NET Framework's System.Net.Sockets class
 PowerShell has access to the .NET Framework, allowing you to leverage the System.Net.Sockets class for more advanced port scanning.
@@ -265,9 +385,7 @@ sudo lsof -i | grep ESTABLISHED
 sudo lsof -nP -i | grep LISTEN
 
 
-nc # Netcat https://www.sans.org/security-resources/sec560/netcat_cheat_sheet_v1.pdf
-netcat as client 	nc MACHINE_IP PORT_NUMBER
-netcat as server 	nc -lvnp PORT_NUMBER
+
 
 
 # macOS
@@ -288,59 +406,40 @@ Get-DnsClientCache
 
 Get-DnsClientCache | Format-Table -AutoSize
 
-
-
-
 ```
 
 
-### Open Ports
-
-#### PowerShell
-
-```
-netstat -aon | find /i "listening" # cmd
 
 
-```
 
-#### CMD
 
-```
 
+
+
+
+
+
+
+
+
+
+
+### MAC Addresses
+
+#### Windows
+```powershell
+getmac.exe # CMD
+
+Get-NetAdapter | Select-Object -Property Name, Macaddress
+Get-NetAdapter -Name * -IncludeHidden
+Get-NetAdapter -Name "Ethernet 2"
 ```
 
 #### \*NIX
+```
+cat /sys/class/net/*/address
 
 ```
-ss
-
-lsof
-
-netstat -lntu
-	# -l = only services which are listening on some port
-	# -n = show port number, don't try to resolve the service name
-	# -t = tcp ports
-	# -u = udp ports
-	# -p = name of the program
-	
-	
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -384,37 +483,102 @@ iwr "google.com" -outfile xx.html
 
 
 
-## Cross-Platform Utilities
 
 
-`whois`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Reconnaissance
+
+### Passive
+
+
+#### `whois`  RFC 3912 
 Looks up the registration record associated with a domain name
-
-Information about who registered and owns a domain name
-
 Domains are leased out by companies called Domain Registrars
+Many registrants subscribe to privacy services to avoid their email addresses being harvested 
 
-If you want a domain, you go and register with a registrar, then lease the domain for a certain length of time.
+Look for:
+	- Registrar (ex: namecheap.com)
+	- Name Server (ex: cloudflare.com)
+
+Online tool: <https://who.is/>
 
 See: REVERSE WHOIS (for horizontal recon)
 
+
+
+
+
+
 	
-`nslookup` (Name Server Lookup)
+#### `nslookup` (Name Server Lookup)
+RFC 1034
 
 IP addresses associated with a domain name (and viceversa)
 
-use: `nslookup OPTIONS DOMAIN_NAME SERVER`
+use: `nslookup OPTIONS DOMAIN_NAME SERVER` or as an interactive prompt, just `nslookup`
 
-Also as an interactive prompt, just `nslookup`
+Options:
+A		IPv4 Addresses
+AAAA	IPv6 Addresses
+CNAME	Canonical Name
+MX		Mail Servers
+SOA		Start of Authority
+TXT		TXT Records
+
 
 example:
+`nslookup -type=A tryhackme.com 1.1.1.1`
 `nslookup -type=MX tryhackme.com`
 
+find the authoritative name servers for a domain (NS query)
+```
+> nslookup
+> set query=ns
+> stackoverflow.com
+```
 
-`dig` ----> similar to nslookup
+
+#### `dig` (Domain Information Groper)
+
+Returns more info than `nslookup`
 Allows us to manually query recursive DNS servers of our choice for information about domains
 Very useful tool for network troubleshooting
 
+use: `dig DOMAIN_NAME TYPE`
 ```
 dig tryhackme.com MX
 dig tryhackme.com A
@@ -422,51 +586,75 @@ dig @1.1.1.1 tryhackme.com MX
 dig www.ekoparty.org +short
 ```
 
-https://dnsdumpster.com/
+#### https://dnsdumpster.com/
+Discover subdomains
 
 
 
 
+### Active
 
-`ping` (Packet Internet Groper)
+#### `ping` (Packet Internet Groper)
+Verifies IP-level connectivity to another TCP/IP device
 
-:	Verifies IP-level connectivity to another TCP/IP device
+Sends an ICMP Echo packet to a remote system. If the remote system is online, and the ping packet was correctly routed and not blocked by any firewall, the remote system should send back an ICMP Echo Reply. Similarly, the ping reply should reach the first system if appropriately routed and not blocked by any firewall.
 
-	Sends an ICMP Echo packet to a remote system. If the remote system is online, and the ping packet was correctly routed and not blocked by 
-any firewall, the remote system should send back an ICMP Echo Reply. Similarly, the ping reply should reach the first system if 
-appropriately routed and not blocked by any firewall.
-
-	ICMP echo/type 8
+ping -c 10 MACHINE_IP # UNIX
+ping -n 10 MACHINE_IP # WINDOWS
 	
-	ICMP echo reply/type 0
-	
-	ping -c 10 MACHINE_IP ----> count (UNIX)
-	
-	ping -n 10 MACHINE_IP ----> count (WINDOWS)
-	
-
-
-`pathping` (WINDOWS)
-
-:	Combines features of the tools `ping` and `tracert`
-	Can show the degree of packet loss at any specifies router
+We can ping every IP address on a target network and see who would respond to our ping (ICMP Type 8/Echo) requests with a ping reply (ICMP Type 0)
 
 
 
-`traceroute` (UNIX) / tracepath ?? / `tracert` (WINDOWS)
-:	Information about the path a packet takes
+#### Trace Route
+Indicates the number of hops (routers) between your system and the target host (Information about the path a packet takes)
+Sends ICMP with increasing TTL to “trick” the routers into revealing their IP addresses
+Some routers don’t return a reply
 
-	Indicates the number of hops (routers) between your system and the target host
-
-	Some routers don’t return a reply
-
+`traceroute` # UNIX
 `traceroute -i`  specify an interface
-
 `traceroute -T` ---->  use TCP SYN requests when tracing the route
 
 
+`tracert` # Windows CMD
+`Test-NetConnection -ComputerName <host> -Port <port> # Windows PowerShell`
+`Test-NetConnection -ComputerName example.com -Port 80 # Windows PowerShell`
+`pathping` # WINDOWS / Combines features of the tools `ping` and `tracert`. Can show the degree of packet loss at any specifies router
 
 
+
+
+#### `telnet`
+
+used to connect to a virtual terminal of another computer
+
+
+From a security perspective, telnet sends all the data, including usernames and passwords, in cleartext. Sending in cleartext makes it easy for anyone, who has access to the communication channel, to steal the login credentials. The secure alternative is SSH (Secure SHell) protocol.
+Knowing that telnet client relies on the TCP protocol, you can use Telnet to connect to any service and grab its banner.
+
+
+It can be user for troubleshooting by adding a port number
+`telnet server01 25`
+
+*Note that both telnet and Test-NetConnection are primarily used to check connectivity to a specific port on a remote host. They are not 
+exhaustive port scanners like dedicated tools such as Nmap, but they can be useful for basic port testing.*
+
+
+
+#### ftp
+
+there are two modes for FTP:
+	- Active: In the active mode, the data is sent over a separate channel originating from the FTP server’s port 20.
+	- Passive: In the passive mode, the data is sent over a separate channel originating from an FTP client’s port above port number 1023.
+
+The command `TYPE A` `ascii` switches the file transfer mode to ASCII, while `TYPE I` switches the file transfer mode to binary.
+
+
+
+
+
+
+## Cross-Platform Utilities
 
 	
 `Test-Connection`
@@ -481,17 +669,6 @@ Test-Connection
 ```
 
 
-`telnet`
-:	The TELNET (Teletype Network) protocol was developed in 1969 to communicate with a remote system via a command-line interface (CLI). Hence, 
-the command telnet uses the TELNET protocol for remote administration. The default port used by telnet is 23. From a security perspective, 
-telnet sends all the data, including usernames and passwords, in cleartext. Sending in cleartext makes it easy for anyone, who has access to 
-the communication channel, to steal the login credentials. The secure alternative is SSH (Secure SHell) protocol.
-
-	It can be user for troubleshooting by adding a port number
-	`telnet server01 25`
-
-*Note that both telnet and Test-NetConnection are primarily used to check connectivity to a specific port on a remote host. They are not 
-exhaustive port scanners like dedicated tools such as Nmap, but they can be useful for basic port testing.*
 
 
 
@@ -500,13 +677,18 @@ exhaustive port scanners like dedicated tools such as Nmap, but they can be usef
 
 Display active TCP connections, open ports, incoming and outgoing network connections
 
-
+https://www.ionos.com/digitalguide/server/tools/netstat-commands/
 
 ```
+
+
+netsh int ip reset # reset stack
+
 # active ports and name of processes
 netstat -ab
 
-netstat -o # PID (then you can search for it in Task Manager)
+netstat -o # PID (then you can search for it in Task Manager or with `tasklist /fi "pid eq [PID]"`)
+
 netstat -0 | findstr 28604 # show only the connections that are using a specific PID
 netstat -aon # open ports
 netstat -ne

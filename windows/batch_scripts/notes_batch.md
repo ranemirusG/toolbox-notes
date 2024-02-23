@@ -12,6 +12,7 @@ ECHO %my_variable%
 SET /A mult=7*9     ::multiplication operator
 ECHO %mult%
 
+`:` is for labels
 
 
 ## Fork bomb

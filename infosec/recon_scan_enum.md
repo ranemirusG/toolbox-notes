@@ -1,12 +1,51 @@
 # Escaneo y enumeracion
 
+
 - barrido de recursos con formato conocido
 - identifacion de elementos en un determinado recurso
 - direcciones IP activas
 
 
-## Ports
+## Reconnaisance
+whois
+nslookup / dig
+https://dnsdumpster.com/
+https://shodan.io/
+
+
+
+
+
+HTTP sends and receives data as cleartext (not encrypted); therefore, you can use a simple tool, such as Telnet (or Netcat), to communicate with a web server and act as a “web browser”. The key difference is that you need to input the HTTP-related commands instead of the web browser doing that for you.
+
+```
+telnet $IP PORT
+GET / HTTP/1.1
+host: telnet
+```
+
+```
+nc $IP PORT
+GET / HTTP/1.1
+host: netcat
+```
+
+## banner grabbing
+dmitry -p -b $IP
+dmitry -p -b HOST
+
+
+## Scanning
+Which systems are up?
+What services are running on these systems?
+
 nmap
+arp-scan
+masscan
+
+
+
+
 
 ## Content Discovery
 
@@ -92,7 +131,6 @@ dig -x [ip obtenido de host] @[name server]
 google hacking
 site:www.dw.com -www.dw.com
 save result page as html
-
 
 `w3m [file.html] > file.txt`
 
