@@ -39,8 +39,6 @@ infosec/XSS.md
 
 infosec/XXE.md
 
-infosec/command_injection.md
-
 infosec/nmap.md
 
 infosec/osint/osint_tools.xlsx

@@ -1,0 +1,1 @@
+https://medium.com/@Steiner254/directory-path-traversal-288a6188076
