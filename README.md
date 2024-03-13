@@ -33,15 +33,25 @@ formats/utf-8/utf-8_history_by_Rob_Pike.md
 
 git.md
 
+infosec/OS_command_injection.md
+
 infosec/SQL_injection.md
 
 infosec/XSS.md
 
 infosec/XXE.md
 
+infosec/file_upload.md
+
+infosec/javascript.md
+
 infosec/nmap.md
 
 infosec/osint/osint_tools.xlsx
+
+infosec/passwords.md
+
+infosec/path_traversal.md
 
 infosec/privesc.md
 
@@ -52,6 +62,8 @@ infosec/reverse_shell.md
 infosec/vulnerability_search.md
 
 keyboard.md
+
+linux/kali-linux.md
 
 multiplexers.md
 
@@ -82,6 +94,8 @@ powershell_scripts/list_attributes.ps1
 powershell_scripts/lorem.ps1
 
 powershell_scripts/myPrompt.ps1
+
+powershell_scripts/new_temp_file.ps1
 
 powershell_scripts/open_all_text_files.ps1
 
@@ -133,6 +147,8 @@ utilities/sed_awk.md
 
 web/browsers.md
 
+web/js_enumeration.py
+
 web/search_engines.md
 
 windows/batch_scripts/notes_batch.md
@@ -140,6 +156,8 @@ windows/batch_scripts/notes_batch.md
 windows/batch_scripts/rename_files_to_md.bat
 
 windows/windows_runbox.md
+
+windows/windows_terminal.md
 
 windows_and_unix_cheatsheet.md
 
