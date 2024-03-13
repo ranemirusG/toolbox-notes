@@ -9,20 +9,34 @@ Email delivery over the Internet requires the following components:
 
 
 
-
+## Resources
+<https://computer.howstuffworks.com/e-mail-messaging/email3.htm>
+<https://www.afternerd.com/blog/smtp/>
 
 
 ## Protocols
 
 ### SMTP
 Simple Mail Transfer Protocol (SMTP) is used to communicate with an MTA server.
+
 Listens on port 25 by default.
+
+
+Performs three basic functions:
+
+- It verifies who is sending emails through the SMTP server.
+- It sends the outgoing mail
+- If the outgoing mail can't be delivered it sends the message back to the sender
+
+
 
 
 
 ### POP3
 Default port 110
 RFC 1939
+
+responsible for the transfer of email between a client and a mail server
 
 Post Office Protocol version 3 (POP3) is a protocol used to download the email messages from a MDA server.
 The mail client connects to the POP3 server, authenticates, downloads the new email messages before (optionally) deleting them.
@@ -35,6 +49,9 @@ To keep all mailboxes synchronized, we need to consider other protocols, such as
 
 ### IMAP (Internet Messaging Access Protocol)
 Default Port 143
+
+responsible for the transfer of email between a client and a mail server
+
 Messages are stored in a remote server
 Users can log in via multiple email clients on computers or mobile device and read the same messages
 All changes made in the mailbox will be synced across multiple devices and messages will only be removed from the server if the user deletes the email

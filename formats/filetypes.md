@@ -47,6 +47,9 @@ The extension used by 4DOS, 4OS2, 4NT and Take Command. These scripts are faster
 
 `.pem` is a text-based container using base-64 encoding. It could be any of the above files.
 
+`.pem` OpenSSH
+`.ppk` PuTTY
+
 -----BEGIN EXAMPLE-----
 ...
 -----END EXAMPLE-----
@@ -56,7 +59,11 @@ The extension used by 4DOS, 4OS2, 4NT and Take Command. These scripts are faster
 `.dat`: generic data file that stores specific information relating to the program that created the file
 
 
+## Audio
 
+`.wav`
+`.aiff`
+`.au`
 
 
 

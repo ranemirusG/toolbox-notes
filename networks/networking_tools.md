@@ -23,6 +23,8 @@ List of commands and tools to deal with networking.
 
 
 
+
+
 ###########################################
 
 
@@ -106,7 +108,9 @@ LanScan
 - C:\Windows\System32\drivers\etc or %WINDIR%\System32\drivers\etc
 - C:\inetpub
 
+- Cert:\ (`cd cert:`)
 
+Control Panel > Network and Internet > Network and Sharing Center
 
 
 
@@ -360,8 +364,12 @@ iptables
 
 
 tcpdump # packet analyzer that captures and displays network packets.
-# To capture all network traffic on a specific interface, use:
-sudo tcpdump -i <interface_name>
+
+# To capture all network traffic on a specific interface
+`sudo tcpdump -i <interface_name>`
+`sudo tcpdump ip proto \\icmp -i tun0`
+
+Used for checking if what we're typing is being executed as a system command from a telnet session, for example.
 
 
 
@@ -625,7 +633,7 @@ Some routers don’t return a reply
 
 
 #### `telnet`
-
+application protocol
 used to connect to a virtual terminal of another computer
 
 
@@ -642,17 +650,63 @@ exhaustive port scanners like dedicated tools such as Nmap, but they can be usef
 
 
 #### ftp
+RFC 959
+
+A typical FTP session operates using two channels: a command (sometimes called the control) channel a data channel. This separation of command information and data into separate channels is a way of being able to send commands to the server without having to wait for the current data transfer to finish.
 
 there are two modes for FTP:
 	- Active: In the active mode, the data is sent over a separate channel originating from the FTP server’s port 20.
 	- Passive: In the passive mode, the data is sent over a separate channel originating from an FTP client’s port above port number 1023.
 
+Commands:
+
 The command `TYPE A` `ascii` switches the file transfer mode to ASCII, while `TYPE I` switches the file transfer mode to binary.
 
+Read file stdout `get file.txt -`
 
 
 
 
+
+#### SMB (Server Message Block Protocol) / Samba
+Is a client-server communication protocol used for sharing access to files, printers, serial ports and other resources on a network.
+
+Response-Request protocol (meaning that it transmits multiple messages between the client and server to establish a connection)
+
+Clients connect to servers using TCP/IP (actually NetBIOS over TCP/IP as specified in RFC1001 and RFC1002), NetBEUI or IPX/SPX.
+
+`SMBClient` it's part of the default samba suite
+
+`Enum4linux` is a tool used to enumerate SMB shares on both Windows and Linux systems. It is basically a wrapper around the tools in the Samba package and makes it easy to quickly extract information from the target pertaining to SMB.
+
+
+
+
+
+
+
+#### NFS (Network File System)
+https://en.wikipedia.org/wiki/Network_File_System
+
+Example:
+`/usr/sbin/showmount -e TARGET` to list the NFS shares
+
+Mount the share to our local machine:
+`sudo mount -t nfs IP:share_dir /tmp/mount/ -nolock`
+
+
+
+
+
+
+
+
+
+
+
+######################################################
+
+ORDENAR
 
 ## Cross-Platform Utilities
 

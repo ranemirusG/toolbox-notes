@@ -1,13 +1,5 @@
 # Windows and *nix Command-Line Cheat Sheet
 
-[//]: # ############################################
-[//]: # TODO
-[//]: # change introduction name? add h3 to table of content? ask chatgpt for a script to do that
-[//]: # style for code blocks and <h4>
-[//]: # style franjas para powershell, cmd y unix
-[//]: # ############################################
-
-
 
 ## Table of Contents
 
@@ -52,9 +44,6 @@ networking, and enumeration. This is to have everything in one place and organiz
 This guide will be a constantly ongoing project, so I expect to expand it (primarily to make tasks easier for myself).
 
 Some commands might seem obvious, while others could be convoluted.
-
-As I write this, I am mostly working on Windows (in fact, creating this cheat sheet is a way for me to learn, as I come from a \*nix background). So there might 
-be a slight bias towards PowerShell.
 
 The preferred order will be:
 
@@ -129,7 +118,22 @@ To start a cmd or bash interpreter in PowerShell type `cmd` or `bash`.
 # this is an inline pwsh comment
 <# and this
 is a multiline comment #>
+
+
+
+
+# History
+Get-History
+ghy
+h
+
+Get-History | Format-Table Id, StartExecutionTime, CommandLine # With timestamp
 ```
+
+
+
+
+
 
 #### CMD
 
@@ -138,7 +142,6 @@ REM I'll use this for inline comments in this guide
 &REM I'll use this for inline comments in this guide (after a command)
 ```
 See: <https://stackoverflow.com/questions/2997578/how-do-i-comment-on-the-windows-command-line>
-
 
 
 `F7` to see the command history
@@ -164,9 +167,28 @@ Batch Files: <https://en.wikipedia.org/wiki/Batch_file>
 
 ```
 # this is an inline bash command
+
+
+# History
+history # to see timestamp set: HISTTIMEFORMAT="%F %T " or HISTTIMEFORMAT="%y-%m-%d %T "
+
+history 10 # last 10 commands
+
+
+
 ```
 
 See: <https://stackoverflow.com/questions/43158140/way-to-create-multiline-comments-in-bash>
+
+
+
+
+
+
+
+
+
+
 
 
 ### Help
@@ -871,6 +893,7 @@ pwd | pbcopy # macOS
 
 # Search for files in directory which have been modified in the last 24 hs
 find /directory -mtime 0
+
 # Search for files in directory which have been modified between two dates
 find . -type f \( -newermt '2023-09-01' -a ! -newermt '2023-09-05' \)
 
@@ -1024,27 +1047,40 @@ It may be a file name, or a string inside a file.
 #### PowerShell
 
 ```
+
 Get-ChildItem -Recurse | Select-String -Pattern "string"
+
 Get-ChildItem -Path "C:\Path\To\Directory" -Filter *.txt -Recurse | Select-String -Pattern "string"
+
 Get-ChildItem -Recurse | Where-Object { ! $_.PSIsContainer -and ($_.Extension -eq '' -or $_.Extension -eq '.txt') } | Select-String -Pattern "string"
+
 Get-ChildItem -Recurse | Where-Object { ! $_.Extension -ne ".pdf",".gz" } | Select-String -Pattern "string"
 
-# search for "TTP" and "TTPS" but exclude instances like "HTTP" or "HTTPS
-# \b menas boundary and ensures that "TTP" and "TTPS" are matched as whole words and not as part of other words
+# search for "TTP" and "TTPS" but exclude instances like "HTTP" or "HTTPS" - `\b` is boundary and ensures that "TTP" and "TTPS" are matched as whole words and not as part of other words
 Get-ChildItem -Recurse | Select-String -Pattern "\bTTPS?\b"
 
 
 # output the name of the files containing the match
-
 Get-ChildItem -Recurse | Select-String -Pattern "string" | Select-Object -ExpandProperty Path -Unique
 
 
 
-Get-ChildItem -Recurse |
-Where-Object { ! $_.PSIsContainer -and ($_.Extension -eq '' -or $_.Extension -eq '.txt') } |
-Select-String -Pattern "string" |
-Select-Object -ExpandProperty Path
+Get-ChildItem -Recurse | Where-Object { ! $_.PSIsContainer -and ($_.Extension -eq '' -or $_.Extension -eq '.txt') } | Select-String -Pattern "string" | Select-Object -ExpandProperty Path
+
+# file name
+Get-ChildItem -Path '.' | Where-Object { $_.Name -match 'word*' }
+Get-ChildItem -Path 'C:\path\to\search' -Recurse | Where-Object { $_.Name -match 'regex_pattern' }
+Get-ChildItem -Path '.' -Recurse | Where-Object { $_.Name -match '^file.*\.txt$' }
+Get-ChildItem -Path '.' -Recurse | Where-Object { $_.Name -match 'word*' }
+
+
+
+
 ```
+
+
+
+
 
 
 #### CMD
@@ -1066,15 +1102,20 @@ dir /s /b *foo*
 ```
 grep -r string
 grep -r "string with spaces"
-grep -ri "STRING WITH SPACES" # case insensitive
-grep -rl "string" # output the name of the files containing the match
+grep -ri "foO bAr qUx" # case insensitive
+# output the name of the files containing the match
 grep "string" /path/to/file/example.db # search string in specific file
 
 # match filename
 find /path/to/dir -name "*.txt"
 find /path/to/dir -name "*.txt" -size +1M # large files criteria
+find /path/to/search -type f -name '*pattern*' | grep 'regex_pattern'
 
 ls -l /path/to/file/*foo* 
+
+
+
+
 
 ```
 

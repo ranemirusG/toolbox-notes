@@ -13,6 +13,8 @@ README.md
 
 clipboard.md
 
+email.md
+
 fonts.md
 
 formats/data_interchange.md
@@ -45,9 +47,11 @@ infosec/osint/osint_tools.xlsx
 
 infosec/privesc.md
 
+infosec/recon_scan_enum.md
+
 infosec/reverse_shell.md
 
-infosec/scanning_and_enumeration.md
+infosec/vulnerability_search.md
 
 keyboard.md
 
@@ -84,6 +88,8 @@ powershell_scripts/myPrompt.ps1
 powershell_scripts/open_all_text_files.ps1
 
 powershell_scripts/rename_to_hash.ps1
+
+powershell_scripts/simple_grep.ps1
 
 powershell_scripts/sizes_of_subdirs.ps1
 

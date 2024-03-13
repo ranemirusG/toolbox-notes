@@ -10,6 +10,77 @@
 
 
 
+
+
+
+## Snippets
+
+### First Scan
+
+Default scan:
+
+`sudo nmap $IP`
+
+- Example:
+	`nmap scanme.nmap.org/24`
+	`nmap 64.13.134.52/24`
+	`nmap 64.13.134.-`
+	`nmap 64.13.134.0-255`
+	These four commands all ask Nmap to scan the 256 IP addresses from 64.13.134.0 through 64.13.134.255. In other words, they ask to scan the class C sized address space surrounding scanme.nmap.org.
+
+
+`sudo nmap -T4 $IP`
+
+`sudo nmap -sN -T4 $IP`
+
+`nmap -sS -Pn -T4 -F $IP`
+
+Quick scan all ports:
+`sudo nmap -sU --min-rate 5000 -p- $IP`
+
+
+More aggresive:
+
+`sudo nmap -A -T4 $IP`
+
+`nmap -A -p- -vv $IP`
+
+`-A`: if we don't care about how loud we are, we can enable "aggressive" mode. This is equivalent to `-sV -O -sC --traceroute`.
+
+Users can skip the ping step entirely with a list scan (-sL) or by disabling ping (-Pn)
+-Pn ----> tells Nmap to not bother pinging the host before scanning it
+
+nmap -sC -sV -oN output.txt $IP
+nmap -sS -p- -oN all-ports.txt $IP
+nmap -sS -sV -A -O -Pn $IP
+nmap -T4 -A -p- $IP
+
+
+## Second Scan
+Run a version scan with default scripts to enumerate these ports further. Example: `nmap -sC -sV -p80,6379 $IP`
+
+`nmap -A -Pn -T4 -p21,80,2222 $IP`
+Now we know about port 21, 80 and 2222 we can get more info on them by using the -A flag
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Tips
 ```
 # Create a nmap dir in the project and save the output in a file there
@@ -39,6 +110,46 @@ Note: A fourth format is script kiddie (don't use that, it's basically a joke)
 
 
 
+## Fine-Tuning Scope and Performance
+
+
+### Select Ports to scan
+`-p 80` or `-p80` (without space is the same)
+`-p1-100` a range
+`-p-` all 65535 ports
+
+`-F` most common 100 ports
+
+`--top-ports 10`
+`--exclude $IP`
+
+
+### Select source port
+`--source-port PORT_NUM`
+
+
+### Timing
+`-T0` is the slowest (paranoid), while `-T5` (insanme) is the fastest.
+
+If you don’t specify any timing, Nmap uses normal -T3
+
+To avoid IDS alerts, you might consider -T0 or -T1
+
+Use --min-rate and --max-rate together to keep the rate inside a certain range.
+
+
+### Control packet rate and parallelization
+
+`--min-rate`
+`--max-rate 10` or `--max-rate=10`
+
+--max-parallelism <numprobes>
+
+
+
+
+
+
 
 
 
@@ -53,7 +164,7 @@ One reason to do this first is stealth. The names of the hosts can hint at poten
 
 
 ### Discover online hosts without port-scanning the live systems
-Remember to add -sn if you are only interested in host discovery without port-scanning. Omitting -sn will let Nmap default to port-scanning the live hosts.
+Add `-sn` if you are only interested in host discovery without port-scanning. Omitting -sn will let Nmap default to port-scanning the live hosts.
 
 `nmap -sn TARGETS`
 
@@ -116,12 +227,15 @@ Contrary to TCP SYN ping, sending a UDP packet to an open port is not expected t
 
 Note: if you are not a privileged user (root or sudoer), a TCP connect scan is the only possible option to discover open TCP ports.
 
+Completes the three-way-handshake
+
 `nmap -sT TARGET`
 
 Also the `-r` option can also be added to scan the ports in consecutive order instead of random order. This option is useful when testing whether ports open in a consistent manner, for instance, when a target boots up.
 
 
-
+En Wireshark:
+`tcp.flags.syn==1 and tcp.flags.ack==0`
 
 
 
@@ -129,7 +243,7 @@ Also the `-r` option can also be added to scan the ports in consecutive order in
 
 TCP SYN scan is the default scan mode when running Nmap as a privileged user
 
-not need to complete the TCP 3-way handshake; instead, it tears down the connection once it receives a response from the server.
+No need to complete the TCP 3-way handshake; instead, it tears down the connection once it receives a response from the server.
 
 `nmap -sS TARGET` Because a TCP connection is not stablished, this decreases the chances of the scan being logged.
 
@@ -145,42 +259,11 @@ UDP port scan takes longer than TCP port scans.
 We expect to get an ICMP packet of type 3, destination unreachable, and code 3, port unreachable. In other words, the UDP ports that don’t generate any response are the ones that Nmap will state as open.
 
 
+En Wireshark:
 
+"icmp.type == 3": This filter matches ICMP packets based on the ICMP type field. ICMP type 3 represents the Destination Unreachable message.
 
-## Fine-Tuning Scope and Performance
-
-
-### Select Ports to scan
-`-p 80` or `-p80` (without space is the same)
-`-p1-100` a range
-`-p-` all 65535 ports
-
-`-F` most common 100 ports
-
-`--top-ports 10`
-
-### Select source port
-`--source-port PORT_NUM`
-
-
-### Timing
-`-T0` is the slowest (paranoid), while `-T5` (insanme) is the fastest.
-
-If you don’t specify any timing, Nmap uses normal -T3
-
-To avoid IDS alerts, you might consider -T0 or -T1
-
-
-### Control packet rate and parallelization
-
-`--min-rate`
-`--max-rate 10` or `--max-rate=10`
-
---max-parallelism <numprobes>
-
-
-
-
+"icmp.code == 3": This filter matches ICMP packets based on the ICMP code field. ICMP code 3 is a specific code value within the Destination Unreachable message type.
 
 
 
@@ -293,6 +376,9 @@ The idle (zombie) scan requires the following three steps to discover whether a 
 
 
 
+
+
+
 ## the steps that follow port-scanning: service detection and OS detection
 
 
@@ -348,52 +434,32 @@ and so on...
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ORDENAR ESTO
 ############################################################
-## Snippets
-
-### Commands and flags for first scan
-nmap -sC -sV -oN output.txt $IP
-nmap -sS -p- -oN all-ports.txt $IP
-	 run a version scan with default scripts to enumerate these ports further:
-	 example: nmap -sC -sV 80,6379 $IP
-nmap -sS -sV -A -O -Pn $IP
-nmap -T4 -A -p- $IP
 
 
-# A typical nmap scan
-nmap -A -T4 scanme.nmap.org
-
-
-nmap -sS -Pn -T4 -p 0–999 <ip>
-With -sS being a stealth scan (which avoid the 3 part handshake to avoid detection, which is great for a quick port scan).-Pn disables ping and only scans for open ports, again to avoid detection. -T4 slightly quickens the scan, although it is a bit more agressive.
-
-nmap -A -Pn -T4 -p21,80,2222 <ip>
-Now we know about port 21, 80 and 2222 we can get more info on them by using the -A flag
-
-
-
-
-
--sV
-Probe open ports to determine service/version info
-
--O
-Enable OS detection
-
--A
-if we don't care about how loud we are, we can enable "aggressive" mode.
-equivalent to `-sV -O -sC --traceroute`
-
-
--Pn ----> tells Nmap to not bother pinging the host before scanning it
-	The following switches are of particular note:
-	-f:- Used to fragment the packets (i.e. split them into smaller pieces) making it less likely that the packets will be detected by a firewall or IDS.
-	An alternative to -f, but providing more control over the size of the packets: --mtu <number>, accepts a maximum transmission unit size to use for the packets sent. This must be a multiple of 8.
-	--scan-delay <time>ms:- used to add a delay between packets sent. This is very useful if the network is unstable, but also for evading any time-based firewall/IDS triggers which may be in place.
-	--badsum:- this is used to generate in invalid checksum for packets. Any real TCP/IP stack would drop this packet, however, firewalls may potentially respond automatically, without bothering to check the checksum of the packet. As such, this switch can be used to determine the presence of a firewall/IDS.
+The following switches are of particular note:
 	
+-f:- Used to fragment the packets (i.e. split them into smaller pieces) making it less likely that the packets will be detected by a firewall or IDS.
+An alternative to -f, but providing more control over the size of the packets: --mtu <number>, accepts a maximum transmission unit size to use for the packets sent. This must be a multiple of 8.
+	
+--scan-delay <time>ms:- used to add a delay between packets sent. This is very useful if the network is unstable, but also for evading any time-based firewall/IDS triggers which may be in place.
 
+--badsum:- this is used to generate in invalid checksum for packets. Any real TCP/IP stack would drop this packet, however, firewalls may potentially respond automatically, without bothering to check the checksum of the packet. As such, this switch can be used to determine the presence of a firewall/IDS.
 
 
 -A
