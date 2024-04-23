@@ -4,13 +4,16 @@
 - `tmux` man page is pretty good
 - <https://leanpub.com/the-tao-of-tmux/read>
 
-- GNU Sreen (prefix ^a)
-- tmux (prefix ^b)
 
 
 
 
 ## Basics
+
+- GNU Sreen (prefix ^a)
+- tmux (prefix ^b)
+
+
 
 ### Windows and Panes
 #### Screen

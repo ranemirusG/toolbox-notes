@@ -899,6 +899,16 @@ find . -type f \( -newermt '2023-09-01' -a ! -newermt '2023-09-05' \)
 
 
 
+
+# Search for file with specified properties
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+find /path/to/search -type f ! -executable -size 1033c -readable
+
+
+
+
+
+
 ```
 
 
@@ -1103,8 +1113,12 @@ dir /s /b *foo*
 grep -r string
 grep -r "string with spaces"
 grep -ri "foO bAr qUx" # case insensitive
+
 # output the name of the files containing the match
-grep "string" /path/to/file/example.db # search string in specific file
+grep -l "pattern" file1 file2 file3
+
+# search string in specific file
+grep "string" /path/to/file/example.db
 
 # match filename
 find /path/to/dir -name "*.txt"
@@ -1114,15 +1128,7 @@ find /path/to/search -type f -name '*pattern*' | grep 'regex_pattern'
 ls -l /path/to/file/*foo* 
 
 
-
-
-
 ```
-
-
-
-
-
 
 
 
@@ -1237,6 +1243,7 @@ mkdir DIR
 
 REM Delete
 RMDIR directory
+RMDIR /S /Q directory
 ERASE file
 
 REM Empty Recycle Bin
@@ -1787,6 +1794,9 @@ taskkill /F /IM CalculatorApp.exe
 #### \*NIX
 
 ```
+
+ps fax
+
 
 
 jobs # list jobs

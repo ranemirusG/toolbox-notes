@@ -27,10 +27,10 @@ if has('termguicolors')
 endif
 
 " colorscheme habamax
-" color default
+color default
 " colo wildcharm
 " colo zellner
-colo elflord
+" colo elflord
 
 
 
@@ -105,17 +105,19 @@ set nobackup
 
 
 
-noremap <F5> <ESC> :w <CR> :make <CR>
-inoremap <F5> <ESC> :w <CR> :make <CR>
+
 
 filetype on
 filetype plugin on
 autocmd FileType cpp setlocal makeprg=g\+\+\ %\ \-g\ \-std\=c\+\+17\ \-Wall
 autocmd FileType haskell setlocal makeprg=ghci\ %
 autocmd FileType python setlocal makeprg=python3\ %
-autocmd FileType sh setlocal makeprg=%
+autocmd FileType sh setlocal makeprg=bash\ %
+autocmd FileType ruby setlocal makeprg=ruby\ %
 
-
+noremap <F5> <ESC> :w <CR> :make <CR>
+inoremap <F5> <ESC> :w <CR> :make <CR>
+" another way is with autocmd FileType .... map ...
 
 
 

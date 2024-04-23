@@ -35,6 +35,18 @@ dmitry -p -b $IP
 dmitry -p -b HOST
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ## Scanning
 Which systems are up?
 What services are running on these systems?
@@ -42,6 +54,23 @@ What services are running on these systems?
 nmap
 arp-scan
 masscan
+
+Nessus / OpenVAS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -52,8 +81,10 @@ masscan
 - find out about files and directories on the server
 
 /robots.txt (see <http://www.robotstxt.org/robotstxt.html>)
+/sitemap.xml
 /.well-known/
 /README.txt
+/.git
 
 
 dirsearch

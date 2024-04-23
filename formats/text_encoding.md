@@ -59,6 +59,18 @@ https://en.wikipedia.org/wiki/Binary-coded_decimal
 
 # Conversions
 
+
+# character to UTF-16
+
+```javascript
+
+'a'.charCodeAt()
+
+```
+
+
+
+
 # Decimal to text
 
 
@@ -333,6 +345,9 @@ Classes:
     Upwards Arrow U+2191 ↑
     Rightwards Arrow U+2192 →
     Downwards Arrow U+2193 ↓
+	
+	
+
 
 
 # Linux
@@ -371,6 +386,8 @@ On `notepad` and `WordPad` and `LibreOfficeWriter` you can write the alt code in
 https://en.wikipedia.org/wiki/Caesar_cipher
 
 rot13
+`tr 'A-Za-z' 'N-ZA-Mn-za-m' < data.txt`
+
 rot47
 
 ```python

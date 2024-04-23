@@ -1,12 +1,12 @@
 # NMAP
 
 ## Resources
-- https://www.ninjaone.com/blog/how-to-use-nmap-complete-guide-with-examples/
-- https://www.welivesecurity.com/la-es/2023/06/14/auditando-nmap-scripts-escanear-vulnerabilidades/
+- < https://www.ninjaone.com/blog/how-to-use-nmap-complete-guide-with-examples>
+- < https://www.welivesecurity.com/la-es/2023/06/14/auditando-nmap-scripts-escanear-vulnerabilidades/>
 - https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-the-greatest-scanning-tool-of-all-time/
-- https://nmap.org/nsedoc/scripts/http-wordpress-enum.html
+- <https://nmap.org/nsedoc/scripts/http-wordpress-enum.html>
 
-
+- <https://www.hackthebox.com/blog/nmap-commands?utm_campaign=Blog+-Oktopost&utm_content=https%3A%2F%2Fwww.linkedin.com%2Ffeed%2Fupdate%2Furn%3Ali%3Ashare%3A7173369684346429441&utm_medium=social&utm_source=LinkedIn&utm_term=Blog>
 
 
 
@@ -329,7 +329,10 @@ Ex: `--scanflags RSTSYNFIN`
 
 
 ### Spoofing
-Such a scan is only beneficial in a situation where you can guarantee to capture the response.
+
+WORKS ONLY IF YOUR SYSTEM IS ON THE SAME NETWORK SEGMENT AS THE TARGET HOST.
+OTHERWISE, YOU WON’T BE ABLE TO READ THE REPLIES SENT BACK.
+
 
 `sudo nmap -S SPOOFED_IP MACHINE_IP`
 
@@ -354,6 +357,16 @@ The concept is simple, make the scan appear to be coming from many IP addresses 
 
 `nmap -D 10.10.0.1,10.10.0.2,ATTACKER_IP TARGET`
 `nmap -D 10.10.0.1,10.10.0.2,ATTACKER_IP,RND,RND TARGET` (`RND` are assigned randomly)
+
+You can also set Nmap to use random source IP addresses instead of explicitly specifying them. By running `nmap -sS -Pn -D RND,RND,ME -F MACHINE_IP`, Nmap will choose two random source IP addresses to use as decoys. Nmap will use new random IP addresses each time you run this command.
+
+
+
+### Proxy
+Use an HTTP/SOCKS4 proxy. Relaying the port scan via a proxy helps keep your IP address unknown to the target host. This technique allows you to keep your IP address hidden while the target logs the IP address of the proxy server. You can go this route using the Nmap option `--proxies PROXY_URL`. For example, `nmap -sS -Pn --proxies PROXY_URL -F MACHINE_IP` will send all its packets via the proxy server you specify. Note that you can chain proxies using a comma-separated list.
+
+What do you expect the target to see as the source of the scan when you run the command `nmap -sS -Pn --proxies 10.10.13.37 MACHINE_IP`
+
 
 
 
@@ -456,6 +469,48 @@ The following switches are of particular note:
 	
 -f:- Used to fragment the packets (i.e. split them into smaller pieces) making it less likely that the packets will be detected by a firewall or IDS.
 An alternative to -f, but providing more control over the size of the packets: --mtu <number>, accepts a maximum transmission unit size to use for the packets sent. This must be a multiple of 8.
+
+
+You can control the packet size as it allows you to:
+	- Fragment packets, optionally with given MTU. If the firewall, or the IDS/IPS, does not reassemble the packet, it will most likely let it pass. Consequently, the target system will reassemble and process it.
+	- Send packets with specific data lengths.
+	
+Another handy option is the -ff, limiting the IP data to 16 bytes. (One easy way to remember this is that one f is 8 bytes, but two fs are 16 bytes.) By running nmap -sS -Pn -ff -F MACHINE_IP, we expect the 24 bytes of the TCP header to be divided between two IP packets, 16 + 8, because -ff has put an upper limit of 16 bytes. 
+
+Another neat way to fragment your packets is by setting the MTU. In Nmap, --mtu VALUE specifies the number of bytes per IP packet. In other words, the IP header size is not included. The value set for MTU must always be a multiple of 8.
+
+Note that the Maximum Transmission Unit (MTU) indicates the maximum packet size that can pass on a certain link-layer connection. For instance, Ethernet has an MTU of 1500, meaning that the largest IP packet that can be sent over an Ethernet (link layer) connection is 1500 bytes. Please don’t confuse this MTU with the --mtu in Nmap options.
+
+Running Nmap with --mtu 8 will be identical to -f as the IP data will be limited to 8 bytes
+
+
+Generate Packets with Specific Length
+In some instances, you might find out that the size of the packets is triggering the firewall or the IDS/IPS to detect and block you. If you ever find yourself in such a situation, you can make your port scanning more evasive by setting a specific length. You can set the length of data carried within the IP packet using --data-length VALUE. Again, remember that the length should be a multiple of 8.
+
+If you run the following Nmap scan nmap -sS -Pn --data-length 64 -F MACHINE_IP, each TCP segment will be padded with random data till its length is 64 bytes. In the screenshot below, we can see that each TCP segment has a length of 64 bytes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 --scan-delay <time>ms:- used to add a delay between packets sent. This is very useful if the network is unstable, but also for evading any time-based firewall/IDS triggers which may be in place.
 
@@ -464,6 +519,72 @@ An alternative to -f, but providing more control over the size of the packets: -
 
 -A
 Enables “aggressive” scanning. Presently this enables OS detection (-O), version scanning (-sV), script scanning (-sC) and traceroute (–traceroute)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IP Options
+R to record-route.
+T to record-timestamp.
+U to record-route and record-timestamp.
+L for loose source routing and needs to be followed by a list of IP addresses separated by space.
+S for strict source routing and needs to be followed by a list of IP addresses separated by space.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################################################
+
+## Firewalls 
+
+Evasion Approach								Nmap Argument
+======= ========								==== ========
+Hide a scan with decoys							-D DECOY1_IP1,DECOY_IP2,ME
+Hide a scan with random decoys					-D RND,RND,ME
+Use an HTTP/SOCKS4 proxy to relay connections	--proxies PROXY_URL
+Spoof source MAC address						--spoof-mac MAC_ADDRESS
+Spoof source IP address							-S IP_ADDRESS
+Use a specific source port number				-g PORT_NUM or --source-port PORT_NUM
+
+Fragment IP data into 8 bytes					-f
+Fragment IP data into 16 bytes					-ff
+Fragment packets with given MTU					--mtu VALUE
+Specify packet length							--data-length NUM
+
+Set IP time-to-live field						--ttl VALUE
+Send packets with specified IP options			--ip-options OPTIONS
+Send packets with a wrong TCP/UDP checksum		--badsum
+
 
 
 ############################################################
