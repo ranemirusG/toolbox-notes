@@ -201,7 +201,7 @@ Get-NetTCPConnection
 
 
 
-# Get Public IP
+# Get my public IP
 Invoke-WebRequest ifconfig.me/ip
 (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
 (Invoke-WebRequest -UseBasicParsing -URI ifconfig.me).Content

@@ -139,8 +139,10 @@ Get-History | Format-Table Id, StartExecutionTime, CommandLine # With timestamp
 
 ```
 REM I'll use this for inline comments in this guide
+@REM echo off the comment! best option
 &REM I'll use this for inline comments in this guide (after a command)
 ```
+`REM` stands for "Remark"
 See: <https://stackoverflow.com/questions/2997578/how-do-i-comment-on-the-windows-command-line>
 
 

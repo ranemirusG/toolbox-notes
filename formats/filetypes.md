@@ -10,7 +10,19 @@
 ## General
 
 # Web
-`.htm` MS-DOS and early versions of windows were limited to 8.3 filenames, so the extension .html was not possible. Microsoft users had to use .htm instead.
+`.htm` MS-DOS and early versions of windows were limited to 8.3 filenames, so the extension `.html` was not possible. Microsoft users had to use `.htm` instead.
+
+`.asp` ASP is a technology (much like PHP) for executing scripts on a web server.
+"Active Server Page" file, which is an ASP.NET web page provided by a Microsoft IIS server. The server processes scripts within the file and then generates HTML to display the page in the browser. These files are also called Classic ASP files, and normally use the VBScript language. Newer ASP.NET pages are saved with the ASPX file extension and are often written in C#. A common place where you might see ".ASP" is at the very end of a URL that points to an ASP.NET web page, or when your browser sends you an ASP file by accident instead of the actual file you were trying to download.
+
+Other file formats use this same file extension, like Adobe Color Separation Setup, but that format might be obsolete and irrelevant with newer program versions. These files contain color options (like separation type, ink limit, and color types) that are used when exporting or printing a document.
+
+If you got an ASP file when you tried downloading something else (often a PDF), then there's a good chance that the server simply didn't name the file correctly.
+
+For example, maybe you were trying to download a bank statement, and instead of having it open in your PDF viewer, it opens with a text editor or your computer doesn't know how to view it.
+
+In this particular case, the server didn't append ".PDF" to the end of the file name, and instead used ".ASP" even though the actual file format is PDF. The easiest solution here is to just rename the file yourself, by erasing the last three letters after the period and putting in .PDF (e.g., statement.asp to statement.pdf)
+
 
 
 # Text

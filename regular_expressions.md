@@ -36,6 +36,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ## JavaScript
 
 ```
@@ -81,7 +92,32 @@ multipleA.test(A100); // true
 
 
 
+```
 
 
+
+
+
+
+
+
+
+## PHP
+
+
+`preg_match()` Returns 1 if the pattern was found in the string and 0 if not
+`preg_match_all()` Returns the number of times the pattern was found in the string, which may also be 0
 
 ```
+$str = "Visit Microsoft!";
+$pattern = "/microsoft/i";
+echo preg_replace($pattern, "W3Schools", $str);
+
+```
+
+```
+if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+      $websiteErr = "Invalid URL";
+    }    
+```
+

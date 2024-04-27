@@ -17,7 +17,9 @@ email.md
 
 fonts.md
 
-formats/data_interchange.md
+formats/data_interchange/notes.md
+
+formats/data_interchange/read_json_example.ps1
 
 formats/datetime.md
 
@@ -57,7 +59,7 @@ infosec/privesc.md
 
 infosec/recon_scan_enum.md
 
-infosec/reverse_shell.md
+infosec/shells.md
 
 infosec/vulnerability_search.md
 
@@ -65,11 +67,11 @@ keyboard.md
 
 linux/kali-linux.md
 
-multiplexers.md
-
 networks/nc_ncat.md
 
 networks/networking_tools.md
+
+networks/wireshark.md
 
 portability/iCalendar/notes_calendar.md
 
@@ -142,6 +144,8 @@ utilities/ffmpeg.md
 utilities/online_resources.md
 
 utilities/pandoc.md
+
+utilities/screen_tmux.md
 
 utilities/sed_awk.md
 
