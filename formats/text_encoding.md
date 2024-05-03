@@ -386,15 +386,21 @@ On `notepad` and `WordPad` and `LibreOfficeWriter` you can write the alt code in
 https://en.wikipedia.org/wiki/Caesar_cipher
 
 rot13
-`tr 'A-Za-z' 'N-ZA-Mn-za-m' < data.txt`
 
-rot47
+```bash
+tr '[A-Za-z]' '[N-ZA-Mn-za-m]' < data.txt
+```
 
 ```python
 import codecs
 codecs.decode("Ebgngr zr 13 cynprf!","rot_13")
 #Output: 'Rotate me 13 places!'
 ```
+
+
+rot47
+
+
 
 
 # Morse Code

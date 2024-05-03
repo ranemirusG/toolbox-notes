@@ -1,1 +1,0 @@
-function prompt {"PS: $(Get-Location)>`n"}

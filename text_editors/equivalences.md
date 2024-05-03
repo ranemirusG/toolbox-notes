@@ -4,6 +4,23 @@ Crosswalk between different editors.
 
 
 
+
+## Sessions
+
+### Vim
+`:mksession session_name.vim`
+
+`vim -S session_name.vim`
+
+
+### Notepad++
+File > Save Session / File > Load Session
+
+`notepad++.exe -openSession`
+
+
+
+
 ## Duplicate line
 
 ### Vim

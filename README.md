@@ -11,7 +11,11 @@
  
 README.md
 
+backups/notes_backups.md
+
 clipboard.md
+
+databases/databases.md
 
 email.md
 
@@ -72,6 +76,8 @@ networks/nc_ncat.md
 networks/networking_tools.md
 
 networks/wireshark.md
+
+portability/developing-portable-software.pdf
 
 portability/iCalendar/notes_calendar.md
 
@@ -151,7 +157,11 @@ utilities/sed_awk.md
 
 web/browsers.md
 
-web/js_enumeration.py
+web/certificates.md
+
+web/cookies.md
+
+web/scripts/js_enumeration.py
 
 web/search_engines.md
 

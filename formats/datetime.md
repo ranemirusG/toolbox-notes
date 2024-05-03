@@ -166,6 +166,13 @@ https://en.wikipedia.org/wiki/CalDAV
 
 ### convert from unix time to normal
 
+```bash
+date -d @1709514290129
+
+```
+
+
+
 ``` python
 import datetime
 

@@ -9,7 +9,26 @@
 
 ## General
 
-# Web
+
+This is a list of file signatures, data used to identify or verify the content of a file. Such signatures are also known as magic numbers or Magic Bytes:
+
+- <https://en.wikipedia.org/wiki/List_of_file_signatures>
+
+Use `file` command to determine file type on Linux.
+
+Also `ExifTools` (on Windows or Linux)
+
+
+
+
+
+
+
+
+
+
+
+## Web
 `.htm` MS-DOS and early versions of windows were limited to 8.3 filenames, so the extension `.html` was not possible. Microsoft users had to use `.htm` instead.
 
 `.asp` ASP is a technology (much like PHP) for executing scripts on a web server.
@@ -25,16 +44,75 @@ In this particular case, the server didn't append ".PDF" to the end of the file 
 
 
 
-# Text
+
+
+
+
+
+
+
+## E-Mail
+
+`.eml`: email message files and are generally used by Microsoft Outlook and other email clients. The entire message (attachments, text, etc.) is saved.
+
+`.emlx` sometimes called Apple Mail email
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Text
 `.odt` OpenDocument Text document
 
 `.docx` uses the Office Open XML format that saves data in compressed XML files in ZIP format
 
 `.doc` are based on the Binary Interchange File Format (BIFF) that stores information as binary files. Data is organized in a DOC file as a collection of records and structures that are arranged in binary streams as described in MS-DOC file format specifications.
 
-# Spreadsheets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Spreadsheets
 
 `.ods` OpenDocument Spreadsheet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Windows batch files
@@ -44,6 +122,20 @@ The first filename extension used by Microsoft for batch files. This extension r
 Used for batch files in Windows NT family and sent to cmd.exe for interpretation. COMMAND.COM does not recognize this file name extension, so cmd.exe scripts are not executed in the wrong Windows environment by mistake. In addition, append, dpath, ftype, set, path, assoc and prompt commands, when executed from a .bat file, alter the value of the errorlevel variable only upon an error, whereas from within a .cmd file, they would affect errorlevel even when returning without an error.[3] It is also used by IBM's OS/2 for batch files.
 `.btm`
 The extension used by 4DOS, 4OS2, 4NT and Take Command. These scripts are faster, especially with longer ones, as the script is loaded entirely ready for execution, rather than line-by-line.[4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -69,6 +161,24 @@ The extension used by 4DOS, 4OS2, 4NT and Take Command. These scripts are faster
 
 
 `.dat`: generic data file that stores specific information relating to the program that created the file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Audio

@@ -306,11 +306,22 @@ DATE
 
 ```
 
+
+
+
 ### Variables
 
 #### PowerShell
 
 ```
+
+# Set variable
+$myVar = "Hello, world!"
+
+# Delete/Remove variable
+Remove-Variable -Name myVar
+
+
 
 # Home dir
 ~
@@ -376,6 +387,19 @@ PATH
 #### \*NIX
 
 ```
+# Set variable
+my_var="Hello, world!"
+
+# Delete/Remove variable
+unset my_var
+
+
+
+
+
+
+
+
 $HOME
 ~
 
@@ -964,7 +988,7 @@ ls | Select-Object Name, @{Name="KiloBytes";Expression={$_.Length / 1KB}}
 (Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum / 1GB # gigabytes
 
 
-# Get the number of lines in a file
+# Get the number of linelines in a file
 (Get-Content myfile.txt | Measure-Object -Line).Lines
 
 # Get the number of words in a file
@@ -1012,6 +1036,12 @@ od
 # characters in file
 wc -c < file
 wc -c file | awk '{print $1*8}' #bits
+
+# Get the number of linelines in a file
+wc -l file
+
+
+
 
 
 
@@ -1856,6 +1886,72 @@ dumpbin /imports file.exe
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Networking
+
+### Settings
+
+#### Windows
+Control Panel\Network and Internet\Network and Sharing Center
+
+`control.exe /name Microsoft.NetworkAndSharingCenter`
+
+`explorer.exe ms-settings:network-status`
+
+
+
+#### Linux
+`/etc/resolv.conf`
+`/etc/hosts`
+
+
+
+
+
+
+
+
+
+
+
+
+
+### []
+
+#### PowerShell
+
+```
+
+```
+
+#### CMD
+
+```
+
+```
+
+#### \*NIX
+
+```
+
+```
 
 
 

@@ -1,14 +1,29 @@
 # Browsers
 
+
+
 ##  Resources
+- <https://www.chromium.org/Home/>
+- <https://chromium.googlesource.com/chromium/src.git>
+- <https://blog.chromium.org/>
 - <https://peter.sh/experiments/chromium-command-line-switches/>
-- "How browsers work | JSUnconf 2017"	 <https://www.youtube.com/watch?v=0IsQqJ7pwhw>
+- "How browsers work | JSUnconf 2017" <https://www.youtube.com/watch?v=0IsQqJ7pwhw>
+
+
+
+
+
+
+
+
 
 
 ##  General
 view-source: `ctrl+U`
 History: `ctrl+H`
 Downloads: `ctrl+J`
+
+`F10` focus back to page
 
 
 
@@ -20,11 +35,12 @@ Downloads: `ctrl+J`
    - `chrome://history/`: Access browsing history.
 
 2. **Mozilla Firefox**:
-   - `about:addons`: Access the add-ons page.
+   - `about:settings`
    - `about:config`: Access advanced configuration options.
    - `about:support`: Access troubleshooting information.
    - `about:profiles`: Manage browser profiles.
    - `about:downloads`: View downloads.
+   - `about:addons`: Access the add-ons page.
 
 3. **Microsoft Edge**:
    - `edge://extensions/`: Access the extensions page.
