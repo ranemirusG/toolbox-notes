@@ -154,8 +154,6 @@ https://en.wikipedia.org/wiki/CalDAV
 
 
 
-## Powershell
-<https://devblogs.microsoft.com/scripting/create-custom-date-formats-with-powershell/>
 
 
 
@@ -163,6 +161,19 @@ https://en.wikipedia.org/wiki/CalDAV
 
 
 ## Tools
+
+
+### Powershell
+- <https://devblogs.microsoft.com/scripting/create-custom-date-formats-with-powershell/>
+
+`Get-TimeZone`
+
+`Get-Date ([datetime]::UtcNow) -UFormat "%H:%M"`
+
+
+
+
+
 
 ### convert from unix time to normal
 

@@ -1,6 +1,17 @@
 # Git
 
 
+## List of changes
+```
+git log
+git log -n <number_of_commits>
+git log --format="%h %s" # abbreviated commit hash (%h) and the subject of the commit (%s)
+
+```
+
+
+
+
 
 
 ## Previous versions

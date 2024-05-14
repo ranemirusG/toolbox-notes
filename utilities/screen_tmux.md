@@ -3,7 +3,8 @@
 ## Resources
 - `tmux` man page is pretty good
 - <https://leanpub.com/the-tao-of-tmux/read>
-
+- Screen cheatsheet <https://gist.github.com/jctosta/af918e1618682638aa82>
+- Tmux cheatasheet <https://gist.github.com/MohamedAlaa/2961058>
 
 
 

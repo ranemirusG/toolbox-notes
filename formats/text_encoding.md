@@ -5,6 +5,8 @@ Resources:
 - <https://www.rapidtables.com/>
 - <https://emn178.github.io/online-tools/>
 - <https://cyberchef.org/>
+- <https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/>
+- <https://blog.lunatech.com/posts/2009-02-03-what-every-web-developer-must-know-about-url-encoding>
 
 
 
@@ -346,7 +348,19 @@ Classes:
     Rightwards Arrow U+2192 →
     Downwards Arrow U+2193 ↓
 	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

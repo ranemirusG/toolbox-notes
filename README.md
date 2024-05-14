@@ -37,13 +37,17 @@ formats/utf-8/original_utf-8_paper.md
 
 formats/utf-8/utf-8_history_by_Rob_Pike.md
 
+formats/xml.md
+
 git.md
 
 infosec/OS_command_injection.md
 
 infosec/SQL_injection.md
 
-infosec/XSS.md
+infosec/XSS/XSS.md
+
+infosec/XSS/XSS_cheatsheet_PortSwigger.pdf
 
 infosec/XXE.md
 
@@ -89,33 +93,35 @@ portability/vCard/notes_vCards.md
 
 portability/zotero.md
 
-powershell_scripts/README.md
-
-powershell_scripts/directory_size.ps1
-
-powershell_scripts/generate_password.ps1
-
-powershell_scripts/get_group_members.ps1
-
-powershell_scripts/list_attributes.ps1
-
-powershell_scripts/lorem.ps1
-
-powershell_scripts/myPrompt.ps1
-
-powershell_scripts/new_temp_file.ps1
-
-powershell_scripts/open_all_text_files.ps1
-
-powershell_scripts/rename_to_hash.ps1
-
-powershell_scripts/simple_grep.ps1
-
-powershell_scripts/sizes_of_subdirs.ps1
-
-powershell_scripts/split_window_current_dir.ps1
-
 regular_expressions.md
+
+scripts/powershell/README.md
+
+scripts/powershell/directory_size.ps1
+
+scripts/powershell/generate_password.ps1
+
+scripts/powershell/get_group_members.ps1
+
+scripts/powershell/list_attributes.ps1
+
+scripts/powershell/lorem.ps1
+
+scripts/powershell/myPrompt.ps1
+
+scripts/powershell/new_temp_file.ps1
+
+scripts/powershell/open_all_text_files.ps1
+
+scripts/powershell/rename_to_hash.ps1
+
+scripts/powershell/simple_grep.ps1
+
+scripts/powershell/sizes_of_subdirs.ps1
+
+scripts/powershell/split_window_current_dir.ps1
+
+scripts/python/when_package_was_installed.py
 
 spreadsheets/libreoffice_calc.md
 
@@ -130,6 +136,8 @@ text_editors/gnome_text_editor.md
 text_editors/nano/nano.md
 
 text_editors/nano/quick-nanorc
+
+text_editors/note_taking.md
 
 text_editors/notepad++.md
 
@@ -161,9 +169,15 @@ web/certificates.md
 
 web/cookies.md
 
+web/favicon.md
+
 web/scripts/js_enumeration.py
 
 web/search_engines.md
+
+web/tokens.md
+
+web/url.md
 
 windows/batch_scripts/notes_batch.md
 

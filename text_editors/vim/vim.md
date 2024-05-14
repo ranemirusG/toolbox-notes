@@ -32,6 +32,7 @@
 
 ### Vi
 - An Introduction to Display Editing with Vi (Joy & Horton) <https://docs-archive.freebsd.org/44doc/usd/12.vi/paper.html>
+- <https://en.wikibooks.org/wiki/Learning_the_vi_Editor/vi_Reference>
 
 ### Vim
 - <https://blauaraujo.com/comandos-e-teclas-essenciais-do-vim/>
@@ -180,6 +181,27 @@ to this:
 	baz
 	bar
 ```
+
+
+
+
+Dinamic substitution `:%s/\(## \)\(\d\+\)/\=submatch(1) . (submatch(2) - 1)/g`
+
+from this:
+```
+## 1
+
+## 2
+```
+
+to this:
+
+```
+## 0
+
+## 1
+```
+
 
 ### Apply last line edition to whole buffer
 g&

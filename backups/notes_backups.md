@@ -1,5 +1,8 @@
 # Backups
 
+There are two types of people: those who regularly back up their documentation, and those who 
+wish they did.
+
 ## Estrategia 3-2-1
 3: mantener 3 copias de cualquier fichero importante (original + 2 backups)
 2: almacenar las copias en 2 soportes distintos

@@ -121,3 +121,39 @@ if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-
     }    
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Vim
+
+
+Dinamic substitution `:%s/\(## \)\(\d\+\)/\=submatch(1) . (submatch(2) - 1)/g`
+
+from this:
+```
+## 1
+
+## 2
+```
+
+to this:
+
+```
+## 0
+
+## 1
+```

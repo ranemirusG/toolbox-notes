@@ -89,7 +89,7 @@ Nirsoft `cports.exe`
 
 Sysinternals `tcpview.exe`
 
-Resource Monitor `C:\Windows\System32\resmon.exe`
+Resource Monitor `C:\Windows\System32\resmon.exe` (Network tab)
 
 #### Troubleshooting
 

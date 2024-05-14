@@ -19,7 +19,7 @@ Email delivery over the Internet requires the following components:
 ### SMTP
 Simple Mail Transfer Protocol (SMTP) is used to communicate with an MTA server.
 
-Listens on port 25 by default.
+Ports: 25, 587, 2525, 465
 
 
 Performs three basic functions:
@@ -33,7 +33,7 @@ Performs three basic functions:
 
 
 ### POP3
-Default port 110
+Ports: 110, 995
 RFC 1939
 
 responsible for the transfer of email between a client and a mail server
@@ -43,12 +43,12 @@ The mail client connects to the POP3 server, authenticates, downloads the new em
 
 Post Office Protocol is an older protocol that was originally designed to be used on only one computer - only supports one-way email synchronization
 
-To keep all mailboxes synchronized, we need to consider other protocols, such as IMAP
+To keep all mailboxes synchronized use IMAP.
 
 
 
 ### IMAP (Internet Messaging Access Protocol)
-Default Port 143
+Ports: 143, 993
 
 responsible for the transfer of email between a client and a mail server
 

@@ -234,8 +234,24 @@ help &REM list all commands
 #### \*NIX
 
 ```
-man command
-info command
+info [COMMAND]
+
+man [COMMAND]
+# perform a keyword search
+apropos [KEYWORD]
+man -k [KEYWORD]
+man -k '^passwd$'
+# look at the exact  manual page
+man 5 passwd
+man [PAGE] [COMMAND]
+
+
+
+
+
+
+
+
 ```
 
 
@@ -797,6 +813,9 @@ dir -Directory -Recurse | ForEach-Object { $_.fullname }
 # list empty directories
 dir -Directory -Recurse | where { $_.GetFileSystemInfos().Count -eq 0 }
 
+# Count directories
+(gci -Directory).count
+
 # list, sort, show first 5 elements
 dir | sort | select -first 5
 
@@ -898,22 +917,40 @@ vim file
 vi file
 
 
-# lists open files (lsof), including network connections
+# list open files (lsof), including network connections
 lsof
 
 
-ls -R # recursive
+# list directory contents
+ls -1a
 ls -larth
+find . -maxdepth 1
+find -maxdepth 1 # current dir by default
+tree -L 1 .
+tree -L 1 # current dir by default
+
 ll # may be a default alias of `ls -l`
 dir # equivalent to `ls -C -b` (see `info dir`)
-# file content
-cat file
-less file
+
+# recursive
+ls -R
+find .
+tree
+
+
+
+# list directories
+ls -l | grep -c '^d'
+find . -maxdepth 1 -type d | wc -l
+
+
 
 # get full path of filename
 realpath file
+
 # Copy filename
 basename file | clip
+
 # Copy dir
 pwd | pbcopy # macOS
 
@@ -931,6 +968,52 @@ find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
 find /path/to/search -type f ! -executable -size 1033c -readable
 
 
+
+
+# find command
+find /path/to/search -name "filename" # Find Files by Name
+
+find /path/to/search -type d -name "dirname" # Find Directories by Name
+
+find /path/to/search -mtime -N # Find Files Modified in Last N Days
+
+find /path/to/search -type f -empty # Find Empty Files
+
+find /path/to/search -type f -name "*.ext" # Find Files by Extension
+
+find /path/to/search -type f -exec ls -s {} + | sort -n | tail # Find Largest Files
+
+find /path/to/search -type f -size +10M # Find Files by Size
+
+find /path/to/search -mtime -1 # Find Files Modified in Last 24 Hours
+
+find /path/to/search -mmin -N # Find Files Modified in Last N Minutes
+
+find /path/to/search -user username # Find Files Owned by User
+
+find /path/to/search -group groupname # Find Files by Group
+
+find /path/to/search -perm /6000 # Find SUID/SGID Files
+
+find /path/to/search -perm 644 # Find Files with Specific Permissions
+
+find /path/to/search -type f -perm /4000 # Find Setuid Executables
+
+find /path/to/search -type f -perm /2000 # Find Setgid Executables
+
+find /path/to/search -type f -name "filename" -delete # Find and Delete Files
+
+find /path/to/search -type d -exec ls -l {} \; # Find Directories and List Contents
+
+find /path/to/search -type f -name "pattern" -exec mv -t /path/to/destination {} + # Find Files and Move to Another Directory
+
+find /path/to/search -type f -exec sed -i 's/oldstring/newstring/g' {} + # Find and Replace in Files
+
+find /path/to/search -type f -mtime -7 -exec tar -czvf archive.tar.gz {} + # Find Recently Modified Files and Archive
+
+## Example: identify any file (not directory) modified in the last day, NOT owned by the root 
+user and execute ls -l on them:
+find /path/to/search -type f -mtime -1 ! -user root -exec ls -l {} \;
 
 
 
@@ -1041,11 +1124,11 @@ wc -c file | awk '{print $1*8}' #bits
 wc -l file
 
 
-
-
-
-
 ```
+
+
+
+
 
 
 ### Compare files
@@ -1058,9 +1141,6 @@ wc -l file
 $fso = Get-ChildItem -Recurse -path C:\fso
 $fsoBU = Get-ChildItem -Recurse -path C:\fso_BackUp
 Compare-Object -ReferenceObject $fso -DifferenceObject $fsoBU
-
-
-
 
 
 ```
@@ -1077,6 +1157,12 @@ FC
 ```
 
 ```
+
+
+
+
+
+
 
 
 
@@ -1635,8 +1721,11 @@ wmic useraccount where sid="SID_NUMBER" get name
 
 ```
 
+cat /etc/sudoers
 
 
+# list the permissions (or privileges) granted to the current user
+sudo -l
 
 
 ```
@@ -1745,15 +1834,25 @@ accesschk -k hklm\software
 
 ## Process Management
 
+Microsoft Management Console `mmc.exe`. Here you can add "snap-in" (`.msc` files) 
+
+# Lista all MSC files in Windows
+`Get-ChildItem -Path C:\Windows\system32\* -Include *.msc | Sort-Object -Property Extension | Select-Object -Property Name | Format-Wide -Column 1`
+
+
+
+`services.msc`
+
+
+Task Manager
+Event ViewerI
+procexp.exe (Sysinternals)
+
 Control Panel
 
 Windows Tools (since Windows 11, previously Administrative Tools)
 
-Task Manager
 
-Event Viewer
-
-procexp.exe (Sysinternals)
 
 
 
@@ -1766,6 +1865,8 @@ procexp.exe (Sysinternals)
 
 # get executable location
 (Get-Command program.exe).Path
+
+where.exe example.exe
 
 
 Get-Process
