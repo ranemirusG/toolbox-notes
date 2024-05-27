@@ -4,8 +4,8 @@
 ## Table of Contents
 
 1. [Preliminary Notes](#preliminary-notes)
-2. [Config Files](#config-files)
-3. [Software](#software)
+2. [Software](#software)
+3. [Config Files](#config-files)
 4. [Websites](#websites)
 5. [Inspect](#inspect)
 6. [Reconnaissance](#reconnaissance)
@@ -90,6 +90,7 @@ Nirsoft `cports.exe`
 Sysinternals `tcpview.exe`
 
 Resource Monitor `C:\Windows\System32\resmon.exe` (Network tab)
+
 
 #### Troubleshooting
 
@@ -414,11 +415,22 @@ Get-DnsClientCache
 
 Get-DnsClientCache | Format-Table -AutoSize
 
+
+ipconfig /flushdns
+
+
 ```
 
 
 
+#### macOS
+```
 
+# Flush DNS
+sudo killall -HUP mDNSResponder
+
+
+```
 
 
 

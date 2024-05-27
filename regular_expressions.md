@@ -6,6 +6,18 @@
 
 
 
+## General
+
+### Lookahead / Lookbehind assertions
+
+(?<=...) is a positive lookbehind
+
+(?=...) is a positive lookahead assertion
+
+Example:
+`(?<=")([^"]*)(?=")` match `Hello World!` inside in `"Hello World!"` 
+
+
 
 
 
@@ -141,7 +153,7 @@ if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-
 ## Vim
 
 
-Dinamic substitution `:%s/\(## \)\(\d\+\)/\=submatch(1) . (submatch(2) - 1)/g`
+### Dinamic substitution `:%s/\(## \)\(\d\+\)/\=submatch(1) . (submatch(2) - 1)/g`
 
 from this:
 ```

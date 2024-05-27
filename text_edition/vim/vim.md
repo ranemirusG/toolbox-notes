@@ -146,9 +146,14 @@ cw(<C-r><C-o>")<ESC>
 :cnext
 
 
-
-
 ```
+
+
+Use `Ctrl+g` and `Ctrl+t` to stay in search mode after searching for a pattern, instead of pressing enter. Refine your pattern faster this way.
+
+
+
+
 
 
 ## Formatting and Editing
@@ -246,6 +251,13 @@ C-W gf - Edit existing file under cursor in new tabpage
 
 
 
+
+
+### Scroll two splits simultaneously in Vim with :set scrollbind or toggle with (Useful for comparing two files.)
+
+`:set scb`
+
+`:set scrollbind`
 
 
 

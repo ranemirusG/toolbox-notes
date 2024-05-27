@@ -162,6 +162,8 @@ https://en.wikipedia.org/wiki/CalDAV
 
 ## Tools
 
+- <https://www.epochconverter.com/>
+
 
 ### Powershell
 - <https://devblogs.microsoft.com/scripting/create-custom-date-formats-with-powershell/>
@@ -177,11 +179,27 @@ https://en.wikipedia.org/wiki/CalDAV
 
 ### convert from unix time to normal
 
+```
+cat access.log | awk '{$1=strftime("%F %T", $1, 1); print $0}'
+
+grep (Direccion IP) access.log | awk '{$1=strftime("%F %T", $1, 1); print $0}'
+```
+- <https://www.reydes.com/d/?q=Convertir_muchas_Marcas_de_Tiempo_UNIX_Unix_Epoch>
+
+
+
+
 ```bash
 date -d @1709514290129
 
 ```
 
+```powershell
+$unixTime = 1716302955
+(([System.DateTimeOffset]::FromUnixTimeSeconds($unixTime)).DateTime).ToString("s")
+
+>>> 2024-05-21T14:49:15
+```
 
 
 ``` python

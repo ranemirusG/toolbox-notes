@@ -1,9 +1,17 @@
 # Escaneo y enumeracion
 
-
 - barrido de recursos con formato conocido
 - identifacion de elementos en un determinado recurso
 - direcciones IP activas
+
+
+
+## Resources
+https://labs.hakaioffsec.com/reconnaissance-like-a-cyber-scout-part-1/
+https://labs.hakaioffsec.com/reconnaissance-like-a-cyber-scout-part-2/
+https://labs.hakaioffsec.com/reconnaissance-like-a-cyber-scout-part-3/
+
+
 
 
 ## Reconnaisance
@@ -143,37 +151,38 @@ The above command should have revealed two positive results that we haven't come
 
 
 
-# Webinar Carlos Alonso
-http server  documentation (apache)
+## Virtual Hosts
 host virtual:  mas de un sitio web en una maquina
-	basado en nombre
-	basado en IP
+	- basado en nombre
+	- basado en IP
 
 `host -v -t NS [website]`
 
-#transferencia de zona
+### transferencia de zona
 host -l -a 
-host -v [website]
-#reverse dns
-dig -x [ip obtenido de host] @[name server]
+
+### reverse dns
+tell how many domains resolve in this IP
+`dig -x [IP host] @[name server]`
+`for i in {1..255}; do dig -x [IP host] @[name server]; done`
 
 
 
-google hacking
-site:www.dw.com -www.dw.com
-save result page as html
+### google hacking
+`site:dw.com -www.dw.com`
+- save result page as html
+- then:
+	`w3m [file.html] > file.txt` (the `w3m` utility parses the html file as seen in Lynx CLI browser)
 
-`w3m [file.html] > file.txt`
-
-#ejemplo con dw.com
+ejemplo con dw.com
 `grep -i \.dw.com dw.txt | grep https | cut -d " " -f 1 | sort | unique``
 
-- buscar certificados digital <https://crt.sh>
+###  buscar certificados digital <https://crt.sh>
+`%.dw.com` (see more un `Advanced` menu)
 
 
-
-#ejemplo con dw.com
-- `sudo nmap -n -Pn --script hhtp-vhosts -p443 www.dw.com``
+### nmap
+`sudo nmap -n -Pn --script hhtp-vhosts -p443 www.dw.com``
 
 
 

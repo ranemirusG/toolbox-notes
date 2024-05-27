@@ -1,7 +1,8 @@
 # Interoperability
 
 
-
+https://es.wikipedia.org/wiki/Normalizaci%C3%B3n
+https://es.wikipedia.org/wiki/Interoperabilidad
 
 
 https://medium.com/data-architect/the-power-of-plain-text-bfcb38928639

@@ -19,35 +19,53 @@
 
 
 ##  General
+
 view-source: `ctrl+U`
-History: `ctrl+H`
+
+History: `ctrl+H` / `Back arrow` button
+
 Downloads: `ctrl+J`
 
 `F10` focus back to page
 
 
 
+
+
+
+
 1. **Chrome**:
-   - `chrome://extensions/`: Access the extensions page.
-   - `chrome://flags/`: Access experimental features.
-   - `chrome://settings/`: Access browser settings.
-   - `chrome://bookmarks/`: Access bookmarks.
-   - `chrome://history/`: Access browsing history.
+	- `chrome://settings/`: Access browser settings.
+	
+	- `chrome://net-internals/#dns`
+	- `chrome://flags`
+	
+	- `chrome://extensions/`: Access the extensions page.
+	- `chrome://flags/`: Access experimental features.
+	- `chrome://bookmarks/`: Access bookmarks.
+	- `chrome://history/`: Access browsing history.
+
 
 2. **Mozilla Firefox**:
-   - `about:settings`
-   - `about:config`: Access advanced configuration options.
-   - `about:support`: Access troubleshooting information.
-   - `about:profiles`: Manage browser profiles.
-   - `about:downloads`: View downloads.
-   - `about:addons`: Access the add-ons page.
+	- `about:settings`
+	- `about:config`: Access advanced configuration options.
+	- `about:support`: Access troubleshooting information.
+	- `about:profiles`: Manage browser profiles.
+	- `about:downloads`: View downloads.
+	- `about:addons`: Access the add-ons page.
+
 
 3. **Microsoft Edge**:
-   - `edge://extensions/`: Access the extensions page.
-   - `edge://settings/`: Access browser settings.
-   - `edge://history/`: Access browsing history.
-   - `edge://favorites/`: Access favorites/bookmarks.
-   - `edge://downloads/`: View downloads.
+	- `edge://wallet/personalInfo`: passwords, addresses, and payment methods
+	
+	- `edge://settings/`: Access browser settings.
+	
+	- `edge://net-internals/`:
+	
+	- `edge://extensions/`: Access the extensions page.
+	- `edge://history/`: Access browsing history.
+	- `edge://favorites/`: Access favorites/bookmarks.
+	- `edge://downloads/`: View downloads.
 
 
 
@@ -330,6 +348,28 @@ HTML parsing ----> CSS parsing ----> Layout ----> Painting
 
 
 ## Tor
+
+
+
+
+
+
+
+
+
+
+
+## Lynx
+
+
+
+
+
+
+
+
+
+
 
 
 

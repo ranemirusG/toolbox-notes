@@ -1,11 +1,26 @@
 # Search Engines
 
-- <https://en.wikipedia.org/wiki/Baidu>
-- <https://www.shodan.io/>
-- <https://yandex.com/>
+
+
+## Resources
+-<https://github.com/readloud/Google-Hacking-Database>
+
+
+## Advanced Search Parameters
+
+
+
+### Date
+`before:YYYY-MM-DD`
+`after:YYYY-MM-DD`
+
+
+
+
+
 
 		
-## Dorking / Google Hacking
+## Google
 - <https://developers.google.com/search/docs/fundamentals/how-search-works>
 - <https://www.google.com/advanced_search>
 		
@@ -41,3 +56,22 @@ inanchor:”adminpanel”
 site:gob.pe contains:mp4		
 inanchor:”8080/login.php”		
 site:mil.pe ext:pdf		
+
+
+
+
+
+
+
+## Var
+
+- <https://en.wikipedia.org/wiki/Baidu>
+- <https://www.shodan.io/>
+- <https://yandex.com/>
+
+
+
+
+
+
+

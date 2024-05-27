@@ -786,7 +786,8 @@ Get-Location
 gl
 pwd # unix alias
 dir # cmd
-dir (Get-Location)
+[System.Environment]::CurrentDirectory
+
 
 # Open all files in current dir with it default program
 gci|ii
@@ -963,14 +964,14 @@ find . -type f \( -newermt '2023-09-01' -a ! -newermt '2023-09-05' \)
 
 
 
+
+# find command
+
 # Search for file with specified properties
 find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
 find /path/to/search -type f ! -executable -size 1033c -readable
 
 
-
-
-# find command
 find /path/to/search -name "filename" # Find Files by Name
 
 find /path/to/search -type d -name "dirname" # Find Directories by Name

@@ -1,5 +1,5 @@
 # OS Command Injection
-also known as "shell injection"
+Also known as "shell injection"
 
 
 Placing the additional command separator & after the injected command is useful because it separates the injected command from whatever follows the injection point. This reduces the chance that what follows will prevent the injected command from executing.

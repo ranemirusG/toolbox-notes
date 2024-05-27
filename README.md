@@ -1,10 +1,11 @@
 # toolbox-notes
 
-## Mainly oriented towards:
-- text manipulation (editors, formats, wordlists, portability)
-- administrative tasks from CLI
-- tooling (networking, online resources, etc)
-- infosec (snippets, tooling, notes)
+## Learn in public project mainly oriented towards:
+- scripting
+- text and data manipulation (editors, formats, filetypes)
+- administrative tasks, troubleshooting
+- cybersecurity, pentesting
+- networking
 
 
 ## This repo has the following scheme:
@@ -33,6 +34,8 @@ formats/markdown.md
 
 formats/text_encoding.md
 
+formats/url_encoding.md
+
 formats/utf-8/original_utf-8_paper.md
 
 formats/utf-8/utf-8_history_by_Rob_Pike.md
@@ -45,15 +48,25 @@ infosec/OS_command_injection.md
 
 infosec/SQL_injection.md
 
+infosec/XSS/BurpSuite_Cheatsheet_SANS.pdf
+
 infosec/XSS/XSS.md
 
 infosec/XSS/XSS_cheatsheet_PortSwigger.pdf
+
+infosec/XSS/attr_and_elements_MDN.tsv
+
+infosec/XSS/payload_XSS_cheatsheets.txt
+
+infosec/XSS/tags_XSS_cheatsheet.txt
 
 infosec/XXE.md
 
 infosec/file_upload.md
 
 infosec/javascript.md
+
+infosec/kali-linux.md
 
 infosec/nmap.md
 
@@ -72,8 +85,6 @@ infosec/shells.md
 infosec/vulnerability_search.md
 
 keyboard.md
-
-linux/kali-linux.md
 
 networks/nc_ncat.md
 
@@ -95,6 +106,8 @@ portability/zotero.md
 
 regular_expressions.md
 
+scripts/javascript/html-table-to-tsv.js
+
 scripts/powershell/README.md
 
 scripts/powershell/directory_size.ps1
@@ -102,6 +115,8 @@ scripts/powershell/directory_size.ps1
 scripts/powershell/generate_password.ps1
 
 scripts/powershell/get_group_members.ps1
+
+scripts/powershell/get_newest_file.ps1
 
 scripts/powershell/list_attributes.ps1
 
@@ -151,7 +166,13 @@ text_editors/vim/vim_scripts/delete_swap.vim
 
 text_editors/vim/vim_scripts/whitespaces.vim
 
+text_editors/vim/vimdiff.md
+
+utilities/comm_diff.md
+
 utilities/curl_wget.md
+
+utilities/data_compression.md
 
 utilities/ffmpeg.md
 
@@ -170,6 +191,8 @@ web/certificates.md
 web/cookies.md
 
 web/favicon.md
+
+web/html.md
 
 web/scripts/js_enumeration.py
 

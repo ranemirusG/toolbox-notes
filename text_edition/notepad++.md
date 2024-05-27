@@ -5,6 +5,12 @@
 ############
 
 
+## Useful settings
+Modify zoom in/out mapping to `ctrl+=` and `ctrl+-` (like a browser) instead of the default `ctrl+Num+` and `ctrl+Num-` (depending of what keyboard you are using it may be more comfortable). `Settings > Shortcut Mapper > Scintilla commands > SCI_ZOOMIN / SCI_ZOOMOUT`
+
+
+
+
 Switch between views
 F8
 

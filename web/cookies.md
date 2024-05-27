@@ -38,10 +38,13 @@ If you have received a page from a server that contains a header like: `Set-Cook
 `size`— The size of the cookie name plus value in bytes.
 
 `httpOnly`— Is this cookie HTTP only?
+	If yes, the cookie cannot be accessed through client side script
+	Using the HttpOnly flag when generating a cookie helps mitigate the risk of client side script accessing the protected cookie (if the browser supports it).
+	If a browser that supports HttpOnly detects a cookie containing the HttpOnly flag, and client side script code attempts to read the cookie, the browser returns an empty string as the result.
 
 `secure`— Is this cookie a secure cookie?
 
-`sameSite`— Is this cookie a same-site cookie? Same-site cookies allow servers to mitigate the risk of CSRF and information leakage attacks by asserting that a particular cookie should only be sent with requests initiated from the same registrable domain.
+`sameSite`— Is this cookie a same-site cookie? Same-site cookies allow servers to mitigate the risk of CSRF and information leakage attacks by asserting that a particular cookie should only be sent with requests initiated from the same registrable domain. See: <https://web.dev/articles/samesite-cookies-explained>
 
 `lastAccessed`— Date and time when the cookie was last read.
 
