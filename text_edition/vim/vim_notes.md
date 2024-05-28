@@ -35,6 +35,7 @@
 - <https://en.wikibooks.org/wiki/Learning_the_vi_Editor/vi_Reference>
 
 ### Vim
+- <https://vimtricks.com/p/category/tips-and-tricks/>
 - <https://blauaraujo.com/comandos-e-teclas-essenciais-do-vim/>
 - <https://www.youtube.com/watch?v=WfyXKnQ9kAQ>
 - <https://learnvimscriptthehardway.stevelosh.com>

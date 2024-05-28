@@ -48,10 +48,6 @@ infosec/OS_command_injection.md
 
 infosec/SQL_injection.md
 
-infosec/XSS/BurpSuite_Cheatsheet_SANS.pdf
-
-infosec/XSS/XSS.md
-
 infosec/XSS/XSS_cheatsheet_PortSwigger.pdf
 
 infosec/XSS/attr_and_elements_MDN.tsv
@@ -62,11 +58,11 @@ infosec/XSS/tags_XSS_cheatsheet.txt
 
 infosec/XXE.md
 
+infosec/cryptography.md
+
 infosec/file_upload.md
 
 infosec/javascript.md
-
-infosec/kali-linux.md
 
 infosec/nmap.md
 
@@ -82,13 +78,13 @@ infosec/recon_scan_enum.md
 
 infosec/shells.md
 
-infosec/vulnerability_search.md
-
 keyboard.md
 
 networks/nc_ncat.md
 
 networks/networking_tools.md
+
+networks/ssh.md
 
 networks/wireshark.md
 
@@ -112,6 +108,8 @@ scripts/powershell/README.md
 
 scripts/powershell/directory_size.ps1
 
+scripts/powershell/gci_size_Bytes_KB_MB_GB.ps1
+
 scripts/powershell/generate_password.ps1
 
 scripts/powershell/get_group_members.ps1
@@ -134,6 +132,8 @@ scripts/powershell/simple_grep.ps1
 
 scripts/powershell/sizes_of_subdirs.ps1
 
+scripts/powershell/split_markdown_into_new_files.ps1
+
 scripts/powershell/split_window_current_dir.ps1
 
 scripts/python/when_package_was_installed.py
@@ -142,31 +142,37 @@ spreadsheets/libreoffice_calc.md
 
 strings.md
 
-text_editors/BBEdit.md
+text_edition/BBEdit.md
 
-text_editors/equivalences.md
+text_edition/LaTex.md
 
-text_editors/gnome_text_editor.md
+text_edition/equivalences.md
 
-text_editors/nano/nano.md
+text_edition/gnome_text_editor.md
 
-text_editors/nano/quick-nanorc
+text_edition/nano/nano.md
 
-text_editors/note_taking.md
+text_edition/nano/quick-nanorc
 
-text_editors/notepad++.md
+text_edition/note_taking.md
 
-text_editors/sublime_text.md
+text_edition/notepad++.md
 
-text_editors/vim/quick-vimrc.vim
+text_edition/sublime_text.md
 
-text_editors/vim/vim.md
+text_edition/vim/quick-vimrc.vim
 
-text_editors/vim/vim_scripts/delete_swap.vim
+text_edition/vim/snippets/cpp_snippets_pelotator.txt
 
-text_editors/vim/vim_scripts/whitespaces.vim
+text_edition/vim/vim.md
 
-text_editors/vim/vimdiff.md
+text_edition/vim/vim_scripts/delete_swap.vim
+
+text_edition/vim/vim_scripts/whitespaces.vim
+
+text_edition/vim/vimdiff.md
+
+utilities/awk/awk.md
 
 utilities/comm_diff.md
 
@@ -182,7 +188,15 @@ utilities/pandoc.md
 
 utilities/screen_tmux.md
 
-utilities/sed_awk.md
+utilities/sed/notes.md
+
+utilities/sed/scripts/joinLines
+
+utilities/sed/scripts/mails
+
+utilities/sed/sed.md
+
+utilities/sed/sed_commands.md
 
 web/browsers.md
 

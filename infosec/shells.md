@@ -1,5 +1,14 @@
 # Shells
 
+It’s not uncommon for host-based firewalls to block access to our bind 
+shells. This can be incredibly frustrating at times, especially when under pressure 
+and dealing with time constraints. When in doubt, we use a reverse shell as they 
+are typically easier to troubleshoot
+
+
+
+
+
 
 ## Bind Shell
 Execute a listener on the Target.
@@ -13,7 +22,7 @@ Target:
 
 If we are looking to obtain a bind shell on a target then we can assume that there is already a listener waiting for us on a chosen port of the target: all we need to do is connect to it. 
 Attacker:
-`nc <target-ip> <PORT>`
+`nc [TARGET IP] <PORT>`
 
 Connecting to the above listener with netcat would result in a bind shell on the target.
 

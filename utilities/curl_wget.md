@@ -163,13 +163,10 @@ Certificates
 # 2 - GNU Wget
 is better to download recursive resources
 
-
-
-donwload full website with wget
-
+## donwload full website with wget
 If you ever need to download an entire Web site, perhaps for off-line viewing,
 wget can do the job—for example:
-
+```
 $ wget \
      --recursive \
      --no-clobber \
@@ -180,6 +177,8 @@ $ wget \
      --domains website.org \
      --no-parent \
          www.website.org/tutorials/html/
+```
+
 This command downloads the Web site www.website.org/tutorials/html/.
 
 The options are:
@@ -195,3 +194,13 @@ so on).
 Windows as well.
 --no-clobber: don't overwrite any existing files (used in case the download is
 interrupted and resumed).
+
+
+
+
+
+
+
+
+
+
