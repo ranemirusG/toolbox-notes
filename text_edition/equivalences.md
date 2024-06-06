@@ -249,18 +249,29 @@ Edit > Convert Case to
 
 
 
-## Find
+## Find / Search
 
 ### Vim
 `/`
+`:vimgrep` (or just `:vim`)
+`:vim /foo/g **sh` (recursive, with two **)
+`:vim /foo/ **{sh,rb}`
+`:vim /echo/g %` in current file
 
 ### Notepad++
-`Ctrl+F`
+`Ctrl+F`, then `Alt+d` (find all in current document) or `Alt+o` (find in all open documents)
+`Ctrl+Alt+I`: incremental search
 
 ### nano
 
 
+## Jump to matching bracket, parenthesis, etc
 
+### Vim
+`%`
+
+### Notepad++
+`ctrl+b`
 
 
 ## ASCII characters

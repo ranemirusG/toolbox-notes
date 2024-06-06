@@ -1,5 +1,5 @@
 " Quick vimrc
-" https://raw.githubusercontent.com/ranemirusG/toolbox-notes/main/text-editors/vim/quick-vimrc.vim
+" https://raw.githubusercontent.com/ranemirusG/toolbox-notes/main/text-edition/vim/quick-vimrc.vim
 
 " VIMRC
 "Edit vim config

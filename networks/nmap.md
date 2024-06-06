@@ -20,6 +20,7 @@
 Default scan:
 
 `sudo nmap $IP`
+If no alternative flag is specified in the command syntax, nmap will scan the most common 1000 TCP ports for active services.
 
 - Example:
 	`nmap scanme.nmap.org/24`
@@ -48,7 +49,7 @@ More aggresive:
 `-A`: if we don't care about how loud we are, we can enable "aggressive" mode. This is equivalent to `-sV -O -sC --traceroute`.
 
 Users can skip the ping step entirely with a list scan (-sL) or by disabling ping (-Pn)
--Pn ----> tells Nmap to not bother pinging the host before scanning it
+`-Pn`: tells Nmap to not bother pinging the host before scanning it
 
 nmap -sC -sV -oN output.txt $IP
 nmap -sS -p- -oN all-ports.txt $IP
@@ -66,7 +67,9 @@ Now we know about port 21, 80 and 2222 we can get more info on them by using the
 
 
 
+### interesting commands
 
+`sudo nmap -Pn -p- --min-rate 2000 -sC -sV -oN nmap-scan.txt $target`
 
 
 
@@ -400,6 +403,9 @@ The idle (zombie) scan requires the following three steps to discover whether a 
 `-sV` collect and determine service and version information for the open ports. You can control the intensity with `--version-intensity LEVEL` where the level ranges between 0, the lightest, and 9, the most complete. `-sV --version-light` has an intensity of 2, while `-sV --version-all` has an intensity of 9.
 
 Unlike the service column, the version column is not a guess.
+
+Some ports are used by default by certain services. Others might be non-standard, which is why we will be using the service detection flag -sV to determine the name and description of the identified services. 
+
 
 Note: `-sV` will force Nmap to proceed with the TCP 3-way handshake and establish the connection, because Nmap cannot discover the version without establishing a connection fully and communicating with the listening service. *Stealth SYN scan `-sS` is not possible when -sV option is chosen*.
 

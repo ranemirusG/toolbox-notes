@@ -1,9 +1,5 @@
 # Escaneo y enumeracion
 
-- barrido de recursos con formato conocido
-- identifacion de elementos en un determinado recurso
-- direcciones IP activas
-
 
 
 ## Resources
@@ -14,33 +10,53 @@ https://labs.hakaioffsec.com/reconnaissance-like-a-cyber-scout-part-3/
 
 
 
-## Reconnaisance
-whois
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Passive Information Gathering / OSINT
+
+`whois` is a TCP service, tool, and a type of database that can provide information about a domain name, such as the name server and registrar. This information is often public since registrars charge a fee for private registration.
+
+- <https://en.wikipedia.org/wiki/WHOIS >
+- <https://en.wikipedia.org/wiki/Name_server >
+- <https://en.wikipedia.org/wiki/Domain_name_registrar >
+
+Example: `whois megacorpone.com`
+
+Reverse lookup: `whois [IP]`
+
+
 nslookup / dig
 https://dnsdumpster.com/
 https://shodan.io/
 
 
+`recon-ng`
 
 
 
-HTTP sends and receives data as cleartext (not encrypted); therefore, you can use a simple tool, such as Telnet (or Netcat), to communicate with a web server and act as a “web browser”. The key difference is that you need to input the HTTP-related commands instead of the web browser doing that for you.
 
-```
-telnet $IP PORT
-GET / HTTP/1.1
-host: telnet
-```
 
-```
-nc $IP PORT
-GET / HTTP/1.1
-host: netcat
-```
 
-## banner grabbing
-dmitry -p -b $IP
-dmitry -p -b HOST
+
+
+
+
+
+
 
 
 
@@ -59,11 +75,60 @@ dmitry -p -b HOST
 Which systems are up?
 What services are running on these systems?
 
-nmap
-arp-scan
-masscan
+- nmap
+	 search up the service version on popular vulnerability databases online to see if any vulnerability exists for the specified version
+- arp-scan
+- masscan
+- Nessus / OpenVAS
 
-Nessus / OpenVAS
+
+
+
+### Security Headers
+
+- <https://securityheaders.com/> It will analyze HTTP response headers and provide basic analysis of the target site’s security posture. We can use this to get an idea of an organization’s coding and security practices based on the results. 
+
+
+### SSL Server Test
+- <https://www.ssllabs.com/ssltest/> This tool analyzes a server’s SSL/TLS configuration and compares it against current best practices.
+
+
+
+
+### Manually test server
+
+HTTP sends and receives data as cleartext (not encrypted); therefore, you can use a simple tool, such as Telnet (or Netcat), to communicate with a web server and act as a “web browser”. The key difference is that you need to input the HTTP-related commands instead of the web browser doing that for you.
+
+```
+telnet $IP PORT
+GET / HTTP/1.1
+host: telnet
+```
+
+```
+nc $IP PORT
+GET / HTTP/1.1
+host: netcat
+```
+
+### Banner Grabbing
+dmitry -p -b $IP
+dmitry -p -b HOST
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -86,28 +151,54 @@ Nessus / OpenVAS
 
 ## Content Discovery
 
-- find out about files and directories on the server
+- Find out about files and directories on the server
 
-/robots.txt (see <http://www.robotstxt.org/robotstxt.html>)
-/sitemap.xml
-/.well-known/
-/README.txt
-/.git
+Example:
+- `/robots.txt` (see <http://www.robotstxt.org/robotstxt.html>)
+- `/sitemap.xml`
+- `/.well-known/`
+- `/README.txt`
+- `/.git`
 
 
-dirsearch
-dirbuster
-gobuster
-	`gobuster dir -u http://$IP -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,sh,txt,cgi,html,js,css,py`
-nikto
-	`nikto -h http://$IP | tee nikto.log`
-    `nikto -host $IP -output out.txt -port 80`
-ffuf
-    `ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -H "Host: FUZZ.example.com" -u http://[IP] -fc 302`
+seclists/Discovery/Web-Content
 
-dirb
 
-https://github.com/aboul3la/Sublist3r # OSINT
+
+### Tools
+- `dirsearch`
+
+
+- dirbuster
+- dirb
+- gobuster
+```
+gobuster dir --url [URL] --wordlist [WORDLIST FILE]
+
+gobuster dir -u http://$IP -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,sh,txt,cgi,html,js,css,py
+
+```
+
+- nikto
+```
+nikto -h http://$IP | tee nikto.log
+nikto -host $IP -output out.txt -port 80
+```
+
+- ffuf
+```
+ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -H "Host: FUZZ.example.com" -u http://[IP] -fc 302
+```
+
+- <https://github.com/aboul3la/Sublist3r>
+
+
+
+
+
+
+
+
 
 
 
@@ -127,14 +218,19 @@ https://github.com/aboul3la/Sublist3r # OSINT
 
 ## Subdomain enumeration
 
-## SSL/TLS Certificates
+### SSL/TLS Certificates
 When an SSL/TLS (Secure Sockets Layer/Transport Layer Security) certificate is created for a domain by a CA (Certificate Authority), CA's take part in what's called "Certificate Transparency (CT) logs". These are publicly accessible logs of every SSL/TLS certificate created for a domain name. The purpose of Certificate Transparency logs is to stop malicious and accidentally made certificates from being used. We can use this service to our advantage to discover subdomains belonging to a domain, sites like https://crt.sh and https://ui.ctsearch.entrust.com/ui/ctsearchui offer a searchable database of certificates that shows current and historical results.
 
-## DNS Brute force
+### DNS Brute force
 dnsrecon
 
 
-## Virtual Hosts
+### Virtual Hosts
+
+More than one site on a machine:
+	- Name based
+	- IP based
+
 Some subdomains aren't always hosted in publically accessible DNS results, such as development versions of a web application or administration portals. Instead, the DNS record could be kept on a private DNS server or recorded on the developer's machines in their /etc/hosts file (or c:\windows\system32\drivers\etc\hosts file for Windows users) which maps domain names to IP addresses. 
 Because web servers can host multiple websites from one server when a website is requested from a client, the server knows which website the client wants from the Host header. We can utilise this host header by making changes to it and monitoring the response to see if we've discovered a new website.
 
@@ -150,41 +246,35 @@ The above command should have revealed two positive results that we haven't come
 
 
 
+From <https://www.youtube.com/watch?v=QGRwYrUixNc>
+```
+host -v -t NS [website]
 
-## Virtual Hosts
-host virtual:  mas de un sitio web en una maquina
-	- basado en nombre
-	- basado en IP
+#Zone Transfer
+host -l -a
 
-`host -v -t NS [website]`
-
-### transferencia de zona
-host -l -a 
-
-### reverse dns
+# Reverse DNS
 tell how many domains resolve in this IP
-`dig -x [IP host] @[name server]`
-`for i in {1..255}; do dig -x [IP host] @[name server]; done`
+dig -x [IP host] @[name server]
+for i in {1..255}; do dig -x [IP host] @[name server]; done
 
-
-
-### google hacking
-`site:dw.com -www.dw.com`
+# Google Hacking
+site:dw.com -www.dw.com
 - save result page as html
 - then:
-	`w3m [file.html] > file.txt` (the `w3m` utility parses the html file as seen in Lynx CLI browser)
+	w3m [file.html] > file.txt (the w3m utility parses the html file as seen in Lynx CLI browser)
 
 ejemplo con dw.com
-`grep -i \.dw.com dw.txt | grep https | cut -d " " -f 1 | sort | unique``
+grep -i \.dw.com dw.txt | grep https | cut -d " " -f 1 | sort | unique
 
-###  buscar certificados digital <https://crt.sh>
-`%.dw.com` (see more un `Advanced` menu)
+# buscar certificados digital <https://crt.sh>
+%.dw.com (see more un Advanced menu)
+sss
 
+# nmap
+sudo nmap -n -Pn --script hhtp-vhosts -p443 www.dw.com
 
-### nmap
-`sudo nmap -n -Pn --script hhtp-vhosts -p443 www.dw.com``
-
-
+```
 
 
 

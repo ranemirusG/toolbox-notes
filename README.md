@@ -44,6 +44,8 @@ formats/xml.md
 
 git.md
 
+infosec/OSINT.md
+
 infosec/OS_command_injection.md
 
 infosec/SQL_injection.md
@@ -64,10 +66,6 @@ infosec/file_upload.md
 
 infosec/javascript.md
 
-infosec/nmap.md
-
-infosec/osint/osint_tools.xlsx
-
 infosec/passwords.md
 
 infosec/path_traversal.md
@@ -80,9 +78,11 @@ infosec/shells.md
 
 keyboard.md
 
-networks/nc_ncat.md
+networks/nc_ncat_socat.md
 
 networks/networking_tools.md
+
+networks/nmap.md
 
 networks/ssh.md
 
@@ -164,7 +164,7 @@ text_edition/vim/quick-vimrc.vim
 
 text_edition/vim/snippets/cpp_snippets_pelotator.txt
 
-text_edition/vim/vim.md
+text_edition/vim/vim_notes.md
 
 text_edition/vim/vim_scripts/delete_swap.vim
 

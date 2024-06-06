@@ -1,5 +1,17 @@
 # Datetime
-Useful date & time resources and notes
+Useful date & time resources and notes.
+
+
+
+## Tools
+
+- <https://www.epochconverter.com/>
+
+
+
+
+
+
 
 
 ## Time
@@ -8,6 +20,139 @@ Useful date & time resources and notes
 - <https://www.rfc-editor.org/rfc/rfc868>
 - <https://cldr.unicode.org/>
 - "An Essay on Time" (Norbert Elias)
+
+
+
+
+
+
+###  Windows FILETIME / Win32 epoch
+Windows tracks time in 100ns units since January 1, 1601.
+Why was that date chosen? The Gregorian calendar operates on a 400-year cycle, and 1601 is the first year of the cycle that was active at the time Windows NT was being designed. In other words, it was chosen to make the math come out nicely.
+
+- <https://devblogs.microsoft.com/oldnewthing/20220602-00/?p=106706>
+- <https://learn.microsoft.com/en-us/windows/win32/sysinfo/converting-a-time-t-value-to-a-file-time>
+
+
+
+```cpp
+// from Unix time to FILETIME
+auto datetime = winrt::clock::from_time_t(unix_time_seconds);
+FILETIME filetime = winrt::clock::to_file_time(datetime);
+
+// or combined into one line
+FILETIME filetime = winrt::clock::to_file_time(winrt::clock::from_time_t(unix_time_seconds));
+
+
+
+// And you can just run everything in reverse to go the other way.
+
+// from FILETIME to Unix time
+auto datetime = winrt::clock::from_file_time(filetime);
+time_t unix_time_seconds = winrt::clock::to_time_t(datetime);
+
+// or combined into one line
+time_t unix_time_seconds = winrt::clock::to_time_t(
+                     winrt::clock::from_file_time(filetime));
+
+```
+
+
+
+```powershell
+
+
+# Convert from Unix Time to Normal, human readable
+$unixTime = 1716302955
+(([System.DateTimeOffset]::FromUnixTimeSeconds($unixTime)).DateTime).ToString("s") # Output: 2024-05-21T14:49:15
+
+
+
+
+# <https://devblogs.microsoft.com/scripting/create-custom-date-formats-with-powershell/>
+
+Get-TimeZone
+
+Get-Date ([datetime]::UtcNow) -UFormat "%H:%M"
+
+
+
+```
+
+#### Interesting script using Notepad++ File Modification Timestamp
+```python
+import datetime
+
+# Notepad++ session data example
+originalFileLastModifTimestamp = -1354503710
+originalFileLastModifTimestampHigh = 31047188
+
+full_timestamp = (originalFileLastModifTimestampHigh << 32) | (originalFileLastModifTimestamp & 0xFFFFFFFF)
+timestamp_seconds = full_timestamp / 10**7
+timestamp = datetime.datetime(1601,1,1) + datetime.timedelta(seconds=timestamp_seconds)
+
+print(timestamp)
+```
+
+
+
+
+
+
+
+
+
+
+
+### UNIX Time
+Seconds which have passed since 00:00:00 UTC on Thursday, 1 January 1970 (epoch).
+<https://en.wikipedia.org/wiki/Year_2038_problem>
+
+
+```bash
+
+
+# Current Date in Unix Time
+date +%s
+
+
+# Convert from Unix to Normal, human readable
+date -d @1709514290129
+
+
+# convert from unix time to normal (see https://www.reydes.com/d/?q=Convertir_muchas_Marcas_de_Tiempo_UNIX_Unix_Epoch)
+cat access.log | awk '{$1=strftime("%F %T", $1, 1); print $0}'
+grep (Direccion IP) access.log | awk '{$1=strftime("%F %T", $1, 1); print $0}'
+
+
+
+
+
+```
+
+
+
+
+```python
+import datetime
+
+unix_time = 1707760274  # Replace this with your Unix time
+
+# Convert Unix time to a datetime object
+normal_date = datetime.datetime.utcfromtimestamp(unix_time)
+
+print("Normal Date:", normal_date)
+```
+
+
+
+
+
+
+
+
+
+
 
 
 ### UTC
@@ -29,9 +174,7 @@ International Atomic Time
 
 
 
-### UNIX Time
-Seconds which have passed since 00:00:00 UTC on Thursday, 1 January 1970 (epoch).
-<https://en.wikipedia.org/wiki/Year_2038_problem>
+
 
 
 
@@ -157,58 +300,3 @@ https://en.wikipedia.org/wiki/CalDAV
 
 
 
-
-
-
-## Tools
-
-- <https://www.epochconverter.com/>
-
-
-### Powershell
-- <https://devblogs.microsoft.com/scripting/create-custom-date-formats-with-powershell/>
-
-`Get-TimeZone`
-
-`Get-Date ([datetime]::UtcNow) -UFormat "%H:%M"`
-
-
-
-
-
-
-### convert from unix time to normal
-
-```
-cat access.log | awk '{$1=strftime("%F %T", $1, 1); print $0}'
-
-grep (Direccion IP) access.log | awk '{$1=strftime("%F %T", $1, 1); print $0}'
-```
-- <https://www.reydes.com/d/?q=Convertir_muchas_Marcas_de_Tiempo_UNIX_Unix_Epoch>
-
-
-
-
-```bash
-date -d @1709514290129
-
-```
-
-```powershell
-$unixTime = 1716302955
-(([System.DateTimeOffset]::FromUnixTimeSeconds($unixTime)).DateTime).ToString("s")
-
->>> 2024-05-21T14:49:15
-```
-
-
-``` python
-import datetime
-
-unix_time = 1707760274  # Replace this with your Unix time
-
-# Convert Unix time to a datetime object
-normal_date = datetime.datetime.utcfromtimestamp(unix_time)
-
-print("Normal Date:", normal_date)
-```

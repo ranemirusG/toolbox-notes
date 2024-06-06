@@ -92,6 +92,9 @@ Sysinternals `tcpview.exe`
 Resource Monitor `C:\Windows\System32\resmon.exe` (Network tab)
 
 
+
+
+
 #### Troubleshooting
 
 https://answers.microsoft.com/en-us/windows/forum/all/i-believe-ive-been-ip-banned-how-can-i-fix-this/9f6dd98c-ad9c-4f0f-9a68-eff4f360551a
@@ -157,8 +160,24 @@ Control Panel > Network and Internet > Network and Sharing Center
 ### netstat
 
 ```powershell
+
 netstat -aon | find /i "listening" # cmd
 netstat -aon | findstr :8000 # cmd
+Get-NetTCPConnection -LocalPort [PORT NUMBER]
+
+
+
+# IPv4
+netstat -p tcp
+
+# IPv6
+netstat -an | findstr "::"
+
+
+
+```
+
+
 
 
 #### \*NIX
@@ -556,8 +575,6 @@ Look for:
 
 Online tool: <https://who.is/>
 
-See: REVERSE WHOIS (for horizontal recon)
-
 
 
 
@@ -693,7 +710,10 @@ Clients connect to servers using TCP/IP (actually NetBIOS over TCP/IP as specifi
 
 
 
-
+```
+smbclient -L $ip
+smbclient \\\\$ip\\WorkShares
+```
 
 
 

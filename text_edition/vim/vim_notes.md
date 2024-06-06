@@ -16,6 +16,8 @@
 13. [Tags](#tags)
 14. [Run] (#run)
 15. [Insert] (#insert)
+16. [Shell] (#shell)
+
 
 
 ## Resources
@@ -451,3 +453,20 @@ Run current file
 ### External command
 `:.!` or just `!!` then execute shell command and the output will appear in the
 buffer
+
+
+
+
+
+
+
+## Shell
+
+### Current shell
+`:echo &shell`
+
+### Change shell
+`:set shell=/bin/zsh`
+`:set shell=path/to/shell`
+
+

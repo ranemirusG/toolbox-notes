@@ -1,5 +1,6 @@
 # Certificates
 
+A certificate, which is issued by a certification authority, is a confirmation of your identity and contains information used to protect data or to establish secure network connections. A certificate store is the system area where certificates are kept.
 
 
 ## Resources
@@ -18,6 +19,15 @@
 https://crt.sh
 
 `openssl s_client -showcerts -connect stackoverflow.com:443`
+
+
+
+### Powershell
+`Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object {$_.Issuer -like "*Portswigger*"} | Format-List`
+
+
+
+
 
 
 

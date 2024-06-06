@@ -811,6 +811,9 @@ Get-ChildItem -File -Recurse
 dir -recurse | fl
 dir -Directory -Recurse | ForEach-Object { $_.fullname }
 
+# list directories
+Get-ChildItem -Directory -Force
+
 # list empty directories
 dir -Directory -Recurse | where { $_.GetFileSystemInfos().Count -eq 0 }
 
@@ -941,7 +944,8 @@ tree
 
 
 # list directories
-ls -l | grep -c '^d'
+ls -l | grep '^d'
+ls -l | grep -c '^d' # count directories
 find . -maxdepth 1 -type d | wc -l
 
 
@@ -1056,6 +1060,13 @@ printenv
 #### PowerShell
 
 ```
+# retrieve detailed information about a single file 
+Get-Item FILE | Format-List *
+
+
+# Get last write time from file
+[datetime](Get-ItemProperty -Path '.\example.txt' -Name LastWriteTime).lastwritetime
+
 
 # list all attributes of a file/dir
 Get-ItemProperty -Path "path\to\dir\or\file" -Name Attributes
@@ -1065,11 +1076,14 @@ Get-ItemProperty -Path "path\to\dir\or\file" -Name Attributes
 ls | Select-Object Name, @{Name="MegaBytes";Expression={$_.Length / 1MB}}
 ls | Select-Object Name, @{Name="KiloBytes";Expression={$_.Length / 1KB}}
 
-# Get the size of a file in bytes
+# Get the size of a file
 (Get-Item myfile.txt).Length
-(Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum # bytes
-(Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum / 1MB # megabytes
-(Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum / 1GB # gigabytes
+# bytes
+(Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum
+# megabytes
+(Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum / 1MB
+# gigabytes
+(Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum / 1GB
 
 
 # Get the number of linelines in a file
@@ -1105,6 +1119,11 @@ du -bch
 
 # shows how much disk space you have left on the current drive and then tells you how much every file/directory takes up
 df -h .; du -sh -- * | sort -hr
+
+
+
+# force ls command to display file size in MB
+ls -l --block-size=M
 
 
 
@@ -1357,6 +1376,11 @@ echo. 2>EmptyFile.txt
 echo jaja>test.txt
 copy nul file.txt > nul
 
+
+REM Merge two files
+type file1.txt file2.txt > merged.txt
+
+
 REM Create directory
 mkdir DIR
 
@@ -1395,6 +1419,12 @@ rm -rf /path/to/dir # delete directory recursively
 
 
 ```
+
+
+
+
+
+
 
 
 ### Copy and Move things
@@ -1461,6 +1491,10 @@ cp
 mv
 
 ```
+
+
+
+
 
 
 ### Compression / ZIP / Encryption
@@ -1865,13 +1899,14 @@ Windows Tools (since Windows 11, previously Administrative Tools)
 ```
 
 # get executable location
-(Get-Command program.exe).Path
+(Get-Command [PROGRAM NAME.exe]).Path
 
 where.exe example.exe
 
 
-Get-Process
 ps # alias
+Get-Process
+Get-Process -Id [PID]
 
 # get path of all running processes
 ps | % {$_.Path}
@@ -1912,10 +1947,15 @@ Get-Service | Where-Object {$_.Status -eq "Running"}
 ```
 schtasks /query /fo LIST /v
 
-tasklist &REM This tool displays a list of currently running processes on either a local or remote machine
 
+REM List currently running processes on either a local or remote machine
+tasklist
+tasklist /FI "PID eq [PID]"
+
+
+REM Terminate tasks by process id (PID) or image name
 taskkill /F /IM CalculatorApp.exe
-
+taskkill /F /PID 1185
 
 
 

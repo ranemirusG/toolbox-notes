@@ -122,6 +122,9 @@ screen -list
 # start named session
 screen -S [SESSION NAME]
 
+# kill detached session
+screen -X -S [SESSION NAME] quit
+
 # detach from within a session
 ^a d
 

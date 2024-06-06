@@ -3,12 +3,13 @@
 
 
 ## Resources
--<https://github.com/readloud/Google-Hacking-Database>
+- <https://www.exploit-db.com/google-hacking-database>
+- <https://github.com/readloud/Google-Hacking-Database>
 
 
 ## Advanced Search Parameters
 
-
+`intitle:"index of" "parent directory"`
 
 ### Date
 `before:YYYY-MM-DD`
