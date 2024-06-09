@@ -16,7 +16,9 @@ backups/notes_backups.md
 
 clipboard.md
 
-databases/databases.md
+datetime/datetime.md
+
+datetime/file_timestamp.md
 
 email.md
 
@@ -25,8 +27,6 @@ fonts.md
 formats/data_interchange/notes.md
 
 formats/data_interchange/read_json_example.ps1
-
-formats/datetime.md
 
 formats/filetypes.md
 
@@ -48,7 +48,15 @@ infosec/OSINT.md
 
 infosec/OS_command_injection.md
 
-infosec/SQL_injection.md
+infosec/SQL/first_steps.md
+
+infosec/SQL/mysql_MariaDB.md
+
+infosec/SQL/payloads.md
+
+infosec/SQL/portswigger_SQL_cheatsheet.md
+
+infosec/SQL/sqlmap.md
 
 infosec/XSS/XSS_cheatsheet_PortSwigger.pdf
 
@@ -60,21 +68,21 @@ infosec/XSS/tags_XSS_cheatsheet.txt
 
 infosec/XXE.md
 
+infosec/brute-force/hydra.md
+
 infosec/cryptography.md
 
 infosec/file_upload.md
 
 infosec/javascript.md
 
-infosec/passwords.md
-
 infosec/path_traversal.md
+
+infosec/payloads/XSS_payloads.md
 
 infosec/privesc.md
 
 infosec/recon_scan_enum.md
-
-infosec/shells.md
 
 keyboard.md
 
@@ -102,19 +110,25 @@ portability/zotero.md
 
 regular_expressions.md
 
+scripts/bash/get_size_Bytes_KB_MB_GB.sh
+
+scripts/batch_scripts/notes_batch.md
+
+scripts/batch_scripts/rename_files_to_md.bat
+
 scripts/javascript/html-table-to-tsv.js
 
 scripts/powershell/README.md
 
 scripts/powershell/directory_size.ps1
 
-scripts/powershell/gci_size_Bytes_KB_MB_GB.ps1
-
 scripts/powershell/generate_password.ps1
 
 scripts/powershell/get_group_members.ps1
 
 scripts/powershell/get_newest_file.ps1
+
+scripts/powershell/get_size_Bytes_KB_MB_GB.ps1
 
 scripts/powershell/list_attributes.ps1
 
@@ -215,14 +229,6 @@ web/search_engines.md
 web/tokens.md
 
 web/url.md
-
-windows/batch_scripts/notes_batch.md
-
-windows/batch_scripts/rename_files_to_md.bat
-
-windows/windows_runbox.md
-
-windows/windows_terminal.md
 
 windows_and_unix_cheatsheet.md
 

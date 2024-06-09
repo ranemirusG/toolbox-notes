@@ -730,9 +730,10 @@ DRIVERQUERY
 
 
 ## Search / Explore
-Look around and find stuff.
-Enumeration activities.
-Passive reconnaissance.
+Look around and find stuff
+
+
+
 
 ### Move around
 
@@ -844,6 +845,18 @@ test-path C:\path\file
 Resolve-Path 'path/to/dir' | Select-Object -ExpandProperty Path | Set-Clipboard
 
 
+
+
+# Search file by name
+Get-ChildItem -Path "C:\Path\To\Directory" -Filter "example.txt"
+
+Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -Filter "example.txt"
+
+Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -File | Where-Object { $_.Name -like "*example*" }
+
+
+
+
 # Search for files in directory which have been modified in the last 24 hs
 Get-ChildItem -Recurse | Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-1) }
 # Search for files in directory which have been modified between two dates
@@ -880,6 +893,18 @@ TREE /F
 
 REM file content
 type file
+
+
+
+REM Search file by name
+dir "*example*.txt" /s
+dir "C:\Path\To\Directory\example.txt" /s
+dir "C:\Path\To\Directory\*example*.txt" /s
+dir "C:\Path\To\Directory\*example*.txt" /s /a
+for /r "C:\Path\To\Directory" %i in (*example*.txt *test*.txt) do @echo %i
+
+
+
 
 ```
 
@@ -959,6 +984,21 @@ basename file | clip
 # Copy dir
 pwd | pbcopy # macOS
 
+
+
+
+
+
+# Search file by name
+find /path/to/directory -name "example.txt"
+find /path/to/directory -iname "*example*.txt"
+find /path/to/directory -name "*example*.txt" ! -name "*.log"
+
+
+
+
+
+
 # Search for files in directory which have been modified in the last 24 hs
 find /directory -mtime 0
 
@@ -1029,6 +1069,12 @@ find /path/to/search -type f -mtime -1 ! -user root -exec ls -l {} \;
 
 
 
+
+
+
+
+
+
 ### Variables
 
 #### PowerShell
@@ -1053,6 +1099,14 @@ printenv
 ( set -o posix ; set ) | less
 
 ```
+
+
+
+
+
+
+
+
 
 
 ### Metadata
@@ -1316,10 +1370,13 @@ ni file
 ni file | Out-Null # without output message	
 Set-Content -Path c:\test.txt -Value ''
 
-# Create file with content from clipboard
 
 # Create an empty file using .NET Base Class Library
 [System.IO.File]::WriteAllText('testing.txt', '')
+
+
+# Create file with content from clipboard
+Get-Clipboard | Set-Content filename
 
 "Hello, this is the content." | Set-Content -Path "C:\path\to\file.txt"
 Add-Content # to append	
@@ -1329,10 +1386,27 @@ Get-Content -Path "file1" | Add-Content -Path "file2"
 "Hello,`n(This is line number 2) because...`nthis is the way to have multine in Powershell.`nThe end (line 4)" | Set-Content foo.txt
 
 
+# Create file of specific size
+$filename = "1MBFile.txt"
+$sizeInBytes = 1MB
+$content = 'A' * $sizeInBytes
+Set-Content -Path $filename -Value $content
+
+sc filename.txt -Value ('A' * 1MB) # oneliner
+
+
+
 # Create directory
 New-Item -Path c:\test -ItemType Directory
 New-Item -Type Directory -Name very/long/path/to/dir; cd "$$" # create and go there
 [System.IO.Directory]::CreateDirectory('full path to directory')
+
+
+
+
+
+
+
 
 
 # Delete
@@ -1377,6 +1451,9 @@ echo jaja>test.txt
 copy nul file.txt > nul
 
 
+REM Create file of specific size
+fsutil file createnew example.txt 1048576
+
 REM Merge two files
 type file1.txt file2.txt > merged.txt
 
@@ -1407,8 +1484,15 @@ echo "foo" > file
 mkdir
 mkdir -p ~/nested/path/to/dir/
 
+# Create file of specific size
+dd if=/dev/zero of=1MBFile.txt bs=1M count=1
+base64 /dev/urandom | head -c 1048576 > 1MBFile.txt
+
+
+
 # Create file with content from clipboard
 cat > file << EOF #paste + Enter + EOF
+
 pbpaste > file # macOS
 
 

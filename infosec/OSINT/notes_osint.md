@@ -33,10 +33,18 @@
 - <https://twitter.com/account/begin_password_reset>
 - <https://x.com/search-advanced>
 
-`keyword (from:HANDLE) until:2023-11-29 since:2020-03-15`
-`https://twitter.com/search?q=keyword%20(from%3AHANDLE)%20until%3A2023-11-29%20since%3A202
-0-03-15`
-`https://twitter.com/search?q=keyword%20(from%3AHANDLE)%20until%3A2023-11-29%20since%3A2020-03-15`
+```
+
+keyword (from:HANDLE) until:2023-11-29 since:2020-03-15
+
+(keyword1 OR keyword2 OR keyword3) until:2023-12-10 since:2023-09-01
+
+https://twitter.com/search?q=keyword%20(from%3AHANDLE)%20until%3A2023-11-29%20since%3A2020-03-15
+
+https://twitter.com/search?q=keyword%20(from%3AHANDLE)%20until%3A2023-11-29%20since%3A2020-03-15
+```
+
+
 
 
 

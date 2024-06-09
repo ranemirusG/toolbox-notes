@@ -78,12 +78,6 @@ Threat Hunting (Brim)
 
 
 
-
-
-
-
-
-
 ### Windows
 Nirsoft `cports.exe`
 
@@ -102,6 +96,32 @@ https://answers.microsoft.com/en-us/windows/forum/all/i-believe-ive-been-ip-bann
 
 ### macOS
 LanScan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,6 +152,16 @@ Control Panel > Network and Internet > Network and Sharing Center
 
 
 
+
+
+
+
+
+
+
+
+
+
 ## Websites
 <shodan.io>
 <https://dnsdumpster.com/>
@@ -150,7 +180,32 @@ Control Panel > Network and Internet > Network and Sharing Center
 - https://postdigitalist.notion.site/Landing-Page-Optimization-Checklist-c236979d925d4a589f57234354a61499
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Inspect
+
+
+
 
 ### Snippets
 `ipconfig /all;route print;arp -a;`
@@ -243,6 +298,16 @@ https://www.arin.net/ (nice detail in the top bar)
 
 
 
+
+#### \*NIX
+```
+ip addr show | grep 'inet ' | awk '{print $2}' | cut -d/ -f1
+
+ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1
+
+hostname -I
+
+```
 
 
 

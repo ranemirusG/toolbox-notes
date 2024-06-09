@@ -1,5 +1,11 @@
 # Hydra
 
+## Resources
+- <https://github.com/vanhauser-thc/thc-hydra>
+- <https://github.com/gnebbia/hydra_notes>
+
+
+## Commands
 
 `-s` PORT to specify a non-default port for the service in question.
 
@@ -13,7 +19,7 @@
 
 
 
-## http
+### http
 ```
 sudo hydra <username> <wordlist> MACHINE_IP http-post-form "<path>:<login_credentials>:<invalid_response>"
 
@@ -22,7 +28,7 @@ hydra -l <username> -P <wordlist> MACHINE_IP http-post-form "/:username=^USER^&p
 ```
 
 
-## ssh
+### ssh
 ```
 hydra -l <username> -P <full path to pass> [IP] -t 4 ssh
 
@@ -32,7 +38,7 @@ hydra -t 16 -l administrator -P /usr/share/wordlists/rockyou.txt -vV [IP] ssh
 
 ```
 
-## ftp
+### ftp
 ```
 hydra -l user -P passlist.txt ftp://[IP]
 

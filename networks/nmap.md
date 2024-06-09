@@ -15,6 +15,10 @@
 
 ## Snippets
 
+
+
+
+
 ### First Scan
 
 Default scan:
@@ -36,8 +40,19 @@ If no alternative flag is specified in the command syntax, nmap will scan the mo
 
 `nmap -sS -Pn -T4 -F $IP`
 
+
+`sudo nmap -Pn -p- --min-rate 2000 -sC -sV -oN nmap-scan.txt [IP]`
+
+
 Quick scan all ports:
-`sudo nmap -sU --min-rate 5000 -p- $IP`
+```
+sudo nmap -sU --min-rate 5000 -p- [IP]
+
+nmap -p- --min-rate 1000 -sV [IP]
+
+```
+
+
 
 
 More aggresive:
