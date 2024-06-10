@@ -10,11 +10,15 @@
 
 ## This repo has the following scheme:
  
+AWS.md
+
 README.md
 
 backups/notes_backups.md
 
 clipboard.md
+
+data_size.md
 
 datetime/datetime.md
 
@@ -44,7 +48,19 @@ formats/xml.md
 
 git.md
 
-infosec/OSINT.md
+infosec/1-Recon-Scan-Enum/Content_Discovery.md
+
+infosec/1-Recon-Scan-Enum/Passive_Information_Gathering.md
+
+infosec/1-Recon-Scan-Enum/Resources.md
+
+infosec/1-Recon-Scan-Enum/Scanning.md
+
+infosec/Metasploit/notes_metasploit.md
+
+infosec/OSINT/notes_osint.md
+
+infosec/OSINT/search_engines.md
 
 infosec/OS_command_injection.md
 
@@ -64,13 +80,23 @@ infosec/XSS/attr_and_elements_MDN.tsv
 
 infosec/XSS/payload_XSS_cheatsheets.txt
 
+infosec/XSS/payloads/XSS_payloads.md
+
 infosec/XSS/tags_XSS_cheatsheet.txt
 
 infosec/XXE.md
 
+infosec/brute-force/burpsuite_intruder.md
+
 infosec/brute-force/hydra.md
 
 infosec/cryptography.md
+
+infosec/file-inclusion/file_inclusion.md
+
+infosec/file-inclusion/payloads_file_inclusion_Linux.md
+
+infosec/file-inclusion/payloads_file_inclusion_Windows.md
 
 infosec/file_upload.md
 
@@ -78,11 +104,13 @@ infosec/javascript.md
 
 infosec/path_traversal.md
 
-infosec/payloads/XSS_payloads.md
-
 infosec/privesc.md
 
-infosec/recon_scan_enum.md
+infosec/reverse-shell/OffensiveReverseShellCheatSheet/README.md
+
+infosec/reverse-shell/OffensiveReverseShellCheatSheet/reverse-shell.bat
+
+infosec/reverse-shell/OffensiveReverseShellCheatSheet/web.config
 
 keyboard.md
 
@@ -118,7 +146,11 @@ scripts/batch_scripts/rename_files_to_md.bat
 
 scripts/javascript/html-table-to-tsv.js
 
+scripts/powershell/Get-BrowserHomepage.ps1
+
 scripts/powershell/README.md
+
+scripts/powershell/Take-Screenshot.ps1
 
 scripts/powershell/directory_size.ps1
 
@@ -223,8 +255,6 @@ web/favicon.md
 web/html.md
 
 web/scripts/js_enumeration.py
-
-web/search_engines.md
 
 web/tokens.md
 

@@ -18,7 +18,12 @@ seclists/Discovery/Web-Content
 
 ### dirsearch
 
+```
+dirsearch -e php -u http://pocsecurity.icu
 
+
+
+```
 
 
 
@@ -28,8 +33,6 @@ seclists/Discovery/Web-Content
 gobuster dir --url [URL] --wordlist [WORDLIST FILE]
 
 gobuster dir -u http://$IP -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,sh,txt,cgi,html,js,css,py
-
-
 
 
 ```
@@ -45,7 +48,11 @@ nikto -host $IP -output out.txt -port 80
 
 ### ffuf
 ```
+
+ffuf -w <wordlist> -u http://board.htb/ -H "Host: FUZZ.board.htb" -ac
+
 ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -H "Host: FUZZ.example.com" -u http://[IP] -fc 302
+
 ```
 
 
