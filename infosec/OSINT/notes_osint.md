@@ -1,0 +1,144 @@
+# OSINT
+
+
+## Resources
+- <https://ciberpatrulla.com>
+- <https://www.social-engineer.org/>
+- <https://hintelltechniques.com>
+- <https://www.bellingcat.com/>
+- <https://osintframework.com/>
+
+
+## Tools
+- Maltego
+
+
+
+
+## Context
+- <https://trends.google.com/home>
+- <https://newspapermap.com/>
+- <https://radio.garden/>
+
+## Paralinguistic
+- <https://www.elongsound.com> - Sound Bank
+
+## Diacritic
+- <https://tatuarte.org/tatuajes/>
+
+
+
+## Social Networks
+
+- <https://twitter.com/account/begin_password_reset>
+- <https://x.com/search-advanced>
+
+```
+
+keyword (from:HANDLE) until:2023-11-29 since:2020-03-15
+
+(keyword1 OR keyword2 OR keyword3) until:2023-12-10 since:2023-09-01
+
+https://twitter.com/search?q=keyword%20(from%3AHANDLE)%20until%3A2023-11-29%20since%3A2020-03-15
+
+https://twitter.com/search?q=keyword%20(from%3AHANDLE)%20until%3A2023-11-29%20since%3A2020-03-15
+```
+
+
+
+
+
+- <https://tinfoleak.com>
+
+- <https://www.instagram.com/explore/tags/nombre_a_buscar>
+- <https://www.instagram.com/explore/locations/AR/argentina/>
+- <https://www.instagram.com/explore/tags/nombre_a_buscar>
+
+- <https://www.ferretly.com/>
+
+- <https://www.social-searcher.com/>
+
+- <https://postcron.com/es/>
+
+- <https://www.facebook.com/login/identify?ctx=recover&lwv=100>
+- <https://www.facebook.com/public?query=Microsoft>
+
+- <https://github.com/search?q=at+Microsoft&type=users>
+
+- <https://www.gotinder.com/@nombre_a_buscar>
+- <https://tinfoleak.com>
+
+
+## Emails and Domains
+- <https://www.verifyemailaddress.org/>
+- <https://haveibeenpwned.com>
+- <https://emailrep.io>
+- <https://hunter.io>
+- <https://leakpeek.com/>
+- <https://namechk.com>
+- <https://www.crunchbase.com/>
+
+
+
+
+
+## Banking / Taxes
+
+### Argentina
+
+- <https://bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp>
+- <https://www.dateas.com/>
+- <https://www.veraz.com.ar/ECOMMERCE/inicio.ecom>
+
+
+
+## Geolocation
+
+- <https://www.google.com/maps>
+- <https://www.openstreetmap.org>
+- <https://osmand.net/>
+- <http://geocode.xyz/>
+- <https://data.mashedworld.com/dualmaps/map.htm>
+- <https://maps.me/>
+- <https://maplibre.org/>
+- <https://www.maptiler.com/>
+- <http://www.geocreepy.com>
+- <http://www.geosocialfootprint.com>
+- <https://www.worldatlas.com/>
+- <https://www.britannica.com/place/Spain>
+
+
+
+
+
+
+
+
+## Metadata
+
+`exiftool` - Exchangeable Image File Format (EXIF)
+
+
+
+
+
+## Web
+
+### Wayback Machine
+The Wayback Machine (https://archive.org/web/) is a historical archive of websites that dates back to the late 90s. You can search a domain name, and it will show you all the times the service scraped the web page and saved the contents. This service can help uncover old pages that may still be active on the current website.
+
+
+
+
+
+### S3 Buckets
+
+S3 Buckets are a storage service provided by Amazon AWS, allowing people to save files and even static website content in the cloud accessible over HTTP and HTTPS. The owner of the files can set access permissions to either make files public, private and even writable. Sometimes these access permissions are incorrectly set and inadvertently allow access to files that shouldn't be available to the public. The format of the S3 buckets is http(s)://{name}.s3.amazonaws.com where {name} is decided by the owner, such as tryhackme-assets.s3.amazonaws.com. S3 buckets can be discovered in many ways, such as finding the URLs in the website's page source, GitHub repositories, or even automating the process. One common automation method is by using the company name followed by common terms such as {name}-assets, {name}-www, {name}-public, {name}-private, etc.
+
+
+
+
+
+
+
+
