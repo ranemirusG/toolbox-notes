@@ -39,6 +39,12 @@ Note: A fourth format is script kiddie (don't use that, it's basically a joke)
 
 
 
+### @7h3h4ckv157
+A small reminder: 
+Don't forget to enumerate UDP services, while you're Pentesting a Network! 
+`sudo nmap -sU -T4 <TARGET>`
+
+
 
 
 

@@ -1,11 +1,18 @@
-# Windows Directories
+# Windows interesting files
 
 `C:\Windows\System32\drivers\etc\hosts`: DNS file
-`C:\Windows\System32\drivers\etc\networks`: Network Config file 
+`C:\Windows\System32\drivers\etc\networks`: Network Config file
+
+Windows registry hives are stored in C:\Windows\System32\config. Inside this directory we can find the primary hives, such as SECURITY, SOFTWARE, and SYSTEM:
+
 `C:\Windows\System32\config\SAM`: Usernames and Password
 `C:\Windows\System32\config\SECURITY`: Security Log
 `C:\Windows\System32\config\SOFTWARE`: Software Log 
 `C:\Windows\System32\config\SYSTEM`: System Log
+
+
+
+
 `C:\Windows\System32\winevt\`:  Windows Event Logs
 `C:\Windows\repair\SAM`: Backup of User and Password
 `C:\Documents and Settings\All Users\Start Menu\Programs\Startup\`: Windows XP All User Startup
@@ -16,5 +23,6 @@
 `C:\Windows\Users\[USERNAME]\NTUSER.dat`: NTUSER.dat
 
 
+`C:\Users\[USERNAME]\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt`: PowerShell history
 
   

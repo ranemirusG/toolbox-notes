@@ -23,8 +23,16 @@ ADMIN$: Administrative share that provides access to the Windows directory.
 IPC$: Used for inter-process communication.
 
 
+## SMB Commands
 
+```
+# Download file
+get [FILE]
 
+# Exit
+exit
+
+```
 
 
 ## Tools
@@ -42,11 +50,18 @@ net use \\192.168.1.100\sharename /user:username password
 
 ```
 smbclient -L $ip
+
+smbclient -N -L \\\\{TARGET_IP}\\
+# -N: No password
+# -L : This option allows you to look at what services are available on a serve
+
+
 smbclient \\\\$ip\\C$
 smbclient \\\\$ip\\CustomShare
 
-
 smbclient //$ip/sharename -U username
+
+
 
 ```
 

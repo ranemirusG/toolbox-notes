@@ -14,7 +14,7 @@ This is a list of file signatures, data used to identify or verify the content o
 
 - <https://en.wikipedia.org/wiki/List_of_file_signatures>
 
-Use `file` command to determine file type on Linux.
+Use `file` command to determine file type on Linux. will tell us the true file type by looking at the file’s header structure.
 
 Also `ExifTools` (on Windows or Linux)
 

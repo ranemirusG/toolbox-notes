@@ -11,7 +11,14 @@
 
 ## zip
 
+```
+zip --encrypt protected.zip file.txt
 
+
+unzip filename.zip -d /path/to/destination_directory
+
+
+```
 
 ## gzip
 

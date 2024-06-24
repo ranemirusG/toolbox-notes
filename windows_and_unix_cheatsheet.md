@@ -880,6 +880,9 @@ curl file:///%USERPROFILE%/file.txt # CMD
 curl file:///Users/useraname/file.txt # CMD
 curl file:///Users/useraname/file.txt # CMD curl on Windows also allows this incorrect format (with only 2 slashes)
 
+# read file at specific line
+Get-Content file.txt | Select-Object -Index 2
+
 
 ```
 
@@ -950,6 +953,18 @@ curl file:///home/username/file.txt
 nano file
 vim file
 vi file
+
+
+
+
+# read file at specific line
+sed -n '8p' file.txt
+awk 'RN==8' file.txt
+more +8 file.txt
+less +8 file.txt
+head -n 8 filename.txt | tail -n 1
+
+
 
 
 # list open files (lsof), including network connections

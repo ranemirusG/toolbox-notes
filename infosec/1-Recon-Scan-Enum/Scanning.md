@@ -15,8 +15,21 @@ sudo masscan -p1-65535,U:1-65535 $ip --rate=1000 -e tun0 --output-filename <fil
 
 
 
+- Nikto
+Nikto is a vulnerability scanning tool that is designed specifically to assess web servers.
+
+
+
+
 
 - Nessus / OpenVAS
+	OpenVAS can conduct web security tests
+
+
+
+
+
+
 
 
 

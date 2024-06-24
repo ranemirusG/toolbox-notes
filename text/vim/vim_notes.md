@@ -392,10 +392,15 @@ or do it with Netrw, just press "R"
 " vim binary
 :echo v:progpath
 
-
-
 ```
 
+
+### Use bash variable inside vim
+
+Example: `export ip=10.129.199.70`
+
+To insert variable value inline in vim (in Insert Mode): `<C-R>=expand("ip")`
+To just echo the value (in Normal Mode): `echo $ip`
 
 
 ## Ex commands
