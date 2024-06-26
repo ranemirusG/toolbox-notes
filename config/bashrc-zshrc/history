@@ -1,0 +1,24 @@
+# Bash/Zsh history
+
+HISTFILE=~/.zsh_history
+
+# don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=10000
+HISTFILESIZE=20000
+
+HISTIGNORE='ls:ll:"ls -alh":pwd:clear:history:[bf]g:exit:cd:cd -:pwd:date:* --help'
+HISTTIMEFORMAT='%F %T '
+
+shopt -s cmdhist
+
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+#setopt share_history         # share command history data
