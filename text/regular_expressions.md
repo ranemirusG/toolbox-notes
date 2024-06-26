@@ -2,6 +2,8 @@
 
 ## Resources
 - <https://help.libreoffice.org/6.2/en-US/text/shared/01/02100001.html>
+- <https://www.rexegg.com/>
+- <http://www.regular-expressions.info/>
 
 
 

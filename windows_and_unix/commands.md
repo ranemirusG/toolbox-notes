@@ -991,6 +991,7 @@ tree
 
 # list directories
 ls -l | grep '^d'
+ls -d .* # only hidden directories
 ls -l | grep -c '^d' # count directories
 find . -maxdepth 1 -type d | wc -l
 

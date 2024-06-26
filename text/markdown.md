@@ -1,11 +1,13 @@
 # Markdown notes
 
 ## Resources
+- <https://daringfireball.net/projects/markdown/>
 - <https://www.markdownguide.org/>
 - <https://dillinger.io/>
 - <https://asciidoc.org/>
 - <https://www.youtube.com/watch?v=W33_l1oOX9A>
 
+- <https://github.com/preservim/vim-markdown>
 
 
 ## Create two blank lines in Markdown

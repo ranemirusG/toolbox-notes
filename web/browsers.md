@@ -29,7 +29,7 @@ Downloads: `ctrl+J`
 `F10` focus back to page
 
 
-
+Browser task manager: `Shift + Esc`
 
 
 
@@ -64,6 +64,8 @@ Downloads: `ctrl+J`
 	
 	- `edge://extensions/`: Access the extensions page.
 	- `edge://history/`: Access browsing history.
+	- `edge://history/all`
+	
 	- `edge://favorites/`: Access favorites/bookmarks.
 	- `edge://downloads/`: View downloads.
 

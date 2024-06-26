@@ -21,6 +21,9 @@ nmap -sC -sV -oN nmap/initial $IP
 
 `-oA [output filename]-[date]`
 Add the date to the output file maybe a good idea.
+Or maybe the ip, like: `10.11.1.1-254`
+Command example: `-oA scans/${ip}-$(date +%Y-%m-%d_%H-%M-%S)`
+
 Save results in three major formats: “normal”, XML and grepable formats. However you can specify the format of your choice with :
 	-oN: Redirect normal output to a given filename
 	-oX: Produce output in a clean, XML format and store it in a given file

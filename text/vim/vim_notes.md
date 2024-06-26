@@ -190,10 +190,19 @@ to this:
 	bar
 ```
 
+## inline substitution
+
+from `foo bar quz word1 word2 word3` to `foo bar qux "word1" "word2" "word3"`
+
+```
+s/\%V\w\+/"&"/
+```
+`\%V` restricts the substitution to the visually selected area
+
+`&` is the matched text
 
 
-
-Dinamic substitution `:%s/\(## \)\(\d\+\)/\=submatch(1) . (submatch(2) - 1)/g`
+## Dinamic substitution `:%s/\(## \)\(\d\+\)/\=submatch(1) . (submatch(2) - 1)/g`
 
 from this:
 ```

@@ -7,7 +7,12 @@ ZIP cracking is vital in digital forensics for accessing encrypted evidence, unc
 
 ```
 zip2john protected.zip > out.txt
+
 john out.txt
+john -wordlist=/usr/share/wordlists/rockyou.txt out.txt
+
+john --show out.txt
+
 ```
 
 

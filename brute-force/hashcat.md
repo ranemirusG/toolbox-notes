@@ -1,5 +1,8 @@
 # Hashcat
--a, --attack-mode=NUM
+
+
+## -a, --attack-mode=NUM
+
 0 = Straight
 1 = Combination
 3 = Brute-force
@@ -7,7 +10,8 @@
 7 = Hybrid Mask + WordlistI
 
 
--m, --hash-type=NUM
+## -m, --hash-type=NUM
+0 = MD5
 
 
 
