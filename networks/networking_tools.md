@@ -446,6 +446,9 @@ ifconfig
 # administration tool for IPv4/IPv6 packet filtering and NAT
 iptables	
 
+# list all rules
+sudo iptables -L -v -n
+
 
 
 tcpdump # packet analyzer that captures and displays network packets.

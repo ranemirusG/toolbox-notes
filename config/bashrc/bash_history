@@ -1,0 +1,16 @@
+# Bash history
+
+
+# don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+# append to the history file, don't overwrite it
+shopt -s histappend
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=10000
+HISTFILESIZE=20000
+
+HISTIGNORE='ls:ll:"ls -alh":pwd:clear:history:[bf]g:exit:cd:cd -:pwd:date:* --help'
+HISTTIMEFORMAT='%F %T '
+
+shopt -s cmdhist
+
