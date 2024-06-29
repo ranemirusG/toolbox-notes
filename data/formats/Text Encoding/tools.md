@@ -1,6 +1,8 @@
-# Text encoding
+# Text encoding tools
 
-Resources:
+## Resources:
+
+- <https://www.w3.org/International/articles/definitions-characters/>
 
 - <https://www.rapidtables.com/>
 - <https://emn178.github.io/online-tools/>
@@ -11,55 +13,12 @@ Resources:
 
 
 
-## Plain
-This refers to the raw text before any transformations are applied.
-
-## ASCII Hex
-This option transitions data between ASCII and hexadecimal representations. For instance, the word "ASCII" can be converted into the hexadecimal number "4153434949". Each character is converted from its numeric ASCII representation into hexadecimal.
-
-## URL
-URL encoding is utilized to ensure the safe transfer of data in the URL of a web request. It involves substituting characters for their ASCII character code in hexadecimal format, preceded by a percentage symbol (%). This method is vital for any type of web application testing. For instance, encoding the forward-slash character (/), whose ASCII character code is 47, converts it to 2F in hexadecimal, thus becoming %2F in URL encoding.
-
-## HTML
-HTML Entities encoding replaces special characters with an ampersand (&), followed by either a hexadecimal number or a reference to the character being escaped, and ending with a semicolon (;). This method ensures the safe rendering of special characters in HTML and helps prevent attacks such as XSS.
-
-## Base64
-Base64, a commonly used encoding method, converts any data into an ASCII-compatible format.
-See: <https://stackabuse.com/encoding-and-decoding-base64-strings-in-python/>
-
-## Base32
-
-See:
-	- RFC 4648
-	- <https://b64encode.com/blog/base64-vs-base32-comparison/>
-
-
-## Binary
-https://en.wikipedia.org/wiki/Binary-coded_decimal
-
-
-##########################################################################
 
 
 
+## Conversions
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Conversions
 
 
 # character to UTF-16

@@ -151,6 +151,19 @@ Users can skip the ping step entirely with a list scan (-sL) or by disabling pin
 
 ### More useful snippets
 
+#### First and second
+```
+# 1
+sudo nmap -sS -p- --open --min-rate 5000 -n -Pn $ip -oN all_ports.txt
+# example output: 22 and 80 are open
+
+# 2
+nmap -p22,80 -sCV -n $ip -oN info_ports.txt
+
+```
+
+
+
 ```
 nmap -p- --min-rate 1000 -sV $ip
 nmap -sC -sV -oN output.txt $IP

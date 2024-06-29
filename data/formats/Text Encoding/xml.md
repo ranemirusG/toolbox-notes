@@ -1,6 +1,26 @@
 # XML (eXtended Markup Language)
 
 
+XML is closely related to HTML and also supports character encoding using the same numeric escape sequences.
+
+
+
+```
+<stockCheck>
+    <productId>
+        123
+    </productId>
+    <storeId>
+        999 &#x53;ELECT * FROM information_schema.tables
+    </storeId>
+</stockCheck>
+```
+
+
+
+
+
+
 ## Powershell
 
 One-liner to get a list from an xml file (example Notepad++ session.xml)

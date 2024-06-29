@@ -3,7 +3,6 @@
 
 ## Filesystem 'equivalences'
 
-
 What's the equivalent of spark plugs in an electric car?
 
 Windows and Linux are completely different. There are some similarities, but their approach to directory trees differs greatly.
@@ -59,6 +58,11 @@ E, F, G drives = /mnt (and others)
 
 
 
+
+
+
+
+
 ## Windows
 
 `C:\Windows\System32\drivers\etc\hosts`: DNS file
@@ -87,6 +91,12 @@ Windows registry hives are stored in C:\Windows\System32\config. Inside this dir
 `C:\Users\[USERNAME]\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt`: PowerShell history
 
   
+
+
+
+
+
+
 
 
 

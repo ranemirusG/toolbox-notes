@@ -1,5 +1,28 @@
 # URL Encoding
 
+
+URL encoding is utilized to ensure the safe transfer of data in the URL of a web request. It involves substituting characters for their ASCII character code in hexadecimal format, preceded by a percentage symbol (%). This method is vital for any type of web application testing. For instance, encoding the forward-slash character (/), whose ASCII character code is 47, converts it to 2F in hexadecimal, thus becoming %2F in URL encoding.
+
+
+
+Any URL-based input is automatically URL decoded server-side before it is assigned to the relevant variables.
+
+
+
+**Double decoding**: some servers perform two rounds of URL decoding on any URLs they receive. Example:
+```
+[...]/?search=%253Cimg%2520src%253Dx%2520onerror%253Dalert(1)%253E
+``` 
+
+As  WAF only decodes this once, it may not be able to identify that the request is dangerous. If the back-end server subsequently double-decodes this input, the payload will be successfully injected.
+
+
+
+
+
+
+
+
 ## Resources
 
 - 
@@ -23,6 +46,7 @@ print(urllib.parse.urlencode({' ': '+ '}))
 
 New Line: `%0A` / `%0a`
 
+Space: `%20` or `+`
 
 
 ## List

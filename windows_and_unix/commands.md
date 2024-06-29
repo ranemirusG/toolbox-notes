@@ -477,6 +477,12 @@ $PSVersionTable.PSVersion
 wmic logicaldisk get size,freespace,caption # wmic is DEPRECATED
 
 
+Get-PSDrive -PSProvider FileSystem | Select-Object Name, @{Name="Used(GB)";Expression={[math]::round(($_.Used/1GB),2)}}, @{Name="Free(GB)";Expression={[math]::round(($_.Free/1GB),2)}}, @{Name="Total(GB)";Expression={[math]::round(($_.Used/1GB)+($_.Free/1GB),2)}}
+
+
+
+
+
 # Programs
 
 #get installed programs
@@ -556,6 +562,8 @@ REM Display Windows version
 VER
 winver
 
+
+diskpart
 
 
 ```
@@ -2033,6 +2041,8 @@ gps | where Name -match '^c'                                # Abbreviated form o
 Get-Process | Where-Object { $_.MainWindowHandle -ne 0 }
 
 
+# Kill process
+Get-Process | Where-Object { $_.Name -like '*edge*' } | Stop-Process -Force
 
 
 get event id

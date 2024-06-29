@@ -163,9 +163,7 @@ Control Panel > Network and Internet > Network and Sharing Center
 
 
 ## Websites
-<shodan.io>
-<https://dnsdumpster.com/>
-<zoomeye.org>
+
 
 ### Internet Speed
 - Google's built-in speed test (search "internet speed test" in Google)
@@ -202,12 +200,13 @@ Control Panel > Network and Internet > Network and Sharing Center
 
 
 
+
+
+
+
 ## Inspect
 
 
-
-
-### Snippets
 `ipconfig /all;route print;arp -a;`
 
 
@@ -277,16 +276,27 @@ Get-NetTCPConnection
 
 
 # Get my public IP
+
+Historically, DNS services (Akamai, Google Public DNS, OpenDNS, ..) tend to survive much longer and are more stable, more scalable, and generally more looked-after than whatever new hip whatismyip dot-com HTTP service is hot today.
+
+nslookup myip.opendns.com. resolver1.opendns.com
+dig +short myip.opendns.com @resolver1.opendns.com
+
+
+
 Invoke-WebRequest ifconfig.me/ip
 (Invoke-WebRequest -uri "http://ifconfig.me/ip").Content
 (Invoke-WebRequest -UseBasicParsing -URI ifconfig.me).Content
+
+
 curl.exe www.ifconfig.me
 curl ifconfig.me
 curl myexternalip.com/raw
 curl ipecho.net/plain
 curl ifcfg.me
 curl icanhazip.com
-nslookup myip.opendns.com. resolver1.opendns.com
+curl https://ipinfo.io/ip
+
 
 
 https://whatismyipaddress.com
@@ -440,8 +450,18 @@ ip
 ip addr
 ip addr show tun0
 
-iwconfig
+
 ifconfig
+ifconfig -a
+
+ifconfig -s
+netstat -i
+
+iwconfig # Wireless
+
+
+
+
 
 # administration tool for IPv4/IPv6 packet filtering and NAT
 iptables	
@@ -451,7 +471,14 @@ sudo iptables -L -v -n
 
 
 
-tcpdump # packet analyzer that captures and displays network packets.
+# tcpdump
+packet analyzer that captures and displays network packets.
+
+sudo tcpdump -i tun0 port 389
+tcpdump: Is the program or software that is Wireshark except, it's a command line
+version.
+-i: Selecting interface. (Example eth0, wlan, tun0)
+port 389: Selecting the port we are listening on
 
 # To capture all network traffic on a specific interface
 `sudo tcpdump -i <interface_name>`

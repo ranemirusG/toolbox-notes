@@ -28,3 +28,6 @@ admin username. By adding the hashtag, we will comment out the rest: `SELECT * F
 
 
 
+### Concatenate in only one column
+`1 UNION SELECT username || '~' || password FROM `
+

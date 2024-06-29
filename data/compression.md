@@ -9,6 +9,24 @@
 
 
 
+## Powershell
+
+```
+Expand-Archive -Path ".\archive.zip" -DestinationPath "path/to/dir"
+Expand-Archive -Path ".\archive.zip" -DestinationPath "path/to/dir" -Force
+
+# Using .NET Classes
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::ExtractToDirectory("C:\full\path.zip", "C:\full\path\to\dest")
+
+
+
+
+
+
+```
+
+
 ## zip
 
 ```
