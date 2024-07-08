@@ -2164,6 +2164,16 @@ dumpbin /imports file.exe
 
 ## Networking
 
+
+valid PowerShell cmdlets/methods that can be used by malware to download additional files:
+- Invoke-WebRequest
+- Start-BitsTransfer
+- system.Net.WebClient
+- Invoke-RestMethod
+
+
+
+
 ### Settings
 
 #### Windows

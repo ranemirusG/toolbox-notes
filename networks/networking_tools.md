@@ -590,17 +590,18 @@ cat /sys/class/net/*/address
 
 
 
+## Download stuff
+
+
+valid PowerShell cmdlets/methods that can be used by malware to download additional files:
+- Invoke-WebRequest
+- Start-BitsTransfer
+- system.Net.WebClient
+- Invoke-RestMethod
 
 
 
-
-
-
-
-
-
-
-## Invoke-WebRequest (In Powershell `curl` is an alias for this command)
+### Invoke-WebRequest (In Powershell `curl` is an alias for this command)
 
 ```
 

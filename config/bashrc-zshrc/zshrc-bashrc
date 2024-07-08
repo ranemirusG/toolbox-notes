@@ -1,0 +1,11 @@
+# My settings
+
+
+export PATH="$HOME/.local/bin/:$PATH"
+
+# Source all files in ~/.local/zshrc
+for file in ~/.local/zshrc/*; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+
+

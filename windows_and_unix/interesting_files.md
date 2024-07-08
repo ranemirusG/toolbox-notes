@@ -68,15 +68,6 @@ E, F, G drives = /mnt (and others)
 `C:\Windows\System32\drivers\etc\hosts`: DNS file
 `C:\Windows\System32\drivers\etc\networks`: Network Config file
 
-Windows registry hives are stored in C:\Windows\System32\config. Inside this directory we can find the primary hives, such as SECURITY, SOFTWARE, and SYSTEM:
-
-`C:\Windows\System32\config\SAM`: Usernames and Password
-`C:\Windows\System32\config\SECURITY`: Security Log
-`C:\Windows\System32\config\SOFTWARE`: Software Log 
-`C:\Windows\System32\config\SYSTEM`: System Log
-
-
-
 
 `C:\Windows\System32\winevt\`:  Windows Event Logs
 `C:\Windows\repair\SAM`: Backup of User and Password
@@ -93,8 +84,50 @@ Windows registry hives are stored in C:\Windows\System32\config. Inside this dir
   
 
 
+### Hives
+
+Windows registry hives are stored in C:\Windows\System32\config.
+Inside this directory we can find the primary hives, such as SECURITY, SOFTWARE, and SYSTEM:
+
+Powershell: `cd $env:SystemRoot\system32\config`
+CMD: `cd %SystemRoot%\System32\Config`
+
+`C:\Windows\System32\config\SAM`: Usernames and Password
+`C:\Windows\System32\config\SECURITY`: Security Log
+`C:\Windows\System32\config\SOFTWARE`: Software Log 
+`C:\Windows\System32\config\SYSTEM`: System Log
 
 
+Commands:
+```
+
+# View properties of a specific key
+Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion"
+
+
+reg query HKCU
+reg query "HKCU\Software"
+reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.txt" /s
+
+
+reg query HKLM
+reg query HKCR
+reg query HKU
+reg query HKCC
+
+
+
+Get-PSDrive -PSProvider Registry
+
+
+Get-ChildItem -Path HKLM:\
+Get-ChildItem -Path HKCU:\
+Get-ChildItem -Path HKCR:\
+Get-ChildItem -Path HKU:\
+Get-ChildItem -Path HKCC:\
+
+
+```
 
 
 

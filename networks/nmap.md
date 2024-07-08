@@ -144,6 +144,7 @@ Contrary to TCP SYN ping, sending a UDP packet to an open port is not expected t
 ```
 
 
+
 Users can skip the ping step entirely with a list scan (-sL) or by disabling ping (-Pn)
 `-Pn`: tells Nmap to not bother pinging the host before scanning it
 
@@ -190,6 +191,11 @@ nmap -T4 -A -p- $IP
 nmap -A -p- -vv $IP
 nmap -Pn -sC -sV -oA tcp -p- -T4 -vvvvv --reason $IP
 ```
+
+
+
+
+
 
 
 

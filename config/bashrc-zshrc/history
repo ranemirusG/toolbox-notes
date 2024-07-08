@@ -6,7 +6,13 @@ HISTFILE=~/.zsh_history
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
-shopt -s histappend
+# bash
+# shopt -s histappend
+# zsh
+setopt APPEND_HISTORY
+
+
+
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
@@ -15,7 +21,15 @@ HISTFILESIZE=20000
 HISTIGNORE='ls:ll:"ls -alh":pwd:clear:history:[bf]g:exit:cd:cd -:pwd:date:* --help'
 HISTTIMEFORMAT='%F %T '
 
-shopt -s cmdhist
+# save multi-line commands as a single entry
+# bash
+# shopt -s cmdhist
+# zsh
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+
+
+
 
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list

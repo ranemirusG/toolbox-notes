@@ -111,3 +111,58 @@ dirs [-clpv] [+N] [-N]
     
     Exit Status:
     Returns success unless an invalid option is supplied or an error occurs.
+
+
+
+
+
+
+
+
+
+## PowerShell
+
+They are equivalent to the `Push-Location` and `Pop-Location` cmdlets.
+
+
+`Push-Location` and `Pop-Location` are not constrained to just the file system. Now you can use different providers available as PSdrives
+
+
+
+```
+
+# push the current location onto a new stack named Stack2, and then changes the current location to the home directory
+Push-Location ~ -StackName Stack2
+
+
+# View the directory stack
+Get-Location -Stack
+
+```
+
+
+
+
+Use case for named stacks:
+
+```
+$Stack1 = @('C:\Windows\','C:\Users\')
+$Stack2 = @('HKLM:\System\CurrentControlSet\Control\BitlockerStatus','HKCU:\Environment\')
+
+# Create two named location stacks using foreach loop
+
+foreach ($location in $Stack1) {
+    Push-Location -Path $location -StackName 'Stack1'
+}
+
+foreach ($location in $Stack2) {
+    Push-Location -Path $location -StackName 'Stack2'
+}
+
+
+
+
+
+
+
+```
