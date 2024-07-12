@@ -33,8 +33,15 @@ System and program files are (theoretically) nicely segregated on **Windows**, u
 
 
 
-```
 
+
+
+
+
+
+
+
+```
 C drive = /
 
 C:\Windows = /etc, /usr, /var
@@ -63,10 +70,9 @@ E, F, G drives = /mnt (and others)
 
 
 
+
 ## Windows
 
-`C:\Windows\System32\drivers\etc\hosts`: DNS file
-`C:\Windows\System32\drivers\etc\networks`: Network Config file
 
 
 `C:\Windows\System32\winevt\`:  Windows Event Logs
@@ -131,7 +137,26 @@ Get-ChildItem -Path HKCC:\
 
 
 
+### Networking
+
+`C:\Windows\System32\drivers\etc` or `%WINDIR%\System32\drivers\etc`
+`C:\Windows\System32\drivers\etc\hosts`: DNS file
+`C:\Windows\System32\drivers\etc\networks`: Network Config file
+
+Control Panel > Network and Internet > Network and Sharing Center
+
+- C:\inetpub
+
+- Cert:\ (`cd cert:`)
+
 
 
 
 ## Linux
+
+### Networking
+`/etc/hosts`
+`/etc/hosts.allow`
+`/etc/hosts.deny`
+`/etc/resolve.conf`
+

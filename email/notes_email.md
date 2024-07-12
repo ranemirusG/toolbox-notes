@@ -37,6 +37,9 @@ Performs three basic functions:
 - If the outgoing mail can't be delivered it sends the message back to the sender
 
 
+This protocol is used to send emails between servers within the network, or to external networks, such as over the internet. This is just a transport method, to actually download and view emails you need to use an email client and the protocol POP or IMAP.
+
+
 
 
 

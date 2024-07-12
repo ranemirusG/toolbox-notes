@@ -345,3 +345,28 @@ On `notepad` and `WordPad` and `LibreOfficeWriter` you can write the alt code in
 
 
 
+
+
+
+
+
+
+## String to Base64
+
+```powershell
+$stringToEncode = "{"id":1,"admin":true}"
+$encodedString = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($stringToEncode))
+```
+
+
+
+## Decode a Base64-encoded string
+```powershell
+$encodedString = "VEhNe0JBU0U2NF9FTkNPRElOR30="
+$decodedBytes = [System.Convert]::FromBase64String($encodedString)
+$decodedString = [System.Text.Encoding]::UTF8.GetString($decodedBytes)
+```
+
+
+
+

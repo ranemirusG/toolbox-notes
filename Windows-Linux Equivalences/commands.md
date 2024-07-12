@@ -1160,7 +1160,7 @@ Get-ItemProperty -Path "path\to\dir\or\file" -Name Attributes
 ls | Select-Object Name, @{Name="MegaBytes";Expression={$_.Length / 1MB}}
 ls | Select-Object Name, @{Name="KiloBytes";Expression={$_.Length / 1KB}}
 
-# Get the size of a file
+# Get the size of a file / Get file size
 (Get-Item myfile.txt).Length
 # bytes
 (Get-ChildItem -Path "path/to/dir" -Recurse | Measure-Object -Property Length -Sum).Sum
