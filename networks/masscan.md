@@ -39,6 +39,25 @@ masscan 10.0.0.0.1 -pU 53
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Timing and performance
 
 ```
@@ -79,6 +98,26 @@ masscan 10.0.0.1 --packet-trace
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Output 
 
 ```
@@ -108,7 +147,28 @@ masscan --readscan bin-test.scan -oX bin-test.xml
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Complete commands
+
+sudo masscan -p1-65535,U:1-65535 $ip --rate=1000 -e tun0 --output-filename <filename>
+
+
 
 ```
 # Quick port identification
@@ -143,6 +203,19 @@ masscan <target> -p 21,22,23,25,53,80,110,111,135,139,143,443,445,993,995,1723,3
 sudo masscan <target/16> -p 22 --rate 2000 -oX output_port_22.xml
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

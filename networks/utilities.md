@@ -1,4 +1,4 @@
-# Networking Tools
+# Networking Utilities
 
 
 
@@ -90,7 +90,7 @@ Test-Connection
 
 ## Trace Route / traceroute / tracert / route
 Indicates the number of hops (routers) between your system and the target host (Information about the path a packet takes)
-Sends ICMP with increasing TTL to “trick” the routers into revealing their IP addresses
+Sends ICMP with increasing TTL to "trick" the routers into revealing their IP addresses
 Some routers don’t return a reply
 
 

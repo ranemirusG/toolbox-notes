@@ -647,6 +647,7 @@ psshutdown -d -t 0
 
 # find System Uptime
 (get-date) - (gcim Win32_OperatingSystem).LastBootUpTime
+systeminfo | find "System Boot Time" # cmd
 
 
 ```

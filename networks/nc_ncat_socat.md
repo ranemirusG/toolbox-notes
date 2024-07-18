@@ -13,8 +13,12 @@ The clearest definition of Netcat is from *Hobbit* himself: a simple "utility wh
 
 
 
+```
+# check the availability of a specific port
+nc -zv $ip $port
 
 
+```
 
 
 

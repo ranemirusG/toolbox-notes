@@ -8,7 +8,7 @@
 - <https://github.com/tmux/tmux/wiki/FAQ>
 - <https://leanpub.com/the-tao-of-tmux/read>
 - Tmux cheatasheet <https://gist.github.com/MohamedAlaa/2961058>
-
+- <https://www.youtube.com/watch?v=QxTse5Elq8s>
 
 
 

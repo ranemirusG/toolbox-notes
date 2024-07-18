@@ -38,8 +38,10 @@ curl --head --location [SHORTURL] | grep -i location
 
 
 ## Misc
+
 ### shows the wheater in the command line!
 curl wttr.in/BuenosAires
+
 ### word definition
 curl dict://dict.org/m:curl
 

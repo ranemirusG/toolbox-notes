@@ -75,7 +75,6 @@ ip addr show | grep 'inet ' | awk '{print $2}' | cut -d/ -f1
 
 ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1
 
-hostname -I
 
 
 
@@ -86,11 +85,17 @@ ip
 ip addr
 ip addr show tun0
 
+# brief (-br) and colored (-c) summary of all addresses
+ip -br -c a | grep UP
 
+
+
+hostname -I
 ifconfig
 ifconfig -a
-
 ifconfig -s
+
+
 netstat -i
 
 iwconfig # Wireless

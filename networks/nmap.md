@@ -73,6 +73,8 @@ Don't forget to enumerate UDP services, while you're Pentesting a Network!
 ## Snippets
 
 
+
+
 ### Default Scan
 
 Default scan: `[sudo] nmap $IP`
@@ -84,6 +86,11 @@ If no alternative flag is specified in the command syntax, nmap will scan the mo
 	`nmap 64.13.134.-`
 	`nmap 64.13.134.0-255`
 	These four commands all ask Nmap to scan the 256 IP addresses from 64.13.134.0 through 64.13.134.255. In other words, they ask to scan the class C sized address space surrounding scanme.nmap.org.
+
+
+
+
+
 
 
 
@@ -108,6 +115,9 @@ nmap -n -sL $IP
 Host Discovery
 Discover online hosts without port-scanning the live systems
 Add `-sn` if you are only interested in host discovery without port-scanning. Omitting -sn will let Nmap default to port-scanning the live hosts.
+
+Note: in previous releases of Nmap, `-sn` was known as `-sP`.
+
 
 ```
 nmap -sn TARGETS
@@ -166,6 +176,11 @@ nmap -p22,80 -sCV -n $ip -oN info_ports.txt
 
 
 ```
+nmap -p- --open --min-rate 5000 -n -Pn -sS -vvv [IP]
+
+
+nmap -p- -sS -sC -sV --min-rate 5000 -n -vvv -Pn [IP]
+
 nmap -p- --min-rate 1000 -sV $ip
 nmap -sC -sV -oN output.txt $IP
 sudo nmap -Pn -p- --min-rate 2000 -sC -sV -oN nmap-scan.txt $ip
@@ -274,7 +289,7 @@ Note: `-sV` will force Nmap to proceed with the TCP 3-way handshake and establis
 `-p1-100` a range
 `-p-` all 65535 ports
 
-`-F` most common 100 ports
+`-F` (fast) most common 100 ports
 
 `--top-ports 10`
 `--exclude $IP`

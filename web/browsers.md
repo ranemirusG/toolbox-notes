@@ -6,6 +6,7 @@
 - <https://www.chromium.org/Home/>
 - <https://chromium.googlesource.com/chromium/src.git>
 - <https://blog.chromium.org/>
+- <https://www.youtube.com/@ChromeDevs>
 - <https://peter.sh/experiments/chromium-command-line-switches/>
 - "How browsers work | JSUnconf 2017" <https://www.youtube.com/watch?v=0IsQqJ7pwhw>
 
