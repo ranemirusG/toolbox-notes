@@ -25,25 +25,30 @@ IPv6 addresses the numerical version needs to be within square brackets:
 
 
 
-## Commands
+curl --list-only [IP]
+curl -s [IP]
 
-### Verbose/Debug
+## Download everything in directory
+```
+	
+
+for /f %%f in ('curl -s -l -u user:pass ftp://ftp.myftpsite.com/') do curl -O -u user:pass ftp://ftp.myftpsite.com/%%f
+
+
+
+```
+
+
+
+## Verbose/Debug
 curl --dump-header headers.txt curl.se
 curl -v ftp://ftp.example.com/
 curl --trace trace.txt curl.se
 
-### check short urls link
+## check short urls link
 curl --head --location [SHORTURL] | findstr Location
 curl --head --location [SHORTURL] | grep -i location
 
-
-## Misc
-
-### shows the wheater in the command line!
-curl wttr.in/BuenosAires
-
-### word definition
-curl dict://dict.org/m:curl
 
 
 
@@ -75,7 +80,9 @@ curl ftp://name:passwd@ftp.server.example:port/full/path/to/file
 curl -u name:passwd ftp://ftp.server.example:port/full/path/to/file
 
 
-## UPLOAD
+## UPLOAD Files
+curl -F "file=@/home/user/example.png" -F "submit=Upload File" http://example.com/upload.php
+
 curl -T uploadfile -u user:passwd ftp://ftp.example.com/myfile
 
 
@@ -110,6 +117,16 @@ Certificates
 
 
 
+
+
+
+## Misc
+
+### shows the wheater in the command line!
+curl wttr.in/BuenosAires
+
+### word definition
+curl dict://dict.org/m:curl
 
 
 
@@ -164,6 +181,28 @@ Certificates
 
 # 2 - GNU Wget
 is better to download recursive resources
+
+
+
+
+## Download everything in directory
+```
+wget -r -np -nH --cut-dirs=1 [URL]
+wget -r -np -nH --cut-dirs=1 -A "*" [URL]
+
+wget \
+	--no-verbose \
+	--no-parent \
+	--recursive \
+	--level=1 \
+	--no-directories \
+	--user=login \
+	--password=pass \
+	ftp://ftp.myftpsite.com/
+
+
+```
+
 
 ## donwload full website with wget
 If you ever need to download an entire Web site, perhaps for off-line viewing,

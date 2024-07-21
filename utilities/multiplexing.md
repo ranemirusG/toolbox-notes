@@ -1,4 +1,6 @@
-# Multiplexers
+# Multiplexing
+
+See also: `ssh` <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>
 
 ## Resources
 - Both `tmux`and `screen` man pages are pretty good
