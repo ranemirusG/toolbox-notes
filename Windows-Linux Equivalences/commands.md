@@ -1111,6 +1111,9 @@ find /path/to/search -type f -mtime -1 ! -user root -exec ls -l {} \;
 #### PowerShell
 
 ```
+gci env:
+
+
 
 ```
 
@@ -1774,7 +1777,7 @@ net session # cmd
 
 
 whoami /USER # cmd
-whoami /priv # cmd / see privileges
+whoami /priv # cmd / see privileges / show all user rights assigned to the current user
 net user # cmd
 Get-LocalUser
 Get-LocalUser | Format-Table Name, Enabled, LastLogon

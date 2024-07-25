@@ -24,3 +24,16 @@ Obfuscation via multiple encodings
 This is then decoded further to form a functioning XSS payload:
 `<a href="javascript:alert(1)">Click me</a>`
 
+
+
+
+- Examples:
+    Leftwards Arrow U+2190 ←
+    Upwards Arrow U+2191 ↑
+    Rightwards Arrow U+2192 →
+    Downwards Arrow U+2193 ↓
+	
+
+
+
+

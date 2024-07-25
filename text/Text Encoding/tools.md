@@ -21,6 +21,45 @@
 
 
 
+# Linux
+- Use `ctrl+shift+U` then type the four-character code and press Space or Enter
+- Settings > Keyboard > Compose Keys
+
+## iconv
+```bash
+iconv -f UTF-16 -t UTF-8 out.txt > out-utf8.txt
+```
+
+
+## dos2unix
+DOS/Mac to Unix and vice versa text file format converter
+
+
+
+# Windows
+`charmap.exe` on command line or `WIN + R` and type charmap
+
+On `notepad` and `WordPad` and `LibreOfficeWriter` you can write the alt code in hexadecimal. Example: `40` then select it and press `Alt+x` and it converts to `@`.
+
+# Notepad++
+<https://github.com/notepad-plus-plus/notepad-plus-plus/issues/10581>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # character to UTF-16
 
 ```javascript
@@ -28,6 +67,19 @@
 'a'.charCodeAt()
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -60,6 +112,34 @@ foreach ($num in $decimalNumbers) {
     [char]$num
 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # binary to text
@@ -114,6 +194,22 @@ foreach ($binary_char in $binary_list) {
 
 Write-Host "Converted text: $text"
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -210,22 +306,13 @@ https://html.spec.whatwg.org/multipage/named-characters.html#named-character-ref
 
 
 
-# ASCII
-From "Pequeno Manual do Programador GNU/Bash" (Blau Araujo, 2020):
 
-    Quando trabalhamos com faixas de caracteres, especialmente com strings que
-    contenham caracteres não utilizados na língua inglesa, é muito importante ter
-    em mente que a tabela ASCII não contém caracteres acentuados nem cedilha.
-    Por exemplo:
-    ```
-    :~$ var=maçã
-    :~$ [[ $var == ma[a-z][a-z] ]]; echo $?
-    1
-    ```
-    Não houve casamento com o padrão porque ç e ã não existem na tabela
-    ASCII.
 
-<https://asciiflow.com>
+
+
+
+
+
 
 
 
@@ -283,68 +370,6 @@ print(ord('I'))
 
 
 
-# POSIX
-
-Classes:
-[:alnum:]
-[:alpha:]
-
-
-
-
-
-
-
-
-
-
-
-
-# Unicode
-- Examples:
-    Leftwards Arrow U+2190 ←
-    Upwards Arrow U+2191 ↑
-    Rightwards Arrow U+2192 →
-    Downwards Arrow U+2193 ↓
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Linux
-- Use `ctrl+shift+U` then type the four-character code and press Space or Enter
-- Settings > Keyboard > Compose Keys
-
-
-
-# Windows
-`charmap.exe` on command line or `WIN + R` and type charmap
-
-On `notepad` and `WordPad` and `LibreOfficeWriter` you can write the alt code in hexadecimal. Example: `40` then select it and press `Alt+x` and it converts to `@`.
-
-# Notepad++
-<https://github.com/notepad-plus-plus/notepad-plus-plus/issues/10581>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -357,6 +382,10 @@ On `notepad` and `WordPad` and `LibreOfficeWriter` you can write the alt code in
 $stringToEncode = "{"id":1,"admin":true}"
 $encodedString = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($stringToEncode))
 ```
+
+
+
+
 
 
 

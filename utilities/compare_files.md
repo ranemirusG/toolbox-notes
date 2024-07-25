@@ -1,34 +1,41 @@
-# comm
-## display the unique lines in `file1`, the unique lines in `file2` and the lines found in both files respectively.
+# Compare files
+
+## cmp
+Compare two files byte by byte
+
+
+
+## comm
+### display the unique lines in `file1`, the unique lines in `file2` and the lines found in both files respectively.
 `comm file1 file2`
 
 
-## display only the lines that were found in both files
+### display only the lines that were found in both files
 `comm -12 file1 file2`
 
-## supress lines that appear in both files
+### supress lines that appear in both files
 `comm -3 passwords.old passwords.new`
 
 
 
 
 
-# diff
+## diff
 
 - <https://unix.stackexchange.com/questions/81998/understanding-of-diff-output>
 
-## context format
+### context format
 `diff -c file1 file2`
 
 
-## unified format
+### unified format
 `diff -u file1 file2`
 
 
 
 
 
-# another idea using `sort` and `grep`
+## another idea using `sort` and `grep`
 ```
 bandit17@bandit:~$ sort passwords.old passwords.new | uniq -u
 kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
@@ -40,4 +47,4 @@ kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 
 
 
-# see also vimdiff
+## see also vimdiff

@@ -22,9 +22,16 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 
 
-
-
 ```
+
+
+
+
+
+
+
+
+
 
 
 ## zip
@@ -38,10 +45,30 @@ unzip filename.zip -d /path/to/destination_directory
 
 ```
 
+
+
+
+
+
 ## gzip
 
 
+
+
+
+
 ## bzip2
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -75,3 +102,29 @@ Volume Index = 0
 
 
 
+
+
+
+
+
+
+
+## tar
+
+```
+# Uncompress / Extract
+tar -xf file.tar
+
+# List content without extracting
+tar -tf file.tar
+
+
+
+
+
+
+
+
+
+
+```
