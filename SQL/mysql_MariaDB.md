@@ -3,7 +3,7 @@
 
 
 MariaDB is a community-developed MySQL version.
-Port 3306
+Default Port: 3306
 
 
 
@@ -11,10 +11,26 @@ Port 3306
 ## Credentials
 Default `root` without password
 
+```
+MySQL [(none)]> select load_file("/etc/shadow");
+
+
+```
+
 
 
 ## Basic commands
-Example `mysql -h 10.129.79.81 -u root`
+- <https://www.mysqltutorial.org/mysql-cheat-sheet/> 
+
+```
+# -h for remote host
+mysql -h [IP] -u root
+mysql -h [IP] -u root -p
+
+mysql [IP] -u root -p
+
+```
+
 
 ```
 
@@ -26,4 +42,3 @@ SELECT * FROM {table_name};   	: Prints out all the data from the table {table_n
 ```
 
 
-- <https://www.mysqltutorial.org/mysql-cheat-sheet/> 

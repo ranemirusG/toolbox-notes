@@ -27,7 +27,7 @@ Properly configured SPF, DKIM, and DMARC will help other organizations better de
 ### SMTP
 Simple Mail Transfer Protocol (SMTP) is used to communicate with an MTA server.
 
-Ports: 25, 587, 2525, 465
+Ports: 25, 465, 587, 2525
 
 
 Performs three basic functions:

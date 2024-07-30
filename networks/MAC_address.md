@@ -14,6 +14,11 @@ Get-NetAdapter -Name "Ethernet 2"
 ## Linux
 
 ```
+ip addr show
+ip a s
+ip link show
+
+
 cat /sys/class/net/*/address
 
 ```

@@ -1,6 +1,8 @@
 # FPT
 
+
 Default Port: 21
+See SFTP <https://serverfault.com/questions/74176/what-port-does-sftp-use>
 RFC 959
 
 A typical FTP session operates using two channels: a command (sometimes called the control) channel a data channel. This separation of command information and data into separate channels is a way of being able to send commands to the server without having to wait for the current data transfer to finish.
@@ -61,12 +63,21 @@ bye
 
 
 
+## Tools
+
+### nmap
+
+```
+# Try anonymous
+nmap [IP] -p21 --script ftp-anon
+
+# Brute Force password for list of users
+nmap [IP] --script brute-force --script-args userdb=[USERS FILE] -p 21
 
 
 
 
-
-
+```
 
 
 

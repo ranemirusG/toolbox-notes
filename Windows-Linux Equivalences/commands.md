@@ -235,6 +235,7 @@ help &REM list all commands
 
 ```
 info [COMMAND]
+whatis [COMMAND]
 
 man [COMMAND]
 # perform a keyword search

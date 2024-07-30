@@ -60,6 +60,8 @@ ipconfig /all
 Get-NetIPConfiguration
 
 
+Get-NetAdapter
+
 Get-NetTCPSetting
 Get-NetTCPConnection
 
@@ -71,19 +73,17 @@ Get-NetTCPConnection
 ## Linux
 
 ```
+# information about the network interfaces and their IP addresses configured on a device 
+
+ip
+ip addr
+ip addr show tun0
+
 ip addr show | grep 'inet ' | awk '{print $2}' | cut -d/ -f1
 
 ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1
 
 
-
-
-
-
-# information about the network interfaces and their IP addresses configured on a device 
-ip
-ip addr
-ip addr show tun0
 
 # brief (-br) and colored (-c) summary of all addresses
 ip -br -c a | grep UP

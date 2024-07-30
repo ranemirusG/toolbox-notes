@@ -1,6 +1,10 @@
 # Wireshark
 
 
+
+`sudo wireshark -i eth0`
+
+
 ## "Getting our bearings"
 
 Go to `Statistics > Endpoints` to check the Endpoints table to get a feel for what IP addresses may be involved. 
@@ -19,6 +23,14 @@ If a host has been transmitting many packets and bytes to an unidentified IP add
 - Endpoints
 	useful in sorting hosts by their network activity, by either transmission or receiving volume, or by both.
 	You can switch to other protocols, such as TCP to have traffic sorted by ports and Ethernet to have traffic sorted by MAC addresses. Same with all other statistics windows, you can right-click on a host to apply it as a filter.
+
+
+
+
+
+
+
+
 
 
 ## Follow streams

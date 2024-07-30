@@ -36,6 +36,22 @@ for /L %i in (<start_port>,1,<end_port>) do echo "" | nc -vz <host> %i
 
 
 
+## arp
+
+### Windows
+
+```powershell
+arp -a
+
+```
+
+
+### Linux
+```bash
+arp -a -n
+
+
+```
 
 
 
@@ -176,6 +192,7 @@ netstat -sp udp
 netstat -e -t 5 # Updated Network Stats
 netstat -an | grep LISTEN # list open network ports
 
+netstat -antp # active TCP connections
 
 netstat -lntu
 	# -l = only services which are listening on some port

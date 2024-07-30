@@ -12,6 +12,13 @@
 
 
 
+
+
+
+
+
+
+
 ## Tips
 ```
 # Create a nmap dir in the project and save the output in a file there
@@ -42,12 +49,12 @@ Note: A fourth format is script kiddie (don't use that, it's basically a joke)
 
 
 
-### @7h3h4ckv157
-A small reminder: 
-Don't forget to enumerate UDP services, while you're Pentesting a Network! 
+@7h3h4ckv157 A small reminder: 
+Don't forget to enumerate UDP services, while you're pentesting a Network! 
 `sudo nmap -sU -T4 <TARGET>`
 
 
+- Scan a closed port to see the output (if it is filtered, target must be up with a firewall)
 
 
 
@@ -63,22 +70,11 @@ Don't forget to enumerate UDP services, while you're Pentesting a Network!
 
 
 
+## Default Scan
 
-
-
-
-
-
-
-## Snippets
-
-
-
-
-### Default Scan
-
-Default scan: `[sudo] nmap $IP`
-If no alternative flag is specified in the command syntax, nmap will scan the most common 1000 TCP ports for active services.
+Default scan: `nmap [IP]`
+If root,nmap will perform a SYN scan (doesn't complete the 3-way handshake) the most common 1000 TCP ports for active services.
+If regular user, nmap will perform a TCP connect (complete the 3-way handshake) scan the most common 1000 TCP ports for active services.
 
 - Example:
 	`nmap scanme.nmap.org/24`
@@ -94,7 +90,18 @@ If no alternative flag is specified in the command syntax, nmap will scan the mo
 
 
 
-### First Scan
+
+
+
+
+
+
+
+
+
+
+
+## First Scan
 Enumerate targets, discover live hosts, and use reverse-DNS to find interesting names
 
 
@@ -112,15 +119,22 @@ nmap -n -sL $IP
 
 
 
-Host Discovery
+#### Host Discovery
 Discover online hosts without port-scanning the live systems
 Add `-sn` if you are only interested in host discovery without port-scanning. Omitting -sn will let Nmap default to port-scanning the live hosts.
 
-Note: in previous releases of Nmap, `-sn` was known as `-sP`.
+Note: in previous releases of Nmap, `-sn` was known as `-sP`. (Ping scan or Ping sweep)
 
 
 ```
 nmap -sn TARGETS
+
+# eJPT
+nmap -sn -v -T4 [IP]
+nmap -sn -PS21,22,25,80,445,3389,8080 -T4 [IP]
+nmap -sn -PS21,22,25,80,445,3389,8080 -PU137,138 -T4 [IP] # PU added for Windows NetBIOS
+
+
 
 # Host Discovery using ICMP
 echo request, timestamp or netmask
@@ -160,7 +174,15 @@ Users can skip the ping step entirely with a list scan (-sL) or by disabling pin
 
 
 
-### More useful snippets
+
+
+
+
+
+
+
+
+### Useful snippets
 
 #### First and second
 ```
@@ -208,6 +230,35 @@ nmap -Pn -sC -sV -oA tcp -p- -T4 -vvvvv --reason $IP
 ```
 
 
+# El pinguino de Mario
+
+```
+# Escaneo rapido pero ruidoso
+
+nmap -p- --open --min-rate 5000 -T5 -sS -Pn -n -v [IP] | grep -E "^[0-9]+\/[a-z]+\s+open\s+[a-z]+"
+
+#  Escaneo Normal
+nmap -p- --open $ip | grep -E "^[0-9]+\/[a-z]+\s+open\s+[a-z]+"
+	   
+	   
+# Escaneo silencioso (Puede tardar un poco mas de lo normal)"
+nmap -p- -T2 -sS -Pn -f $ip | grep -E "^[0-9]+\/[a-z]+\s+open\s+[a-z]+"
+	   
+	   
+# Escaneo Completo
+nmap -p- -sS -sV -sC --min-rate 5000 -n -Pn $ip
+       
+# Escaneo de protocolos UDP
+nmap -sU --top-ports 200 --min-rate=5000 -n -Pn $ip
+
+```
+
+
+
+
+
+
+	  
 
 
 
@@ -225,18 +276,26 @@ nmap -Pn -sC -sV -oA tcp -p- -T4 -vvvvv --reason $IP
 
 
 
-
-
-
-
-### Second Scan
+## Second Scan
 
 Run a version scan with default scripts to enumerate these ports further
 
 ```
+
+nmap -T4 -sS -sV -p- [IP]
+nmap -T4 -sS -sV -O -p- -T4 [IP]
+nmap -T4 -sS -A -p- -T4 [IP]
+nmap -T4 -sS -sV --version-intensity [0-9] -p- [IP]
+
+
+
 nmap -sC -sV -p80,6379 $IP`
 nmap -A -Pn -T4 -p21,80,2222 $IP
 nmap -p80,22 $IP -sC
+
+
+# Banner grabbing
+nmap -Pn -sV -p 80 [IP]
 
 ```
 
@@ -244,6 +303,7 @@ nmap -p80,22 $IP -sC
 Service detection and OS detection
 
 `-O` (Uppercase): OS Detection
+`-O --osscan-guess` more agressive
 
 Some ports are used by default by certain services. Others might be non-standard, which is why we will be using the service detection flag -sV to determine the name and description of the identified services.
 
@@ -300,19 +360,22 @@ Note: `-sV` will force Nmap to proceed with the TCP 3-way handshake and establis
 
 
 ### Timing
-`-T0` is the slowest (paranoid), while `-T5` (insanme) is the fastest.
+`-T0` is the slowest (paranoid), while `-T5` (insanme) is the fastest. If you don’t specify any timing, Nmap uses normal -T3
 
-If you don’t specify any timing, Nmap uses normal -T3
-
-To avoid IDS alerts, you might consider -T0 or -T1
+To avoid IDS alerts, you might consider `-T0` or `-T1`
 
 Use --min-rate and --max-rate together to keep the rate inside a certain range.
 
 
-### Control packet rate and parallelization
 
 `--min-rate`
 `--max-rate 10` or `--max-rate=10`
+
+`--host-timeout 30s` (30 seconds - RECOMMENDED)
+`--host-timeout 5s` (five seconds)
+`--host-timeout 2m` (2 minutes)
+
+`--scan-delay`
 
 --max-parallelism <numprobes>
 
@@ -343,36 +406,46 @@ Use --min-rate and --max-rate together to keep the rate inside a certain range.
 ## Scripting
 Nmap Scripting Engine (NSE) in Lua	
 
+Location: `/usr/share/nmap/scripts/`
+
+Update database: `nmap --script-updatedb`
+
+
 Ways of searching in Kali Linux:
-- `grep "ftp" /usr/share/nmap/scripts/script.db`
-- `ls -l /usr/share/nmap/scripts/*ftp*`
+```
+ls -l /usr/share/nmap/scripts/*ftp*
+ls -l /usr/share/nmap/scripts/ | grep -e "http"
+grep "ftp" /usr/share/nmap/scripts/script.db
+```
+
+
+Get help about script: `nmap --script-help=[SCRIPT NAME]`
+
 
 `-sC` use defaults scripts (same as `--script=default`). See: <https://nmap.org/nsedoc/categories/default.html>
 
-Categories examples:
-`--script=safe`
-`--script=discovery`
-and so on...
-
-#### Specify script by name
-`--script "SCRIPT-NAME"`
-
-#### Specify script by pattern
-`--script "ftp*"`
 
 
 
+Categories:
+	- auth
+	- broadcast
+	- brute
+	- default
+	- discovery
+	- dos
+	- exploit
+	- external
+	- fuzzer
+	- intrusive
+	- malware
+	- safe
+	- version
+	- vuln
 
+`--script=[CATEGORY]`
 
-
-
-
-
-
-
-
-
-
+- <https://nmap.org/nsedoc/categories/>
 
 
 
@@ -384,8 +457,35 @@ and so on...
 
 
 
-## Firewalls 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Firewall Detection and IDS Evasion
+
+
+Here the ACK Scan is useful. Example: `nmap -Pn -sA -p[PORTS] [IP]`
+
+`-f --data-length 200`
+
+`-D` spoof the IP address of the gateway
+
+`-g` change the source port of our scan to make it look less suspicious
+
+
+```
 Evasion Approach								Nmap Argument
 ======= ========								==== ========
 Hide a scan with decoys							-D DECOY1_IP1,DECOY_IP2,ME
@@ -403,13 +503,25 @@ Specify packet length							--data-length NUM
 Set IP time-to-live field						--ttl VALUE
 Send packets with specified IP options			--ip-options OPTIONS
 Send packets with a wrong TCP/UDP checksum		--badsum
-
+```
 
 
 
 --scan-delay <time>ms:- used to add a delay between packets sent. This is very useful if the network is unstable, but also for evading any time-based firewall/IDS triggers which may be in place.
 
 --badsum:- this is used to generate in invalid checksum for packets. Any real TCP/IP stack would drop this packet, however, firewalls may potentially respond automatically, without bothering to check the checksum of the packet. As such, this switch can be used to determine the presence of a firewall/IDS.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -457,12 +569,14 @@ No need to complete the TCP 3-way handshake; instead, it tears down the connecti
 ### UDP Scan
 UDP port scan takes longer than TCP port scans. 
 
-`nmap -sU TARGET`
+`nmap -sU [IP]`
+`nmap -Pn -sU -p53,137,138,139 [IP]`
+`nmap -sU --top-ports 25 [IP]`
 
 We expect to get an ICMP packet of type 3, destination unreachable, and code 3, port unreachable. In other words, the UDP ports that don’t generate any response are the ones that Nmap will state as open.
 
 
-En Wireshark:
+On Wireshark:
 
 "icmp.type == 3": This filter matches ICMP packets based on the ICMP type field. ICMP type 3 represents the Destination Unreachable message.
 
