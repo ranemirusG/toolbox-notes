@@ -300,6 +300,12 @@ print "$decoded_text\n";
 ```
 
 
+
+
+
+
+
+
 # HTML
 https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references
 
@@ -308,7 +314,10 @@ https://html.spec.whatwg.org/multipage/named-characters.html#named-character-ref
 
 
 
-
+## hex to decimal
+```bash
+printf "%d\n" 0x1A3F
+```
 
 
 

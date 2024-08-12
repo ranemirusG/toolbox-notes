@@ -18,5 +18,12 @@ Client error responses (400 – 499)
 Server error responses (500 – 599)
 
 
+## HTTP File Serves (HFS)
+Is a web server that is designed for file & document sharing. Typically run on TCP port 80 and utilize the HTTP protocol for underlying communication.
+
+Rejetto HFS is a popular free and open source HTTP file server that can be setup on both Windows and Linux.
+
+Rejetto HFS V2.3 is vulnerable to a remote command execution attack.
+
 
 

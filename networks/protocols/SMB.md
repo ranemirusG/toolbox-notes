@@ -94,6 +94,11 @@ exit
 
 
 
+
+
+
+
+
 ## Tools
 
 
@@ -116,7 +121,7 @@ smbclient -L $ip
 
 smbclient -N -L \\\\{TARGET_IP}\\
 # -N: No password
-# -L : This option allows you to look at what services are available on a serve
+# -L : This option allows you to look at what services are available on a server
 
 
 smbclient \\\\$ip\\C$
@@ -126,10 +131,13 @@ smbclient //[IP]/Public -N
 # Access share 
 smbclient \\\\[IP]\\sharename -U [USERNAME]
 
+
 # Try in user share (with password)
 smbclient //[IP]/jane -U jane
 smbclient //[IP]/admin -U admin
 
+# list shares
+smbclient - L //[IP] -U [USERNAME]
 
 
 
@@ -254,4 +262,78 @@ enum4linux -G $ip
 
 # Look for users SID
 enum4linux -r -u [USERNAME] -p [PASSWORD] $ip
-``
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### MSF / Metasploit
+
+exploit/linux/samba/is_known_pipename
+
+
+
+
+
+
+
+
+
+
+
+## PSExec
+
+PsExec is a lightweight telnet-replacement developed by Microsoft that allows you execute processes on remote windows systems using any user’s credentials.
+
+PsExec authentication is performed via SMB.
+
+We can use the PsExec utility to authenticate with the target system legitimately and run arbitrary commands or launch a remote command prompt.
+
+
+
+`PsExec.exe` on Windows
+
+`psexec.py` python tool: `psexec.py Administrator@[IP] cmd.exe`
+
+
+
+
+
+## MS17-010 EternalBlue
+
+check if target is vulnerable:
+with nmap
+```
+nmap -sV -p 445 --script=smb-vuln-ms17-010 [IP]
+```
+
+with MSF
+```
+auxiliary/scanner/smb/smb_ms17_010
+
+exploit/windows/smb/ms17_010_eternalblue
+```
+
+
+
+
+
+
+
+
+

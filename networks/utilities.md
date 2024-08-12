@@ -14,8 +14,14 @@
 
 ipconfig /all;route print;arp -a;
 
-
 for /L %i in (<start_port>,1,<end_port>) do echo "" | nc -vz <host> %i
+
+
+
+# The ARP cache contains IP-to-MAC address mappings for devices your system has communicated with recently
+Get-NetNeighbor | Select-Object -Property IPAddress
+
+
 
 
 ```

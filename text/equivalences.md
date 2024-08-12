@@ -5,6 +5,31 @@ Crosswalk between different editors.
 
 
 
+
+## Links
+
+### Vim
+`gx` open in browser
+`gf` with the cursor over the path
+
+### Notepad++
+
+#### Open hyperlink in browser
+F5 > `$(CURRENT_WORD)` > choose a shortcut
+Then just highlight the file and press the shortcut
+
+#### Open file in notepad
+Put the cursor over the path > `Shift+F10` > Open file 
+
+
+See <https://superuser.com/questions/447978/open-links-in-notepad-with-keyboard>
+
+
+
+
+
+
+
 ## Sessions
 
 ### Vim

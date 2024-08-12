@@ -471,6 +471,11 @@ printenv
 #### PowerShell
 
 ```
+
+# get system information and save to file
+msinfo32 /report ./my_report
+
+
 # PowerShell version
 $PSVersionTable.PSVersion
 

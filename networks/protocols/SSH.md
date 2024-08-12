@@ -1,5 +1,19 @@
 # SSH
 
+Port 22
+
+
+`libssh` is a multiplatform C library implementing the SSHv2 protocol on client and server side.
+
+`libssh` V0.6.0-0.8.0 is vulnerable to an authentication bypass vulnerability in the libssh server code that can be exploited to execute commands on the target server.
+
+
+
+
+## Permissions
+chmod 0400 [SSH KEY]
+
+
 
 ## Config files
 
