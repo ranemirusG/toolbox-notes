@@ -1,5 +1,6 @@
 # URL Encoding
 
+URL encoding, sometimes referred to as percent encoding, is used to convert non-ASCII and reserved characters in URLs, such as converting a space to `%20`.
 
 URL encoding is utilized to ensure the safe transfer of data in the URL of a web request. It involves substituting characters for their ASCII character code in hexadecimal format, preceded by a percentage symbol (%). This method is vital for any type of web application testing. For instance, encoding the forward-slash character (/), whose ASCII character code is 47, converts it to 2F in hexadecimal, thus becoming %2F in URL encoding.
 
@@ -25,8 +26,9 @@ As  WAF only decodes this once, it may not be able to identify that the request 
 
 ## Resources
 
-- 
-<https://blog.lunatech.com/posts/2009-02-03-what-every-web-developer-must-know-about-url-en
+- <https://www.w3schools.com/tags/ref_urlencode.asp>
+- <https://www.url-encode-decode.com/>
+- <https://blog.lunatech.com/posts/2009-02-03-what-every-web-developer-must-know-about-url-en
 coding>
 
 

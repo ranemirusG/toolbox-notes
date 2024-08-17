@@ -44,6 +44,18 @@ Get-Process -Id (Get-NetUDPEndpoint -LocalPort YourPortNumberHere).OwningProcess
 
 ### List open ports / Check if port is open
 
+```
+netstat -ano | findstr :[PORT]
+tasklist /FI "PID eq <PID>"
+
+```
+
+
+
+
+
+
+
 ```powershell
 tnc HOST_NAME -port PORT_NUMBER
 Test-NetConnection -Port 9090
@@ -114,6 +126,20 @@ for ($port = $startPort; $port -le $endPort; $port++) {
 
 
 ## Linux
+
+
+### check what service is listening on PORT
+```
+sudo netstat -tuln | grep [PORT]
+sudo ss -tuln | grep [PORT]
+sudo lsof -i :[PORT]
+
+
+
+```
+
+
+
 
 ### lsof
 

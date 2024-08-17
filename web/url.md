@@ -36,7 +36,8 @@ curl --head --location [SHORTURL] | grep -i location
 
 # Resources
 
-https://www.w3.org/
-https://schema.org/
-https://www.internetsociety.org/
-https://www.lacnic.net/
+- <https://daniel.haxx.se/blog/2016/05/11/my-url-isnt-your-url/>
+- <https://www.w3.org/>
+- <https://schema.org/>
+- <https://www.internetsociety.org/>
+- <https://www.lacnic.net/>

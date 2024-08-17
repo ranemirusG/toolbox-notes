@@ -100,7 +100,7 @@ curl https://example.com/ -H "User-agent;" ---->semicolon CUSTOM HEADER
 
 
 -d Sends  the  specified data  in  a POST request
-curl -d "nombre=test" -d "clave=asdf"  http://subarukou.dip.jp/saky/login_action.php
+curl -d "nombre=test" -d "clave=asdf"  http://$IP/login_action.php
 
 
 avoid -X

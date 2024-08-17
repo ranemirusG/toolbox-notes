@@ -1,9 +1,8 @@
 # HTML encoding
 
-
 HTML Entities encoding replaces special characters with an ampersand (&), followed by either a hexadecimal number or a reference to the character being escaped, and ending with a semicolon (;).
-This method prevents the browser from incorrectly interpreting them as part of the markup, ensures the safe rendering of special characters in HTML and helps prevent attacks such as XSS.
 
+HTML encoding (or character references) can be used to display characters that normally have special meanings, like tag elements. This method prevents the browser from incorrectly interpreting them as part of the markup, ensures the safe rendering of special characters in HTML and helps prevent attacks such as XSS.
 
 
 

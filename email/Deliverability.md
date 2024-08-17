@@ -1,9 +1,10 @@
 # Email Deliverability
 
 ## Resources
-https://glockapps.com/
-https://mxtoolbox.com/
-https://www.mailgenius.com/
+- <https://glockapps.com/>
+- <https://mxtoolbox.com/>
+- <https://www.mailgenius.com/>
+- <https://sendmarc.com/>
 
 
 ## Warm-up
@@ -19,10 +20,46 @@ Warmbox.
 ## SPF, DKIM and DMARC
 https://www.cloudflare.com/es-es/learning/email-security/dmarc-dkim-spf/
 
+
+
+
+
+
+
+
+
+
 ### SPF
 https://learn.microsoft.com/es-es/defender-office-365/email-authentication-spf-configure?view=o365-worldwide
 https://support.google.com/a/answer/10684623?hl=es
 https://support.google.com/a/answer/33786?hl=es&visit_id=638584862928094561-2979556707&rd=1
+
+
+Ante estas campañas de phishing que estamos viviendo en LATAM es importante tener mucha precaución y la idea de este post es hablar de SPF ✉ 🛡 .
+Este protocolo de autenticación va a disminuir posible suplantación de nuestro dominio y solo con el cambio de registro txt de nuestro servicio de DNS. Lo que protegemos realizando la configuración de SPF es en caso de que alguien intenté suplantar nuestra identidad y envíe correos a los demas como podría ser el cambio de una letra, o software para mimetizar nuestros dominios, este chequeo en el receptor falle y se rechace dicho correo malicioso. 
+
+¿Cómo funciona? Es sencillo.
+
+Cuando cargamos en un registro txt las variables para SPF, le indicamos desde donde enviaremos correo, entre ellos nuestra IP y dominios autorizados para mandar en nuestro nombre. Por ejemplo:
+
+v=spf1 mx a ip4:100.100.100.0/32 a:test.ejemplo.com include:tercero.com -all
+
+v=spf1: es el SPF versión 1, un componente que identifica un registro TXT como un registro SPF.
+a: autoriza al host detectado en el registro A del dominio a enviar los correos electrónicos.
+include: se utiliza para autorizar los correos electrónicos que el remitente puede enviar en nombre de un dominio en el caso del ejemplo tercero.com.
+-all: indica al servidor del receptor que las direcciones que no figuran en este registro SPF no están autorizadas a enviar ningún correo electrónico. También le indica a los servidores que rechacen dicha conexión.
+
+Lo que va a hacer el servidor del receptor es chequear estos datos, en caso de que sean correctos, nos va a arrojar un "Pass", en caso de fallar arrojará un "Fail" y se tomará las acciones correspondientes de nuestra configuración. Tiene más respuestas (None, soft-fail, etc.) pero lo interesante es entender estos 2 puntos, donde nosotros declaramos quienes somos.
+
+
+
+
+
+
+
+
+
+
 
 
 ### DKIM
@@ -30,10 +67,67 @@ https://support.google.com/a/answer/33786?hl=es&visit_id=638584862928094561-2979
 https://support.google.com/a/answer/174124?hl=es-419
 
 
+
+
+
+
+
+
+
+
+
+
+
 ### DMARC
 https://learn.microsoft.com/es-es/defender-office-365/email-authentication-dmarc-configure?view=o365-worldwide
 https://support.google.com/a/answer/2466580?hl=es
 https://support.google.com/a/answer/2466563?hl=es
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
