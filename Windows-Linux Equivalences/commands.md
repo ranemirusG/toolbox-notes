@@ -803,6 +803,7 @@ Invoke-Item .
 ```
 Get-ChildItem
 gci
+(gci | % { $_.Name }) -join ' '
 ls # unix alias
 Get-Location
 gl
