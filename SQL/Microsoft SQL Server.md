@@ -42,7 +42,23 @@ Once enabled, it must be called with the EXECUTE keyword instead of SELECT.
 - <https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-
 sql?view=sql-server-ver15>
 
+```
+# 1 - enable show advanced options
+EXECUTE sp_configure 'show advanced options', 1;
 
+# 2 - apply the changes to the running configuration
+RECONFIGURE;
+
+# 3 - enable xp_cmdshell 
+EXECUTE sp_configure 'xp_cmdshell', 1;
+
+# 4 - apply the configuration again
+RECONFIGURE;
+
+# 5 - we can execute any Windows shell command through the EXECUTE statement followed by the feature name
+EXECUTE xp_cmdshell 'whoami';
+
+```
 
 
 
