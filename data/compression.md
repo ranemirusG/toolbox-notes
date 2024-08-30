@@ -37,6 +37,8 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 ## zip
 
 ```
+zip zippedFile.zip fileToZip.php
+
 zip --encrypt protected.zip file.txt
 
 

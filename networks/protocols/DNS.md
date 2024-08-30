@@ -6,6 +6,22 @@ DNS operates on TCP and UDP ports 53 and uses relational databases to convert hu
 
 
 
+- <https://howdns.works/>
+- <https://howdnssec.works/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## DNS Zone Transfer

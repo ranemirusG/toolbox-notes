@@ -50,15 +50,85 @@ These can be accessed by any client that has the address of the server and the p
 At a user level, SMB clients are required to provide a username/password combination to see or interact with the contents of the SMB share.
 
 
-### Common shares
-- `C$`: Default administrative share for the C: drive.
-- `ADMIN$`: Administrative share that provides access to the Windows directory.
-- `IPC$`: Used for inter-process communication.
 
 
-The `IPC$` share is also known as a null session connection. By using this session, Windows
-lets anonymous users perform certain activities, such as enumerating the names of domain
-accounts and network shares. <https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/inter-process-communication-share-null-session>
+
+
+### SMB Default Folders
+
+SMB (Server Message Block) is a network protocol primarily used for sharing files, printers, and other resources between computers on a network. When you configure an SMB server, certain default folders or shares are often created depending on the operating system and SMB implementation.
+
+#### Windows SMB Default Shares
+
+1. Administrative Shares: These are hidden shares that are accessible only to administrators.
+   - C$ (or any drive letter, e.g., D$, E$): The root of each volume (drive) on the system is shared by default with a dollar sign ($) to denote that it is hidden. Default administrative share for the C: drive.
+   - ADMIN$: This is a share to the Windows system root folder (usually `C:\Windows`). It is used for administrative purposes, such as remote management. Administrative share that provides access to the Windows directory.
+   - IPC$: Stands for "Inter-Process Communication." This share is used for temporary connections between clients and servers for functions such as managing printers and services. Is also known as a null session connection. By using this session, Windows lets anonymous users perform certain activities, such as enumerating the names of domain accounts and network shares. <https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/inter-process-communication-share-null-session>
+   - PRINT$: A share used for printer drivers, typically located in the `C:\Windows\System32\spool\drivers` directory.
+   
+   
+   
+
+
+2. User Profile Shares:
+   - When configured, user profile directories may be shared for access from other machines. These are not default system shares but can be created automatically in some environments, like Active Directory.
+
+3. NETLOGON: This is a share used in Active Directory environments for logon scripts and policies. It's typically located on domain controllers.
+
+4. SYSVOL: Also used in Active Directory environments, this share contains files that must be available and synchronized across domain controllers, such as Group Policy data.
+
+
+
+
+
+#### Linux/Unix SMB (Samba) Default Folders
+
+When using Samba (the most common SMB server for Linux/Unix systems), there aren't default shares in the same way Windows has them, but there are typical configurations that admins often use:
+
+1. [homes]: This share allows users to access their home directories. When configured, it dynamically creates a share for each user based on their username.
+   - Example configuration:
+     ```ini
+     [homes]
+        comment = Home Directories
+        browseable = no
+        writable = yes
+     ```
+
+2. [printers]: This share is used for printing services.
+   - Example configuration:
+     ```ini
+     [printers]
+        comment = All Printers
+        path = /var/spool/samba
+        browseable = no
+        guest ok = no
+        writable = no
+        printable = yes
+     ```
+
+3. [public]: A common configuration for a public share where all users can read and/or write.
+   - Example configuration:
+     ```ini
+     [public]
+        comment = Public Share
+        path = /srv/samba/public
+        browseable = yes
+        guest ok = yes
+        writable = yes
+     ```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
