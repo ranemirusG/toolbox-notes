@@ -206,8 +206,16 @@ smbclient \\\\[IP]\\sharename -U [USERNAME]
 smbclient //[IP]/jane -U jane
 smbclient //[IP]/admin -U admin
 
+smbclient -U [USERNAME]%[PASSWORD] //[IP]/Users
+smbclient -U SVC_TGS%GPPstillStandingStrong2k18 //10.10.10.100/Users
+
+
 # list shares
 smbclient - L //[IP] -U [USERNAME]
+
+
+# download the share's contents recursively so we can dig through it on our testing box
+smbclient //10.10.11.222/[SHARE NAME] -N -c 'prompt OFF;recurse ON;lcd '[DESTINATION PATH]';mget *'
 
 
 

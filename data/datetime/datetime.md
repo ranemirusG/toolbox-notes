@@ -3,7 +3,7 @@ Useful date & time resources and notes.
 
 
 
-## Tools
+## Online Tools
 
 - <https://www.epochconverter.com/>
 
@@ -125,8 +125,17 @@ Seconds which have passed since 00:00:00 UTC on Thursday, 1 January 1970 (epoch)
 <https://en.wikipedia.org/wiki/Year_2038_problem>
 
 
-```bash
 
+
+
+- `ntpd`
+
+
+
+
+
+
+```bash
 
 # Current Date in Unix Time
 date +%s
