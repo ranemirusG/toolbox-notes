@@ -43,35 +43,6 @@ temp.txt -Encoding ASCII)
  
 
 
-## Cracking Hashes:
-
-Hashes are one-way functions, which means they cannot be directly reversed to obtain the original data. 
-
-To "crack" a hash, you typically use a process called "hash cracking" or "password cracking," which involves trying a large number of possible inputs (e.g., passwords) and comparing the resulting hashes with the target hash.
-
-`John the Ripper` or `Hashcat` are commonly used for hash cracking. These tools have specialized algorithms and techniques to efficiently guess passwords and crack hashes.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -80,6 +51,10 @@ To "crack" a hash, you typically use a process called "hash cracking" or "passwo
 
 
 ## Common Hash Types and Identification
+
+- <https://hashcat.net/wiki/doku.php?id=example_hashes>
+
+
 
 ### 1. MD5
 - Length: 32 characters

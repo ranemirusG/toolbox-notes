@@ -1,4 +1,4 @@
-# Cryptography
+# ORDENAR ESTO
 
 
 Los ejercicios de Cryptopals, empezando por el primer Set
@@ -37,7 +37,7 @@ https://www.dcode.fr/
 
 ## Tools
 
-- `hashid` - Identify the different types of hashes used to encrypt data
+
 
 - `mkpasswd`
 

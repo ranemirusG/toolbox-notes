@@ -1,6 +1,5 @@
 # Data compression
 
-
 - <https://www.xitalogy.com/linux-unix/2020/02/06/using-tar-to-archive-extract-compress-uncompress-files.html>
 
 
@@ -53,7 +52,10 @@ unzip filename.zip -d /path/to/destination_directory
 
 
 ## gzip
-
+Uncompress:
+```
+gzip -d [FILE]
+```
 
 
 

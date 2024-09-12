@@ -9,6 +9,7 @@
 - WonderCMS
 - Meteor
 - Pluck
+- CMS Made Simple
 
 
 

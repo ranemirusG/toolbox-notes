@@ -1,5 +1,9 @@
 # SSH
 
+
+SSH was initially developed to give administrators the ability to log in to their servers remotely through an encrypted connection. Before SSH, tools such as `rsh`, `rlogin` and `Telnet` provided similar remote administration capabilities, but over an unencrypted connection.
+
+
 Port 22
 
 
