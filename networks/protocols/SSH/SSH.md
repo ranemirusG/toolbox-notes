@@ -33,7 +33,9 @@ An attacker has gained a foothold in a server that is running SSH, and they want
 Modify the permissions of the key file so that only the user/owner can read the file; if we don't, the ssh program will a throw an error stating that the access permissions are too open.
  
 
-
+```
+chmod 600
+```
 
 
 
@@ -241,6 +243,11 @@ ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme
 ### SCP / copy files
 ```
 scp -P 2220 bandit17@bandit.labs.overthewire.org:/home/bandit13/sshkey.private ./localDir/
+
+
+scp -i /path/to/id_rsa [source] [user@host:destination]
+
+
 ```
 
 

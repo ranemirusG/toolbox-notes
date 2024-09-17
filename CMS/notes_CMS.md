@@ -22,10 +22,22 @@
 - <https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/wordpress>
 - <https://hackertarget.com/wordpress-security-scan/>
 - `wpscan`
+
+
+### wpscan
+
 - <https://wpscan.com/>
 
+```
+wpscan --url http://[IP] --enumerate p --plugins-detection aggressive -o [OUTPUT FILENAME]
+```
 
-XSS
+
+
+
+
+
+### XSS
 https://shift8web.ca/2018/01/craft-xss-payload-create-admin-user-in-wordpress-user/
 https://developer.wordpress.org/reference/functions/wp_nonce_field/
 
@@ -40,11 +52,6 @@ https://www.youtube.com/watch?v=PnH4uwY0X9U El pinguino de mario
 curl -X POST 'http://[IP]/xmlrpc.php'
 curl -X POST 'http://[IP]/xmlrpc.php' -d@payload.xml
 ```
-
-
-
-
-
 
 
 

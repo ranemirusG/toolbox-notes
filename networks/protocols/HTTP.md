@@ -6,7 +6,20 @@ HTTP allows clients (browsers such as Chrome and Firefox) to connect to web serv
 
 
 
+
+
+
+## WebDAV (Web Distributed Authoring and Versioning)
 https://en.wikipedia.org/wiki/WebDAV
+http://www.webdav.org/
+
+
+
+
+
+
+
+
 
 
 ## Status codes
