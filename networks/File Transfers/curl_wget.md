@@ -182,7 +182,15 @@ curl dict://dict.org/m:curl
 # 2 - GNU Wget
 is better to download recursive resources
 
+on Unix:
+```
+wget http://[IP]/file
+```
 
+on PowerShell, it's a wrapper for `iwr. We have to specify the output file name:
+```
+wget http://[IP]/file -o file
+```
 
 
 ## Download everything in directory
