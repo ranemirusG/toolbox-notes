@@ -52,9 +52,27 @@ unzip filename.zip -d /path/to/destination_directory
 
 
 ## gzip
+
+Compress:
+```
+gzip file1 file2 file3
+
+```
+
+
+
 Uncompress:
 ```
 gzip -d [FILE]
+
+gunzip filename.gz
+
+```
+
+
+View contents without uncompressing:
+```
+zcat filename.gz
 ```
 
 
