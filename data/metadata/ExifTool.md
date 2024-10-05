@@ -27,6 +27,8 @@ exiftool -s [FILE] # Short output
 exiftool -all:all [FILE]
 
 
+exiftool path/to/dir/* | egrep -i "Creator|'Last Modified By'|'Create Date'|Company"
+
 
 exiftool -[TAG] [FILE]
 exiftool -DateTimeOriginal [FILE]

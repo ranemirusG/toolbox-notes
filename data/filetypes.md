@@ -7,8 +7,19 @@
 - <https://www.fileformat.com/>
 - <https://learn.microsoft.com/en-us/DeployOffice/compat/office-file-format-reference>
 
-## General
 
+
+
+
+
+
+
+
+
+
+
+
+## General
 
 This is a list of file signatures, data used to identify or verify the content of a file. Such signatures are also known as magic numbers or Magic Bytes:
 
@@ -72,12 +83,16 @@ In this particular case, the server didn't append ".PDF" to the end of the file 
 
 
 ## Text
+
+
+
 `.odt` OpenDocument Text document
 
 `.docx` uses the Office Open XML format that saves data in compressed XML files in ZIP format
 
 `.doc` are based on the Binary Interchange File Format (BIFF) that stores information as binary files. Data is organized in a DOC file as a collection of records and structures that are arranged in binary streams as described in MS-DOC file format specifications.
 
+`dot` also Microsoft Word
 
 
 
@@ -85,6 +100,8 @@ In this particular case, the server didn't append ".PDF" to the end of the file 
 
 
 
+pdf
+	PDF es un archivo de flujo. Las paginas son flujos, una imagen es flujo
 
 
 
@@ -100,10 +117,21 @@ In this particular case, the server didn't append ".PDF" to the end of the file 
 
 
 
+xls,slt,xlsx
 
 
 
 
+
+
+
+
+
+
+## Presentation
+- <https://en.wikipedia.org/wiki/Presentation_program>
+
+ppt,pot,pptx
 
 
 
@@ -162,6 +190,31 @@ The extension used by 4DOS, 4OS2, 4NT and Take Command. These scripts are faster
 
 `.dat`: generic data file that stores specific information relating to the program that created the file
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Images
+
+jpg,jpeg
 
 
 

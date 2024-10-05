@@ -289,7 +289,7 @@ nmap -T4 -sS -sV --version-intensity [0-9] -p- [IP]
 
 
 
-nmap -sC -sV -p80,6379 $IP`
+nmap -sC -sV -p80,6379 $IP
 nmap -A -Pn -T4 -p21,80,2222 $IP
 nmap -p80,22 $IP -sC
 

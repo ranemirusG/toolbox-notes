@@ -37,7 +37,8 @@ https://www.dcode.fr/
 
 ## Tools
 
-
+- https://github.com/n0fate/chainbreaker (macOS, OSX keychain)
+- https://github.com/lclevy/firepwd (Firefox passwords)
 
 - `mkpasswd`
 

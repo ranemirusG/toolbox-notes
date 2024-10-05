@@ -129,6 +129,17 @@ Chrome Website Visits are stored in the 'History' SQLite database, within the 'v
 
 
 
+ `~/.mozilla/firefox/3ot0ydzb.default/logins.json`
+
+
+
+
+
+
+
+
+
+
 
 
 

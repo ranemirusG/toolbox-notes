@@ -36,13 +36,15 @@ mget *
 ```
 
 
-???
+Binaries
+
 ```
-# Check if path traversal enabled
 # switch to binary if you are transferring binaries
 ftp > binary
 binary set to I 
 ```
+
+
 
 
 

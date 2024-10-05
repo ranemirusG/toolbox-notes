@@ -253,7 +253,8 @@ ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme
 version segura basada en RCP
 
 ```
-scp -P 2220 bandit17@bandit.labs.overthewire.org:/home/bandit13/sshkey.private ./localDir/
+scp -P 2220 bandit17@bandit.labs.overthewire.org:/home/bandit13/sshkey.private 
+./localDir/
 
 
 scp -i /path/to/id_rsa [source] [user@host:destination]
