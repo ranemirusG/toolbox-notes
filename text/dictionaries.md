@@ -7,6 +7,3 @@
 <http://wordlist.aspell.net/scowl-readme/>
 
 
-
-# Pentesting
-- <https://wordlists.assetnote.io/>

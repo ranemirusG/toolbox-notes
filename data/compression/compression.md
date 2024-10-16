@@ -19,11 +19,32 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 [System.IO.Compression.ZipFile]::ExtractToDirectory("C:\full\path.zip", "C:\full\path\to\dest")
 
 
-
-
 ```
 
 
+## CMD
+
+```
+
+REM Compress and "disguise" as an image. Example:
+	>dir
+	test1.txt
+	test2.txt
+	first.zip &REM test1.txt and test2.txt zipped
+	img.png
+	>copy /b img.png+first.zip second.png &REM now second.png is a zipped dir that seems like a png ;)
+
+
+
+compact
+REM Displays or alters the compression of files or directories on NTFS partitions. If used without parameters, compact displays the compression state of the current directory and any files it contains.
+
+
+cipher
+REM cipher is not supported on Home editions of Windows as it uses the Encrypting File System (EFS)
+
+
+```
 
 
 
@@ -42,6 +63,11 @@ zip --encrypt protected.zip file.txt
 
 
 unzip filename.zip -d /path/to/destination_directory
+
+
+7z x *.zip -o* # extracts all *.zip archives to subfolders with names of these archives.
+
+7z l -slt file.zip
 
 
 ```

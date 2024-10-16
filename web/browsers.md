@@ -178,10 +178,17 @@ Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History-journal
 
 
 
+cmd
+```
+start msedge -inprivate www.stackoverflow.com
+start msedge -inprivate [PATH TO LOCAL FILE]
+```
 
-
-
-
+powershell
+```
+Start-Process msedge.exe -ArgumentList "-inprivate", "[PATH TO LOCAL FILE]"
+Start-Process msedge.exe -ArgumentList "-inprivate", "https://www.stackoverflow.com"
+```
 
 
 

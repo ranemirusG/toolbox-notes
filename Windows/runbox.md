@@ -1,17 +1,50 @@
-Run Box
+# Run Box
+
+
+
+## Launch Run Box
+```
+Win + R
+Win + X > R
+
+c:\windows\system32\rundll32.exe shell32.dll,#61
+
+explorer.exe shell:::{2559a1f3-21d7-11d4-bdaf-00c04f60b9f0}
+explorer shell:::{2559a1f3-21d7-11d4-bdaf-00c04f60b9f0}
+
+
+(New-Object -ComObject "Shell.Application").FileRun()
+```
+
+
+
+## Accessing Known Folders
+You can use the `shell:` command in File Explorer or the Run Box to access known folders:
+```
+shell:Desktop
+shell:Downloads
+shell:AppsFolder
+```
+
+
+
+
+## MSC commands
 
 La extensión .MSC son archivos de control que están asociados con la Consola de Administración de Microsoft (Microsoft Management Console) y sirven para ejecutar tareas administrativas.
-Microsoft Management Console es un framework sobre herramientas administrativas. Viene con una interfaz gráfica de usuario y admite la creación, ejecución y ahorro de trabajos administrativos.
-MSC derivan de Microsoft Management Console Snap-in
+
+Microsoft Management Console es un framework sobre herramientas administrativas. Viene con una interfaz gráfica de usuario y admite la creación, ejecución y ahorro de trabajos administrativos. MSC derivan de Microsoft Management Console Snap-in
+
 El framework hospeda las herramientas y las muestra en su interfaz utilizando los denominados snap-ins y complementos de snap-ins. Lo que hace que la Consola de Administración de Microsoft sea tan flexible es que los administradores pueden crear y asignar herramientas a grupos de usuarios, equipos informáticos o usuarios específicos.
 
+- <https://learn.microsoft.com/en-us/previous-versions/windows/desktop/mmc/snap-ins>
 
 
 
-## 1 COMANDOS CON EXTENSIÓN MSC PARA EJECUTAR EN WINDOWS
-La ubicación predeterminada de los archivos MSC es C:\Windows\System32. Puede ejecutar cualquiera de los archivos con el acceso directo de las teclas Windows+R, escribiendo el nombre de archivo y la extensión .msc, y finalmente pulsando la tecla Intro.
 
-En primer lugar, veremos qué comandos podemos ejecutar desde cualquier versión de Windows (7/8/10).
+La ubicación predeterminada de los archivos MSC es `C:\Windows\System32`.
+
+
 
 Archivo MSC	Consola	Descripción
 azman.msc

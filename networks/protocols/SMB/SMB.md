@@ -36,7 +36,7 @@ So if we can get into SMB, there is a chances that we can get into other service
 
 
 
-
+- <https://book.hacktricks.xyz/network-services-pentesting/pentesting-smb>
 
 
 
@@ -187,6 +187,15 @@ net use * /delete
 ### `SMBClient`
 
 ```
+
+
+smbclient -L '//34.122.201.66/' -U '%'
+smbclient '//10.10.16.165/SHARE' -U '%'
+
+- <https://unix.stackexchange.com/questions/65106/accessing-a-smb-share-without-a-password>
+
+
+
 smbclient -L $ip
 
 smbclient -N -L \\\\{TARGET_IP}\\
@@ -213,6 +222,8 @@ smbclient \\\\[IP]\\sharename -U [USERNAME]
 # Try in user share (with password)
 smbclient //[IP]/jane -U jane
 smbclient //[IP]/admin -U admin
+smbclient //server/share -U domain/username
+
 
 smbclient -U [USERNAME]%[PASSWORD] //[IP]/Users
 smbclient -U SVC_TGS%GPPstillStandingStrong2k18 //10.10.10.100/Users

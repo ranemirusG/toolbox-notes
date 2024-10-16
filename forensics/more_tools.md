@@ -8,6 +8,10 @@ KAPE (Kroll Artifact Parser and Extractor) is a free and open-source digital for
 
 	https://ericzimmerman.github.io/#!index.md
 	
+	
+## EZ Tools
+https://www.sans.org/tools/ez-tools/
+	
 
 # FTK Imager
 FTK Imager is a massive tool that allows us to create hard drive images, but also memory images, which can be analyzed in other programs for analysis. It's also possible to import disk images into FTKi, allowing us to navigate through the file system as if we were on a live device!

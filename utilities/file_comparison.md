@@ -48,3 +48,23 @@ kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 
 
 ## see also vimdiff
+
+
+
+
+
+
+
+
+
+
+## Windows
+cmd: `FC`
+
+
+powershell:
+
+https://devblogs.microsoft.com/scripting/easily-compare-two-folders-by-using-powershell/
+$fso = Get-ChildItem -Recurse -path C:\fso
+$fsoBU = Get-ChildItem -Recurse -path C:\fso_BackUp
+Compare-Object -ReferenceObject $fso -DifferenceObject $fsoBU

