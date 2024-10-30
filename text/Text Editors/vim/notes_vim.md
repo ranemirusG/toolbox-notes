@@ -24,6 +24,7 @@
 
 ### Ed
 - `info ed`
+- <https://atthis.link/blog/2020/usingEd.html>
 
 ### Ex
 - `help ex-cmd-index`

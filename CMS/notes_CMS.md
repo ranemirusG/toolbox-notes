@@ -24,13 +24,50 @@
 - `wpscan`
 
 
+
+```powershell
+# basic usage
+wpscan --url "target" --verbose
+
+# enumerate vulnerable plugins, users, vulrenable themes, timthumbs
+wpscan --url "target" --enumerate vp,u,vt,tt --follow-redirection --verbose --log target.log
+
+# Add Wpscan API to get the details of vulnerabilties.
+wpscan --url http://alvida-eatery.org/ --api-token NjnoSGZkuWDve0fDjmmnUNb1ZnkRw6J2J1FvBsVLPkA 
+
+#Accessing Wordpress shell
+http://10.10.67.245/retro/wp-admin/theme-editor.php?file=404.php&theme=90s-retro
+
+http://10.10.67.245/retro/wp-content/themes/90s-retro/404.php
+```
+
+
+
+
+
+
+
+
 ### wpscan
 
 - <https://wpscan.com/>
 
 ```
 wpscan --url http://[IP] --enumerate p --plugins-detection aggressive -o [OUTPUT FILENAME]
+
+
+
+# Depends on the time and resources you have, may choose vp first if limited resources
+wpscan --url URL --plugins-detection aggressive -e vp
+wpscan --url URL --plugins-detection aggressive -e ap
+# Brute Force login, will take very long time. Not recommended unless you have short listed wordlist and usernames
+wpscan --url http://IP/wordpress/ -U users.txt -P /usr/share/wordlists/rockyou.txt
 ```
+
+
+
+
+
 
 
 

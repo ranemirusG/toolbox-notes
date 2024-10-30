@@ -1,4 +1,4 @@
-# TODO: of course this can be improved
+# TODO: of course this script can be improved
 $searchString = Read-Host -Prompt "Enter the string to search for"
 
 $outputChoice = Read-Host "f for files matching lines (unique) or l for all matching lines"

