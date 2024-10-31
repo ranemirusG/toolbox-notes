@@ -1,29 +1,25 @@
 # SMB (Server Message Block Protocol) / Samba
 
-The generic term for this service is CIFS (Common Internet File System)
+The generic term for this service is CIFS (Common Internet File System).
 
-Is a client-server communication protocol used for sharing access to files, peripherals (printers, etc), serial ports and other resources on a network.
+Is a client-server communication protocol used for sharing access to files, peripherals, serial ports and other resources on a network.
 
 Ports: 445, 137, 138, 139
-
-SMB originally operated on NetBIOS over IEEE 802.2 - NetBIOS Frames or NBF - and over IPX/SPX, and later on NetBIOS over TCP/IP (NetBT), but Microsoft has since deprecated these protocols. On NetBT, the server component uses three TCP or UDP ports: 137 (NETBIOS Name Service), 138 (NETBIOS Datagram Service), and 139 (NETBIOS Session Service).
-
-
-SAMBA is the Linux implementation of SMB, and allows Windows systems to access Linux shares and devices.
 
 Clients connect to servers using TCP/IP (actually NetBIOS over TCP/IP as specified in RFC1001 and RFC1002), NetBEUI or IPX/SPX.
 
 The SMB protocol has evolved over time, and its various versions are commonly referred to as dialects. <https://4sysops.com/archives/the-smb-protocol-all-you-need-to-know/>
 
+SMB originally operated on NetBIOS over IEEE 802.2 - NetBIOS Frames or NBF - and over IPX/SPX, and later on NetBIOS over TCP/IP (NetBT), but Microsoft has since deprecated these protocols.
+On NetBT (NetBIOS over TCP/IP), the server component uses three TCP or UDP ports:
+	- 137 (NETBIOS Name Service)
+	- 138 (NETBIOS Datagram Service)
+	- 139 (NETBIOS Session Service)
+
+- <https://en.wikipedia.org/wiki/NetBIOS_over_TCP/IP>
 
 
-
-
-`nmbd` NetBIOS Message Block Daemon: The nmbd server daemon understands and replies to NetBIOS name service requests such as those produced by SMB/CIFS in Windows-based systems.
-
-
-`smbd` (Server Message Block Daemon) provides file sharing and printing services to Windows clients.
-
+SAMBA is the Linux implementation of SMB, and allows Windows systems to access Linux shares and devices.
 
 
 SMB is a protocol that can be used for many different services.
@@ -32,11 +28,13 @@ Named Pipes are pipes that are known.
 So if we can get into SMB, there is a chances that we can get into other services that are pipes, if we know the names of the pipes.
 
 
-
-
-
-
 - <https://book.hacktricks.xyz/network-services-pentesting/pentesting-smb>
+
+
+
+
+
+
 
 
 
@@ -45,18 +43,19 @@ So if we can get into SMB, there is a chances that we can get into other service
 ## Shares
 
 An SMB-enabled storage on the network is called a share.
-These can be accessed by any client that has the address of the server and the proper credentials. Like many other file access protocols, SMB requires some security layers to function appropriately within a network topology. If SMB allows clients to create, edit, retrieve, and remove files on a share, there is a clear need for an authentication mechanism.
+
+These can be accessed by any client that has the address of the server and the proper credentials. 
+
+Like many other file access protocols, SMB requires some security layers to function appropriately within a network topology. If SMB allows clients to create, edit, retrieve, and remove files on a share, there is a clear need for an authentication mechanism.
 
 At a user level, SMB clients are required to provide a username/password combination to see or interact with the contents of the SMB share.
 
 
 
 
+### SMB Default Shares
 
-
-### SMB Default Folders
-
-SMB (Server Message Block) is a network protocol primarily used for sharing files, printers, and other resources between computers on a network. When you configure an SMB server, certain default folders or shares are often created depending on the operating system and SMB implementation.
+When you configure an SMB server, certain default folders or shares are often created depending on the operating system and SMB implementation.
 
 #### Windows SMB Default Shares
 
@@ -81,9 +80,9 @@ SMB (Server Message Block) is a network protocol primarily used for sharing file
 
 
 
-#### Linux/Unix SMB (Samba) Default Folders
+#### Linux/Unix SMB (Samba) Default Shares
 
-When using Samba (the most common SMB server for Linux/Unix systems), there aren't default shares in the same way Windows has them, but there are typical configurations that admins often use:
+When using Samba there aren't default shares in the same way Windows has them, but there are typical configurations that admins often use:
 
 1. [homes]: This share allows users to access their home directories. When configured, it dynamically creates a share for each user based on their username.
    - Example configuration:
@@ -130,26 +129,6 @@ When using Samba (the most common SMB server for Linux/Unix systems), there aren
 
 
 
-
-
-
-## Resources
-- Samba (https://www.samba.org/)
-- smbclient (https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
-- rpcclient (https://www.samba.org/samba/docs/current/man-html/rpcclient.1.html)
-- nmblookup (https://www.samba.org/samba/docs/current/man-html/nmblookup.1.html)
-- Nmap Script: smb-os-discovery (https://nmap.org/nsedoc/scripts/smb-os-discovery.html)
-- Metasploit Module: SMB Version Detection https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_version
-
-
-
-
-
-
-
-
-
-
 ## SMB Commands
 
 ```
@@ -169,7 +148,28 @@ exit
 
 
 
+
+
+
 ## Tools
+
+
+
+`nmbd` NetBIOS Message Block Daemon: The nmbd server daemon understands and replies to NetBIOS name service requests such as those produced by SMB/CIFS in Windows-based systems.
+
+
+`smbd` (Server Message Block Daemon) provides file sharing and printing services to Windows clients.
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### `net` Windows
@@ -184,39 +184,76 @@ net use * /delete
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### `SMBClient`
 
 ```
+# Flags
+# -N: No password
+# -L : This option allows you to look at what services are available on a server
+# The -I option may be useful if your NetBIOS names don't match your TCP/IP DNS host names or if you are trying to reach a host on another network.
 
 
+
+
+
+# Without Credentials
+
+smbclient \\\\[IP]\\ -L -N
+smbclient \\\\[IP]\\ -L -N -I [IP] # another option if the above command doesn't work (access denied)
+
+# https://unix.stackexchange.com/questions/65106/accessing-a-smb-share-without-a-password
 smbclient -L '//34.122.201.66/' -U '%'
 smbclient '//10.10.16.165/SHARE' -U '%'
 
-- <https://unix.stackexchange.com/questions/65106/accessing-a-smb-share-without-a-password>
+# list shares
+smbclient -L [IP]
+smbclient - L //[IP] -U [USERNAME]
+smbclient -N -L \\\\[IP]\\
 
 
-
-smbclient -L $ip
-
-smbclient -N -L \\\\{TARGET_IP}\\
-# -N: No password
-# -L : This option allows you to look at what services are available on a server
-
-
-
-smbclient -p 4455 -L //192.168.50.63/ -U hr_admin --password=Welcome1234
-
-
-smbclient \\\\$ip\\C$
-smbclient \\\\$ip\\CustomShare
+	
+# access shares
 smbclient //[IP]/Public -N
 
-
-
-
-
-# Access share 
 smbclient \\\\[IP]\\sharename -U [USERNAME]
+
+
+
+
+
+
+
+# With Credentials
+
+# login to the share
+smbclient \\\\[IP]\\SHARE -N -I [IP]
+smbclient \\\\[IP]\\C$
+smbclient \\\\[IP]\\CustomShare
+smbclient -p 4455 -L //[IP]/ -U hr_admin --password=Welcome1234
 
 
 # Try in user share (with password)
@@ -225,25 +262,68 @@ smbclient //[IP]/admin -U admin
 smbclient //server/share -U domain/username
 
 
+
+
+
+
 smbclient -U [USERNAME]%[PASSWORD] //[IP]/Users
-smbclient -U SVC_TGS%GPPstillStandingStrong2k18 //10.10.10.100/Users
+smbclient -U SVC_TGS%GPPstillStandingStrong2k18 //[IP]/Users
 
-smbclient -p 4455 //192.168.50.63/scripts -U hr_admin --password=Welcome1234
-
-# list shares
-smbclient - L //[IP] -U [USERNAME]
+smbclient -p 4455 //[IP]/scripts -U hr_admin --password=Welcome1234
 
 
-# download the share's contents recursively so we can dig through it on our testing box
-smbclient //10.10.11.222/[SHARE NAME] -N -c 'prompt OFF;recurse ON;lcd '[DESTINATION PATH]';mget *'
 
 
 # Pass the Hash
 smbclient \\\\[TARGET IP]\\[SHARE] -U Administrator --pw-nt-hash [NTLM HASH]
 
-smbclient \\\\192.168.50.212\\secrets -U Administrator --pw-nt-hash 7a38310ea6f0027ee955abed1762964b
+smbclient \\\\[IP]\\secrets -U Administrator --pw-nt-hash 7a38310ea6f0027ee955abed1762964b
+
+
+
+
+
+
+# download the share's contents recursively so we can dig through it on our testing box
+smbclient //[IP]/[SHARE NAME] -N -c 'prompt OFF;recurse ON;lcd '[DESTINATION PATH]';mget *'
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -335,11 +415,35 @@ nmap -p445 --script smb-enum-services --script-args smbusername=[USERNAME],smbpa
 
 nmap -p445 --script smb-enum-shares,smb-ls --script-args smbusername=[USERNAME],smbpassword=[PASSWORD] [TARGET]
 
-
-
-
-
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -357,17 +461,38 @@ nmap -p445 --script smb-enum-shares,smb-ls --script-args smbusername=[USERNAME],
 Is a tool used to enumerate SMB shares on both Windows and Linux systems. It is basically a wrapper around the tools in the Samba package and makes it easy to quickly extract information from the target pertaining to SMB.
 
 ```
-enum4linux -a $ip
-enum4linux -o $ip
-enum4linux -U $ip
-enum4linux -G $ip
+enum4linux -a [IP]
+enum4linux -o [IP]
+enum4linux -U [IP]
+enum4linux -G [IP]
 
 # Look for users SID
-enum4linux -r -u [USERNAME] -p [PASSWORD] $ip
-
-
+enum4linux -r -u [USERNAME] -p [PASSWORD] [IP]
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -398,6 +523,30 @@ exploit/linux/samba/is_known_pipename
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## PSExec
 
 PsExec is a lightweight telnet-replacement developed by Microsoft that allows you execute processes on remote windows systems using any user’s credentials.
@@ -411,6 +560,42 @@ We can use the PsExec utility to authenticate with the target system legitimatel
 `PsExec.exe` on Windows
 
 `psexec.py` python tool: `psexec.py Administrator@[IP] cmd.exe`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -439,3 +624,39 @@ exploit/windows/smb/ms17_010_eternalblue
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Resources
+- Samba (https://www.samba.org/)
+- smbclient (https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
+- rpcclient (https://www.samba.org/samba/docs/current/man-html/rpcclient.1.html)
+- nmblookup (https://www.samba.org/samba/docs/current/man-html/nmblookup.1.html)
+- Nmap Script: smb-os-discovery (https://nmap.org/nsedoc/scripts/smb-os-discovery.html)
+- Metasploit Module: SMB Version Detection https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_version

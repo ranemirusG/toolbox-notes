@@ -1,5 +1,9 @@
 # Resources
 
+## Equivalences
+- <https://gist.github.com/carlessanagustin/266171818584b3880f72a625dfa2513b>
+
+
 
 ## bash/zsh
 

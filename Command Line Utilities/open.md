@@ -8,7 +8,15 @@
 
 
 ## cmd
+```
 
+
+REM open current dir in File Explorer
+explorer .
+start .
+
+
+```
 
 
 

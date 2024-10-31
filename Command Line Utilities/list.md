@@ -5,9 +5,17 @@
 ## bash/zsh
 
 ```
+# list as comma separated
+ls | paste -sd ", "
+
+
 
 # list open files (lsof), including network connections
 lsof
+
+
+# force ls command to display file size in MB
+ls -l --block-size=M
 
 # list directory contents
 ls -1a
@@ -39,13 +47,39 @@ find . -maxdepth 1 -type d | wc -l
 
 ## cmd
 
+```
 
+# list as comma separated
+(for %i in (*.*) do @echo|set /p="%i, ") & echo.
+
+
+TREE
+TREE /F
+tree /F C:\Users
+
+dir /ad &REM only directories
+dir/a-d &REM only files
+
+dir /A-D /S /B  &REM recursive with list formatted output
+
+ATTRIB file
+
+
+```
 
 
 
 ## PowerShell
 
 ```
+
+
+# list as comma separated
+(Get-ChildItem | ForEach-Object { $_.Name }) -join ", "
+
+
+
+
 Get-ChildItem
 gci
 (gci | % { $_.Name }) -join ' '
@@ -54,12 +88,22 @@ ls # unix alias
 
 
 
+dir | ?{!$_.PSIsContainer} | %{$_.Name}
+dir -file | % Name
+# Alias           % -> ForEach-Object
+# Alias           ? -> Where-Object
 
 
 
 
 # list directories
 Get-ChildItem -Directory -Force
+gci -dir
+ls -directory
+gci | where {$_.PsIsContainer}
+dir | Where-Object {$_.PsIsContainer}
+
+
 
 # list empty directories
 dir -Directory -Recurse | where { $_.GetFileSystemInfos().Count -eq 0 }
@@ -79,6 +123,10 @@ dir -file -recurse | where { $_.CreationTime -gt [datetime]"2014/05/28" } | sort
 
 
 
+Get-ChildItem -File -Recurse
+dir -recurse | fl
+dir -Directory -Recurse | ForEach-Object { $_.fullname }
+
 
 
 
@@ -93,5 +141,9 @@ Get-Item FILE | Format-List *
 
 # list all attributes of a file/dir
 Get-ItemProperty -Path "path\to\dir\or\file" -Name Attributes
+
+
+# check if file/folder exist
+test-path C:\path\file
 
 ```

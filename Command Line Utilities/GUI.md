@@ -25,3 +25,5 @@ COLOR  &REM Sets the default console foreground and background colors
 
 
 ## PowerShell
+
+Write-Host 'hola' -ForegroundColor Green

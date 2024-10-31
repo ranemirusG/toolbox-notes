@@ -61,9 +61,10 @@ head -n 8 filename.txt | tail -n 1
 
 ## cmd
 
+```
+type file
 
-
-
+```
 
 
 

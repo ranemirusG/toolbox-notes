@@ -4,6 +4,10 @@
 ## bash/zsh
 
 ```
+
+# force ls command to display file size in MB
+ls -l --block-size=M
+
 # Size of current directory
 du -sk . # in KB
 du -ah

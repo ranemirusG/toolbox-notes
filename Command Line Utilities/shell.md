@@ -10,6 +10,9 @@
 
 
 
+
+
+
 ## cmd
 
 ### Tell wheter is CMD or PowerShell
@@ -21,12 +24,21 @@
 
 
 
+
+
+
+
+
+
 ## PowerShell
 
 Version
 ```
 $PSVersionTable.PSVersion
 ```
+
+### Check if current powershell session is a 64 bit process or not in windows
+[system.environment]::Is64BitProcess
 
 
 ### Run CMD commands in PowerShell:

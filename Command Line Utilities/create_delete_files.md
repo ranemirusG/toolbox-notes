@@ -58,12 +58,40 @@ fsutil file createnew example.txt 1048576
 REM Merge two files
 type file1.txt file2.txt > merged.txt
 
+
+
+REM Rename files
+ren old new
+rename old new
+
+
+
+
+
+REM Empty Recycle Bin
+rd /s %systemdrive%\$Recycle.bin
+
+
 ```
 
 
+### Copy clipboard to file
+
+1. create VBS script
+```
+Set objHTML = CreateObject("htmlfile")
+text = objHTML.ParentWindow.ClipboardData.GetData("Text")
+WScript.StdOut.Write text
+```
 
 
+2. run
+```
+cscript //nologo clipboard.vbs > output.txt
+```
 
+- `cscript` runs the VBScript in the command line.
+- `//nologo` suppresses the banner that typically appears when running scripts.
 
 
 
@@ -112,5 +140,11 @@ sc filename.txt -Value ('A' * 1MB) # oneliner
 
 
 
+# Empty Recycle Bin
+Clear-RecycleBin
+
+# Delete temporary files
+del /q /f /s %temp%\*
+del /q /f /s C:\Windows\temp\*
 
 ```
