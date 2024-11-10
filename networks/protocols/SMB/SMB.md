@@ -225,13 +225,17 @@ net use * /delete
 smbclient \\\\[IP]\\ -L -N
 smbclient \\\\[IP]\\ -L -N -I [IP] # another option if the above command doesn't work (access denied)
 
+## See read permission of given user on smb shares
+crackmapexec smb <IP> --shares -u <user> -p '<pass>'
+
 # https://unix.stackexchange.com/questions/65106/accessing-a-smb-share-without-a-password
 smbclient -L '//34.122.201.66/' -U '%'
 smbclient '//10.10.16.165/SHARE' -U '%'
 
 # list shares
 smbclient -L [IP]
-smbclient - L //[IP] -U [USERNAME]
+smbclient -L //[IP] -U [USERNAME]
+smbclient //[IP] -U [USERNAME] -L
 smbclient -N -L \\\\[IP]\\
 
 

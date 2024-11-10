@@ -24,7 +24,8 @@ pwd | pbcopy # macOS
 copy
 move /Y "C:\Source" "D:\Destination"
 
-
+# copy directory path to clipboard
+cd | clip
 
 ```
 

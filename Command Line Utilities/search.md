@@ -109,6 +109,7 @@ grep "string" /path/to/file/example.db
 ```
 
 REM Search file by name
+dir foo*
 dir "*example*.txt" /s
 dir "C:\Path\To\Directory\example.txt" /s
 dir "C:\Path\To\Directory\*example*.txt" /s
@@ -166,6 +167,20 @@ dir /s /b *foo*
 ## PowerShell
 
 ```
+# Search file by name
+Get-ChildItem -Path "C:\Path\To\Directory" -Filter "example.txt"
+
+Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -Filter "example.txt"
+
+Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -Filter "example.txt" -ErrorAction SilentlyContinue
+
+Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -File | Where-Object { $_.Name -like "*example*" }
+
+
+
+
+
+
 
 
 
@@ -177,13 +192,6 @@ Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyCont
 
 
 
-
-# Search file by name
-Get-ChildItem -Path "C:\Path\To\Directory" -Filter "example.txt"
-
-Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -Filter "example.txt"
-
-Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -File | Where-Object { $_.Name -like "*example*" }
 
 
 

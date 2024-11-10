@@ -43,3 +43,38 @@ To download/upload a file, use `tftp -i ip-addr {GET | PUT} file`
 
 
 
+## Pure-FTPd
+-> Install and Configure
+```
+sudo apt update && sudo apt install pure-ftpd
+sudo groupadd ftpgroup
+sudo useradd -g ftpgroup -d /dev/null -s /etc ftpuser
+sudo pure-pw useradd offsec -u ftpuser -d /ftphome
+sudo pure-pw mkdb
+cd /etc/pure-ftpd/auth/
+sudo ln -s ../conf/PureDB 60pdb
+sudo mkdir -p /ftphome
+sudo chown -R ftpuser:ftpgroup /ftphome/
+sudo systemctl restart pure-ftpd
+```
+
+
+
+
+
+
+
+
+## tftp
+-> Install and Configure
+```
+sudo apt update && sudo apt install atftp
+sudo mkdir /tftp
+sudo chown nobody: /tftp
+sudo atftpd --daemon --port 69 /tftp
+```
+
+-> Transfer
+```
+tftp -i <IP> get file
+```

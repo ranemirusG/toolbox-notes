@@ -91,4 +91,7 @@ curl file:///Users/useraname/file.txt # CMD curl on Windows also allows this inc
 # read file at specific line
 Get-Content file.txt | Select-Object -Index 2
 
+Get-Content [FILE] | Select-Object-First [NUMBER]
+gc [FILE] | select -first 5
+
 ```

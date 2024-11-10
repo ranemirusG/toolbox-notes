@@ -1,8 +1,6 @@
 # Windows Processes
 
-
 https://www.reddit.com/r/Malware/comments/q3rknx/process_hacker_vs_process_explorer_vs_autoruns/
-
 
 https://github.com/kristibektashi/ProcessHacker
 
@@ -10,16 +8,16 @@ https://4sysops.com/archives/free-process-hacker-a-mighty-task-manager-and-proce
 
 
 
-
-
-
-
-
-
-
+```
+# List currently running processes on either a local or remote machine
 ps # alias
 Get-Process
 Get-Process -Id [PID]
+Get-Process | Select ProcessName,Path
+tasklist
+tasklist /FI "PID eq [PID]"
+
+
 
 handle.exe "[NAME]" # Sysinternals
 # Example: look for process using a file or directory
@@ -49,10 +47,9 @@ Get-Process | Where-Object { $_.MainWindowHandle -ne 0 }
 # Kill process
 Get-Process | Where-Object { $_.Name -like '*edge*' } | Stop-Process -Force
 
-
-get event id
-Get-EventLog -LogName system -EntryType Error
-Get-EventLog -LogName system -EntryType Information
+# Terminate tasks by process id (PID) or image name
+taskkill /F /IM CalculatorApp.exe
+taskkill /F /PID 1185
 
 
 
@@ -60,23 +57,4 @@ Get-EventLog -LogName system -EntryType Information
 services with a Status property that equals 'Running'
 Get-Service | Where-Object {$_.Status -eq "Running"}
 
-
 ```
-
-#### CMD
-
-```
-schtasks /query /fo LIST /v
-
-
-REM List currently running processes on either a local or remote machine
-tasklist
-tasklist /FI "PID eq [PID]"
-
-
-REM Terminate tasks by process id (PID) or image name
-taskkill /F /IM CalculatorApp.exe
-taskkill /F /PID 1185
-
-
-

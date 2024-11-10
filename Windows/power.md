@@ -50,3 +50,9 @@ powercfg.exe /sleepstudy
 
 net stats workstation
 REM  The timestamp in "Statics Since..." is the time when the computer started from a complete shutdown.
+
+
+
+## temperature
+https://www.howtogeek.com/1035/ever-wonder-what-temperature-your-cpu-is-running-at/
+https://www.cpuid.com/softwares/hwmonitor.html

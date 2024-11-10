@@ -30,6 +30,13 @@ wc -l file
 ## PowerShell
 
 ```
+# Count files
+(gci).count
+(gci -filter '*jpeg').count
+(Get-ChildItem -Path "C:\Your\Directory\Path" -Filter "*.png" -File -Recurse).Count
+
+
+
 # Count directories
 (gci -Directory).count
 

