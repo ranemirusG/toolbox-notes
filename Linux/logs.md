@@ -13,3 +13,6 @@ grep dhclient /var/log/syslog
 
 
 
+## Tools
+- logrotate
+

@@ -230,7 +230,7 @@ The two correct answers for remotely administering a system via the command-line
 
 
 
-# Recursos Gustavo Presman
+# Resources
 
 https://www.opentext.com/products/tableau-forensic-duplicators?utm_source=tableau&utm_medium=redirect
 
@@ -265,7 +265,18 @@ https://www.magnetforensics.com/products/magnet-axiom/
 https://en.wikipedia.org/wiki/High_Technology_Crime_Investigation_Association
 
 
-# bibliografia
+# Books
+
+"Your Code as a Crime Scene: Use Forensic Techniques to Arrest Defects, Bottlenecks, and Bad Design in Your Programs" (Adam Tornhill)
+
+
+
+
+
+
+
+
+
 
 GRAFOCRITICA, El Documento, La Escritura y su Proyección Forense. Editorial Tecnos. Madrid 1963.
 TRATADO DE CRIMINALISTICA. Documentos Tomo I. Editorial Policial. Buenos Aires 1983

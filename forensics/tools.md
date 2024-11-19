@@ -1,5 +1,7 @@
 # More Tools
 
+- <http://sandsprite.com/tools.php>
+- PDFStreamDumper http://sandsprite.com/blogs/index.php?uid=7&pid=57
 
 
 

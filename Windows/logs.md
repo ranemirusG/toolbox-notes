@@ -1,14 +1,24 @@
 # Windows Logs
 
+Event logs are records of events that occur on a Windows computer.
+
+- system events: Events related to hardware states, drivers, etc. User logins, service starts or stops
+- application events: Events related to the installed applications, such as system errors
+- security events: Events related to sessions logon/logoff, RDP successful/failed connections, services installed, tasks created, etc. Such as user login attempts to login with an incorrect password or when suspicious activity is detected
+- Setup: The setup log contains events that occur during the installation of the Windows operating system. On domain controllers, this log will also record events related to Active Directory.
+- Forwarded Events: Contains event logs forwarded from other computers in the same network.
 
 
 
+Stored at:
+```
 %SystemRoot%\System32\Winevt\Logs
 
 C:\Windows\System32\winevt\Logs
+```
 
 
-`.evtx`: Event Log File extension
+- `.evtx`: Event Log File extension
 
 
 
@@ -34,6 +44,30 @@ C:\Windows\System32\winevt\Logs
 
 
 ```
+
+# view available event logs
+wevtutil.exe el
+Get-WinEvent -Listlog *
+
+
+
+# Query the last 3 events from the System log, sorted in reverse order, and display in plain text format.
+wevtutil.exe qe System /c:3 /rd:true /f:text
+
+
+# Get events from the System log where the ProviderName matches 'Service Control Manager'
+Get-WinEvent -LogName System | Where-Object {$_.ProviderName -Match 'Service Control Manager'}
+
+
+
+# Count events in the System log between 5 PM and 8 PM on 17 September 2021
+
+wevtutil qe System "/q:*[System[TimeCreated[timediff(@SystemTime) <= 86400000]]]" /f:xml | findstr "<TimeCreated " | findstr "2021-09-17T1[78]:"
+
+Get-WinEvent -LogName System | Where-Object { $_.TimeCreated -ge (Get-Date "2021-09-17 17:00") -and $_.TimeCreated -lt (Get-Date "2021-09-17 20:00") } | Measure-Object
+
+
+
 
 # Get events from event logs and event tracing log files on local and remote computers
 Get-WinEvent
@@ -86,11 +120,18 @@ Get-EventLog -LogName system -EntryType Information
 
 
 
+## Event types / Levels
+There are 5 types of event logs.
 
+- Information: This event type means that an operation was successfully completed and a general description of it is recorded.
 
+- Warning: This event type means that there is some kind of minor problem that may cause bigger issues in future events.
 
+- Error: This type of event means that a problem occurred causing a loss of functionality.
 
+- Critical: Indicates a significant issue in an application or a system needing urgent attention.
 
+- Verbose: Indicates progress or success messages for a particular event.
 
 
 
@@ -101,13 +142,18 @@ Get-EventLog -LogName system -EntryType Information
 
 
 
-
-
 1 - whenever a process is created in memory, an event with Event ID 1 is recorded with details such as command line, hashes, process path, parent process path, etc.
 
 
 22 - can be used to look for any DNS Queries made by the system.
 
+4624 - An account was successfully logged on.
+
+4625 - Failed authentication attempt.
+
+4657 - A registry value was modified.
+
+4697 - A service was installed in the system.
 
 4698 - A scheduled task was created.
 
@@ -118,3 +164,70 @@ Get-EventLog -LogName system -EntryType Information
 4732 – A member was added to a security-enabled local group.
 
 4740 - A user account was locked out.
+
+7040 - Service Control Manager (SCM) event indicating that the startup type of a service has changed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Logon Types
+Tip: filter Services (Logon type 5) it causes a lot of unnecessary noise and makes it difficult for us to analyze the events.
+
+
+- Logon Type 2: Interactive  
+   - a user logs on to the computer physically
+   - Example: Signing in directly to a desktop or laptop.
+
+- Logon Type 3: Network  
+   - Occurs when a user or service accesses a system over the network.  
+   - Example: Accessing shared folders or printers.
+
+- Logon Type 4: Batch  
+   - This type of logon is used by batch servers. Scheduled tasks are executed on behalf of a user without human intervention.  
+   - Example: Running a task using Task Scheduler.
+
+- Logon Type 5: Service  
+   - Used when a service logs on using a service account.  
+   - Example: Services like SQL Server or IIS starting with a service account.
+
+- Logon Type 7: Unlock  
+   - Occurs when a workstation is unlocked after being previously locked.  
+   - Example: Entering credentials to unlock your screen.
+
+- Logon Type 8: Network Cleartext  
+   - Occurs when credentials are sent in cleartext over the network.  
+   - Example: Logging in via Telnet.
+
+- Logon Type 9: New Credentials  
+   - Occurs when a user runs a program using the "Run as" command or similar mechanisms without logging off.  
+   - Example: Using "Run as different user."
+
+- Logon Type 10: Remote Interactive  
+   - Used for logons via Remote Desktop Protocol (RDP). Applications such as Remote Desktop, Remote Assistance or Terminal Services. 
+   - Example: Connecting to a computer using Remote Desktop.
+
+- Logon Type 11: Cached Interactive  
+   - Occurs when a user logs on with cached credentials (e.g., without network access to a domain controller).  
+   - Example: Logging in with a domain account when the computer is offline.
+
+
+
+
+

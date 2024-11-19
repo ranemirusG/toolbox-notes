@@ -64,6 +64,13 @@ dir /A-D /S /B  &REM recursive with list formatted output
 
 ATTRIB file
 
+# list directories only
+dir /d
+dir /ad
+
+
+
+
 
 ```
 
@@ -103,6 +110,15 @@ ls -directory
 gci | where {$_.PsIsContainer}
 dir | Where-Object {$_.PsIsContainer}
 
+# list first n files from dir
+Get-ChildItem -Path "C:\MyDirectory" | Select-Object -First 10
+gci | select -First 10
+## sorted by date
+Get-ChildItem -Path "DirectoryPath" -File | Sort-Object -Property LastWriteTime | Select-Object -First 10
+## sorted by name
+Get-ChildItem -Path "DirectoryPath" -File | Sort-Object -Property Name | Select-Object -First 10
+
+
 
 
 # list empty directories
@@ -114,6 +130,12 @@ dir | sort | select -first 5
 
 # list file with creation time
 dir -file | sort CreationTime | Format-Table Name, CreationTime
+gci | sort CreationTime
+gci | sort CreationTime -desc
+
+# sort by modification time
+gci "C:\Your\Directory\Path" | sort LastWriteTime
+
 
 # list file with last write time greater than 24 hours ago
 dir -file -recurse | where {$_.LastWriteTime -gt (Get-Date).AddDays(-1)}

@@ -7,7 +7,7 @@
 
 
 # Search file by name
-ls -l /path/to/file/*foo* 
+ls -l /path/to/file/*foo*
 
 find /path/to/directory -name "example.txt"
 find /path/to/directory -iname "*example*.txt"
@@ -106,6 +106,9 @@ grep "string" /path/to/file/example.db
 
 
 ## cmd
+
+- <https://stackoverflow.com/questions/29103843/how-to-use-or-operator-with-command-findstr-from-a-windows-command-prompt>
+
 ```
 
 REM Search file by name
@@ -120,7 +123,7 @@ for /r "C:\Path\To\Directory" %i in (*example*.txt *test*.txt) do @echo %i
 
 
 
-dir /s pass == cre .config .txt
+dir /s pass == cre .config .txt # NO FUNCIONA ASI
 dir /b
 dir \wordpad.exe /b /s /a:
 wmic services list full
@@ -129,6 +132,7 @@ wmic services list full
 
 REM search string in specific file
 type file.txt | find /n "string"
+for %i in (*.txt) do find /i "search text" < "%i" && (echo : %i & echo -)
 
 
 

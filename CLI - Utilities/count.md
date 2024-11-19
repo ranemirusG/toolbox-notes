@@ -22,6 +22,16 @@ wc -l file
 
 
 ## cmd
+```
+# Count directories
+dir /ad /b | find /c /v ""
+# find /c /v "": Counts (/c) all lines (/v "" matches everything not equal to an empty line)
+
+
+
+```
+
+
 
 
 

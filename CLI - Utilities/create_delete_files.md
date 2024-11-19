@@ -35,11 +35,8 @@ rm -rf /path/to/dir # delete directory recursively
 ```
 
 
-
-
-
-
-
+## Windows
+Permantently delete: `Shift + Del`
 
 
 ## cmd
@@ -66,11 +63,21 @@ rename old new
 
 
 
+REM Go to Recycle Bin
+CD \$Recycle.Bin
+REM then list the contents with:
+DIR /A /S
+
+dir /s/a C:\$Recycle.Bin
 
 
 REM Empty Recycle Bin
 rd /s %systemdrive%\$Recycle.bin
 
+
+REM Open Recycle Bin
+start ::{645FF040-5081-101B-9F08-00AA002F954E}
+explorer ::{645FF040-5081-101B-9F08-00AA002F954E}
 
 ```
 
@@ -139,12 +146,40 @@ sc filename.txt -Value ('A' * 1MB) # oneliner
 
 
 
+# delete file by name
+Get-ChildItem -Path "DirectoryPath" -File | Where-Object { $_.Name.StartsWith('.trashed') } | Remove-Item
 
-# Empty Recycle Bin
-Clear-RecycleBin
+
 
 # Delete temporary files
 del /q /f /s %temp%\*
 del /q /f /s C:\Windows\temp\*
+
+
+
+
+
+# Empty Recycle Bin
+Clear-RecycleBin
+
+# Open Recycle Bin
+start shell:RecycleBinFolder
+
+
+# List items in Recycle Bin
+$Shell = New-Object -ComObject Shell.Application
+$RecycleBin = $Shell.Namespace(0xA) # Recycle Bin folder
+$RecycleBin.Items() | ForEach-Object {
+    [PSCustomObject]@{
+        Name         = $_.Name
+        OriginalPath = $_.Path
+        DateDeleted  = $_.ExtendedProperty("System.DateDeleted")
+    }
+}
+
+
+# Restore from Recycle Bin
+https://stackoverflow.com/questions/69110357/how-to-restore-specific-or-last-deleted-files-from-recycle-bin-using-powershell
+
 
 ```

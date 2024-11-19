@@ -7,34 +7,9 @@
 
 
 
-## Useful snippets
-
-### Windows
-```
-
-ipconfig /all;route print;arp -a;
-
-for /L %i in (<start_port>,1,<end_port>) do echo "" | nc -vz <host> %i
 
 
 
-# The ARP cache contains IP-to-MAC address mappings for devices your system has communicated with recently
-Get-NetNeighbor | Select-Object -Property IPAddress
-
-
-
-
-```
-
-
-
-
-### Linux
-```
-
-
-
-```
 
 
 
@@ -47,6 +22,12 @@ Get-NetNeighbor | Select-Object -Property IPAddress
 ### Windows
 
 ```powershell
+
+# The ARP cache contains IP-to-MAC address mappings for devices your system has communicated with recently
+Get-NetNeighbor | Select-Object -Property IPAddress
+
+
+
 arp -a
 
 ```
@@ -92,12 +73,6 @@ ForEach-Object { [pscustomobject]@{ComputerName = $PSItem} } |
 Test-Connection
 
 ```
-
-
-
-
-
-
 
 
 
@@ -227,15 +202,6 @@ It can display more TCP and state information than other tools.
 
 
 
-
-
-
-
-
-
-
-
-
 ##  netsh
 `netsh` is a command-line scripting utility that allows you to, either locally or remotely, display or modify the network configuration of a currently running computer.
 
@@ -265,19 +231,11 @@ netsh advfirewall firewall show rule name=all
 
 
 
-
-
 ## NbtStat
 
 Displays NetBIOS over TCP/IP (NetBT) protocol statistics for local and remote computers
 NetBIOS name tables
 NetBIOS name cache
-
-
-
-
-
-
 
 
 
@@ -289,14 +247,7 @@ The lsof (List Open Files) command is a powerful utility in Unix-based systems t
 ```
 # TODO: add commands!
 
-
-
 ```
-
-
-
-
-
 
 
 

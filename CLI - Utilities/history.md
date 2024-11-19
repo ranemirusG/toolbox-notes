@@ -8,10 +8,24 @@ history # to see timestamp set: HISTTIMEFORMAT="%F %T " or HISTTIMEFORMAT="%y-%m
 
 history 10 # last 10 commands
 
-![INDEX]
+![INDEX number]
 
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+## Windows
+shell:History
+shell:Recent
 
 
 
@@ -54,4 +68,3 @@ type C:\Users\sathvik\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\Co
 
 (Get-PSReadlineOption).HistorySavePath # displays the path of consoleHost_history.txt
 ```
-
