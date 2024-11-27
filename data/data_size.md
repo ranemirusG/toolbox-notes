@@ -9,8 +9,8 @@ Bit (Binary Digit)
 1 Terabyte (TB) = 1024 Gigabytes (GB)
 
 
-
-
+Convert Bytes to Megabytes:
+[Bytes]/1024/1024 (bytes divided two times by 1024)
 
 
 ## Data Transfer

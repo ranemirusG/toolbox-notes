@@ -184,6 +184,8 @@ Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -File | Where-Object { $_.Na
 
 
 
+# search alias for command
+alias | where Definition -like "*resolve*"
 
 
 

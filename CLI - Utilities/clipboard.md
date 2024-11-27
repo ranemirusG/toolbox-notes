@@ -46,6 +46,17 @@ Get-Clipboard -Format FileDropList | ForEach-Object { Copy-Item -Path $_ }
 
 
 
+# copy full path of a file to clipboard
+
+Resolve-Path [FILE] | Set-Clipboard
+
+Get-Item "path\to\your\file" | Select-Object -ExpandProperty FullName | Set-Clipboard
+
+gi "path\to\your\file" | select -ExpandProperty FullName | scb
+
+
+
+
 
 
 

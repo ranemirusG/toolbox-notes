@@ -41,6 +41,12 @@ help &REM list all commands
 ## Powershell
 
 ```
+
+# alias
+alias | where Definition -like "*resolve*"
+
+
+
 help [COMMAND] # simpler way
 
 

@@ -49,5 +49,9 @@ PROMPT "new prompt >>>"
 Use the `Get-Alias` cmdlet to list the aliases available in the environment.
 
 ```
+# Create $PROFILE file if doesn't exists
+new-item -type file -path $profile -force
+
+
 gci env:
 ```

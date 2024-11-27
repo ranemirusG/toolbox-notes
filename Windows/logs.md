@@ -48,6 +48,7 @@ C:\Windows\System32\winevt\Logs
 # view available event logs
 wevtutil.exe el
 Get-WinEvent -Listlog *
+Get-EventLog -List
 
 
 
@@ -60,11 +61,21 @@ Get-WinEvent -LogName System | Where-Object {$_.ProviderName -Match 'Service Con
 
 
 
-# Count events in the System log between 5 PM and 8 PM on 17 September 2021
+
+# Count events
+(Get-WinEvent -LogName Security -Oldest).Count
+(Get-WinEvent -LogName Security | Measure-Object).Count
+
+
+
+# Count events in the System log within a specific timeframe
 
 wevtutil qe System "/q:*[System[TimeCreated[timediff(@SystemTime) <= 86400000]]]" /f:xml | findstr "<TimeCreated " | findstr "2021-09-17T1[78]:"
 
 Get-WinEvent -LogName System | Where-Object { $_.TimeCreated -ge (Get-Date "2021-09-17 17:00") -and $_.TimeCreated -lt (Get-Date "2021-09-17 20:00") } | Measure-Object
+
+Get-WinEvent -LogName Security | where {$_.TimeCreated -ge '2024-11-18 21:00' -and $_.TimeCreated -lt '2024-11-18 21:05'} | measure
+
 
 
 
@@ -147,7 +158,12 @@ There are 5 types of event logs.
 
 22 - can be used to look for any DNS Queries made by the system.
 
+1102 - Audit Log has been cleared.
+
+
+
 4624 - An account was successfully logged on.
+	1149 can be used to find successful RDP connections.
 
 4625 - Failed authentication attempt.
 
@@ -191,41 +207,85 @@ There are 5 types of event logs.
 Tip: filter Services (Logon type 5) it causes a lot of unnecessary noise and makes it difficult for us to analyze the events.
 
 
-- Logon Type 2: Interactive  
+### Logon Type 2: Interactive  
    - a user logs on to the computer physically
    - Example: Signing in directly to a desktop or laptop.
 
-- Logon Type 3: Network  
+
+
+
+
+### Logon Type 3: Network  
    - Occurs when a user or service accesses a system over the network.  
    - Example: Accessing shared folders or printers.
+If we see failed logon attempts for logon type 3 (Network) in multiple computers in a network, this would be a suspicious activity and would indicate a possible intrusion where the attacker is trying to perform lateral movement.
 
-- Logon Type 4: Batch  
+
+
+
+
+### Logon Type 4: Batch  
    - This type of logon is used by batch servers. Scheduled tasks are executed on behalf of a user without human intervention.  
    - Example: Running a task using Task Scheduler.
 
-- Logon Type 5: Service  
+
+
+
+### Logon Type 5: Service  
    - Used when a service logs on using a service account.  
    - Example: Services like SQL Server or IIS starting with a service account.
 
-- Logon Type 7: Unlock  
+
+
+
+
+### Logon Type 7: Unlock  
    - Occurs when a workstation is unlocked after being previously locked.  
    - Example: Entering credentials to unlock your screen.
 
-- Logon Type 8: Network Cleartext  
+
+
+
+### Logon Type 8: Network Cleartext  
    - Occurs when credentials are sent in cleartext over the network.  
    - Example: Logging in via Telnet.
 
-- Logon Type 9: New Credentials  
+
+
+
+### Logon Type 9: New Credentials  
    - Occurs when a user runs a program using the "Run as" command or similar mechanisms without logging off.  
    - Example: Using "Run as different user."
 
-- Logon Type 10: Remote Interactive  
+
+
+
+
+### Logon Type 10: Remote Interactive  
    - Used for logons via Remote Desktop Protocol (RDP). Applications such as Remote Desktop, Remote Assistance or Terminal Services. 
    - Example: Connecting to a computer using Remote Desktop.
+One important thing to note is that when investigating event logs for RDP related events, the source computer connecting to the remote computer via RDP also stores event logs related to that session and the computer on which user RDP into also stores event logs related to that session. The source computer event logs would be very helpful when investigating lateral movements in an internal network as the attacker would have moved from an internal workstation to another one. In case of external RDP attacks where the RDP computer is internet facing and someone unauthorized logons to the computer via RDP then we would only have even logs on the RDP computer as we would not have access to the attackers machine.
 
-- Logon Type 11: Cached Interactive  
+Successful RDP logon is also stored in Security logs with event ID “4624” but with logon type 10. But Windows also stores RDP logs under “Applications and Services Logs” in an Application Log named “TerminalServices-RemoteConnectionManager”. This makes it easy to analyze RDP logs because there's a lot of unnecessary noise in Security Logs.
+
+
+
+
+
+
+### Logon Type 11: Cached Interactive  
    - Occurs when a user logs on with cached credentials (e.g., without network access to a domain controller).  
    - Example: Logging in with a domain account when the computer is offline.
+
+
+
+
+
+
+
+
+
+
 
 
 

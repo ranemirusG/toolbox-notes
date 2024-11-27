@@ -181,5 +181,25 @@ $RecycleBin.Items() | ForEach-Object {
 # Restore from Recycle Bin
 https://stackoverflow.com/questions/69110357/how-to-restore-specific-or-last-deleted-files-from-recycle-bin-using-powershell
 
+$objShell = New-Object -ComObject Shell.Application
+$objRecycleBin = $objShell.Namespace(0xA)
+$RecycledItems = $objRecycleBin.Items()
+Function Get-RecycledItems
+{
+foreach ($RecycledItem in $RecycledItems)
+    {
+    $Name = $RecycledItem.Name
+    $DateDeleted = $RecycledItem.ExtendedProperty("System.Recycle.DateDeleted")
+    $OriginalLocation = $RecycledItem.ExtendedProperty("System.Recycle.DeletedFrom")
+    $RecycledTable = [ordered]@{'Name'=$Name;'DateDeleted'=$DateDeleted;'OriginalLocation'=$OriginalLocation}
+    $RecycledObject = New-Object -TypeName PSObject -Property $RecycledTable
+    Write-Output -InputObject $RecycledObject
+    }
+}
+$LatestItem = Get-RecycledItems | Sort-Object DateDeleted | Select-Object -Last 1
+$Undelete = $objRecycleBin.Items() | Where-Object {$_.Name -like $LatestItem.Name}
+$Undelete.InvokeVerb("undelete")
+
+
 
 ```

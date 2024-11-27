@@ -5,12 +5,18 @@
 #### PowerShell
 
 ```
+Stop-Computer -Force
+
 
 # Sysinternals' psshutdown.exe (see: psshutdown.exe -help)
 #lock
 psshutdown.exe -l -t 0
 #sleep
 psshutdown -d -t 0
+
+
+# Reboot
+Restart-Computer
 
 
 
@@ -20,6 +26,14 @@ psshutdown -d -t 0
 systeminfo | find "System Boot Time" # cmd
 
 
+
+
+
+
+
+## Lock workstation
+rundll32.exe user32.dll,LockWorkStation
+
 ```
 
 #### CMD
@@ -28,6 +42,9 @@ systeminfo | find "System Boot Time" # cmd
 
 REM Shutdown:
 %windir%\System32\shutdown.exe -s
+
+shutdown /s /f /t 0
+
 
 REM Reboot:
 %windir%\System32\shutdown.exe -r
@@ -50,6 +67,18 @@ powercfg.exe /sleepstudy
 
 net stats workstation
 REM  The timestamp in "Statics Since..." is the time when the computer started from a complete shutdown.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
