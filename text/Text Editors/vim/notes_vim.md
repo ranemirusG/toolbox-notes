@@ -62,7 +62,8 @@
 - <https://castel.dev/>  
 
 
-
+### Conferences / Event
+- <https://vimconf.org/>
 
 
 
