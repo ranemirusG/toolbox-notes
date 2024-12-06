@@ -24,16 +24,6 @@
         <Replace name="echo" />
     </FindHistory>
     <History nbMaxFile="10" inSubMenu="no" customLength="-1">
-        <File filename="C:\Users\zgzen\infosec\training_and_certifications\Training.md" />
-        <File filename="C:\Users\zgzen\toolbox-notes\spreadsheets\create_excel_file.ps1" />
-        <File filename="C:\Users\zgzen\OneDrive\Ramiro\radios.md" />
-        <File filename="C:\Users\zgzen\toolbox-notes\Windows\power.md" />
-        <File filename="C:\Users\zgzen\OneDrive\Ramiro\languages\english\Corporate.md" />
-        <File filename="C:\Users\zgzen\handy-files\users.bkp" />
-        <File filename="C:\Users\zgzen\infosec\training_and_certifications\Certifications.md" />
-        <File filename="C:\Users\zgzen\todo\monthly.txt" />
-        <File filename="C:\Users\zgzen\toolbox-notes\email\Thunderbird.md" />
-        <File filename="C:\Users\zgzen\toolbox-notes\email\clients_hosting_services.md" />
     </History>
     <ProjectPanels>
         <ProjectPanel id="0" workSpaceFile="" />
