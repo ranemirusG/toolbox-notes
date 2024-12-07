@@ -10,7 +10,7 @@ All the sensitive data has been removed. So these are safe
 
 
 These are the 3 locations where Notepad++ saves the settings:
--appdata_config ($env:APPDATA\Notepad++)
+-appdata_config ($env:APPDATA\Notepad++) (MACROS are saved here)
 -cloud_config (Settings > Preferences > Cloud & Link)
 -programfiles_config (C:\Program Files\Notepad++)
 
