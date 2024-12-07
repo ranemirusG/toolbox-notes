@@ -81,7 +81,8 @@ find /path/to/search -type f -mtime -1 ! -user root -exec ls -l {} \;
 
 
 
-
+# Search for lines in the target file(s) that match any pattern listed in the patterns file, one pattern per line.
+grep -f patterns_file target_file
 
 
 grep -r string
@@ -171,6 +172,14 @@ dir /s /b *foo*
 ## PowerShell
 
 ```
+
+dir *.txt -Recurse | sls "TARGET STRING" | select -Unique "Path"
+
+
+
+Get-Content .\doc.txt | Select-String -Pattern (Get-Content .\regex.txt)
+
+
 # Search file by name
 Get-ChildItem -Path "C:\Path\To\Directory" -Filter "example.txt"
 
@@ -180,6 +189,7 @@ Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -Filter "example.txt" -Error
 
 Get-ChildItem -Path "C:\Path\To\Directory" -Recurse -File | Where-Object { $_.Name -like "*example*" }
 
+Get-ChildItem -Recurse -File | Where-Object { $_.Name -like "*$searchString*" } | Select-Object FullName
 
 
 

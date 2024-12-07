@@ -42,7 +42,7 @@ help &REM list all commands
 
 ```
 
-# alias
+# search alias for command
 alias | where Definition -like "*resolve*"
 
 
