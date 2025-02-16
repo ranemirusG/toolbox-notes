@@ -35,7 +35,7 @@ Performs three basic functions:
 - If the outgoing mail can't be delivered it sends the message back to the sender
 
 
-
+Many email clients, Gmail and Yahoo! included, use both port 465 (for Implicit SSL/TLS) and 587 (for Explicit SSL/TLS), while others limit themselves only to 587.
 
 Haraka is an open source high performance SMTP server developed in Node.js. The Haraka SMTP server comes with a plugin for processing attachments. Haraka versions prior to V2.8.9 are vulnerable to command injection.
 
@@ -57,10 +57,10 @@ Haraka is an open source high performance SMTP server developed in Node.js. The 
 
 
 ## POP3 (Post Office Protocol version 3)
+RFC 1939
 
 Ports: 110, 995
-
-RFC 1939
+POP3 retrieves emails via port 110 when STARTTLS is in place and via port 995 when using Implicit SSL/TLS.
 
 Is used to download the email messages from a MDA server. Is an older protocol that was originally designed to be used on only one computer - only supports one-way email synchronization. To keep all mailboxes synchronized use IMAP.
 
@@ -87,6 +87,7 @@ The mail client connects to the POP3 server, authenticates, downloads the new em
 
 ## IMAP (Internet Messaging Access Protocol)
 Ports: 143, 993
+IMAP retrieves emails via port 143 when STARTTLS is in place and via port 993 when using Implicit SSL/TLS.
 
 Responsible for the transfer of email between a client and a mail server.
 
@@ -95,7 +96,6 @@ Messages are stored in a remote server.
 Users can log in via multiple email clients on computers or mobile device and read the same messages.
 
 All changes made in the mailbox will be synced across multiple devices and messages will only be removed from the server if the user deletes the email.
-
 
 IMAP requires each command to be preceded by a random string to be able to track the reply.
 
@@ -110,29 +110,9 @@ IMAP requires each command to be preceded by a random string to be able to track
 
 
 
-## TLS
-More secure than SSL
-RFC 6101
 
-An existing cleartext protocol can be upgraded to use encryption via SSL/TLS
+## Encryption
+See: SSL/TLS
 
-
-
-
-
-
-
-STARTLS
-
-
-
-
-
-
-
-## DMARC
-
-EASYDEMARC
-
-https://en.wikipedia.org/wiki/DMARC#Alignment
-
+### STARTTLS / STLS
+STARTTLS is not a protocol but an email protocol command. It’s used to tell an email server that an email client (such as Gmail, Outlook, etc.) wants to upgrade an existing insecure connection to an encrypted one using SSL or TLS.

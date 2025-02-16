@@ -6,7 +6,7 @@ Is a collection of databases of configuration settings for Microsoft Windows ope
 
 
 The registry contains:
-1) REGISTRY VALUES -which are instructions- located within 2)REGISTRY KEYS -folders that contain more data-, all within one of several 3) REGISTRY HIVES -folders that categorize all the data in the registry using subfolders-.
+1) REGISTRY VALUES -which are instructions- located within 2)REGISTRY KEYS -folders that contain more data-, all within one of several 3) REGISTRY HIVES -folders that categorize all the data in the registry using subfolders.
 
 Making changes to these values and keys change the configuration that a particular value controls.
 
@@ -32,6 +32,8 @@ To use a more common term, a hive is like a starting folder in the registry. Eve
 
 
 
+## Registry value types
+- <https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry-value-types>
 
 
 
@@ -43,8 +45,7 @@ To use a more common term, a hive is like a starting folder in the registry. Eve
 
 
 
-
-Windows registry hives are stored in C:\Windows\System32\config
+Windows registry hives are stored in `C:\Windows\System32\config`
 
 Inside this directory we can find the primary hives, such as SECURITY, SOFTWARE, and SYSTEM:
 

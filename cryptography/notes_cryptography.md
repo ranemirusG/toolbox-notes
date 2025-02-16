@@ -1,17 +1,14 @@
 # Cryptography
-
-Practice and study of techniques for secure communication
+Is the practice and study of techniques for secure communication.
 
 
 
 
 ## Encryption
-
 In cryptography, encryption is the process of encoding information in a way that only authorized parties can decode.
-
 This process converts plaintext into ciphertext.
 
- is a two-way function, in which data is "scrambled" (encrypted) or "unscrambled" (decrypted) with at least one key. Encrypted data is known as a ciphertext.
+Is a two-way function, in which data is "scrambled" (encrypted) or "unscrambled" (decrypted) with at least one key. Encrypted data is known as a ciphertext.
 
 
 ### Symmetric Encryption
@@ -122,7 +119,7 @@ An example of symmetric encryption is a substitution cipher, which involves the 
 
 ### Asymmetric Encryption
 
-A user wishing to communicate using an asymmetric algorithm would first generate a key pair. To ensure the strength of the key generation process, this is usually done by the cryptographic application or the public key infrastructure (PKI) implementation without user involvement. One half of the key pair is kept secret; only the key holder knows that key. 
+A user wishing to communicate using an asymmetric algorithm would first generate a key pair. To ensure the strength of the key generation process, this is usually done by the cryptographic application or the public key infrastructure (PKI) implementation without user involvement. One key of the pair is kept secret; only the key holder knows that key. 
 
 Asymmetric key cryptography solves the problem of key distribution by allowing a message to be sent across an untrusted medium in a secure manner without the overhead of prior key exchange or key material distribution. It also allows for several other features not readily available in symmetric cryptography, such as the non-repudiation of origin and delivery, access control and data integrity.
 
@@ -232,8 +229,6 @@ hash values
 fingerprint
 hash codes
 hash digests
-
-
 
 
 

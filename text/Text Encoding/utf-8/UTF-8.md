@@ -1,4 +1,4 @@
-# UTF-8
+# UTF-8 (Unicode Transformation Format)
 
 is identical to ASCII for the values from 0 to 127
 Does not use the characters from 128 to 159

@@ -13,6 +13,14 @@ there are two modes for FTP:
 
 
 
+FTPS
+	port 990
+
+
+
+
+----------------------------------
+
 `vsftpd` is an FTP server for Unix-like systems including Linux systems and is the default FTP server for Ubuntu, CentOS and Fedora.
 
 `vsftpd V2.3.4` is vulnerable to a command execution vulnerability that is facilitated by a malicious backdoor that was added to the vsftpd download archive through a supply chain attack.

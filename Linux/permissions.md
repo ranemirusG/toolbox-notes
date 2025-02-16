@@ -112,6 +112,14 @@ chown [NEW OWNER]:[NEW GROUP] [FILE]
 
 
 
+-----------------------------------------------------
+# set current user as owner and group group recursive
+sudo chown $(id -u):@(id -g) -R [directory]
+# set directory permissions to rwxr-xr-x
+find [directory] -type d -exec chmod 755 {} \:
+find [directory] -type f -exec chmod 644 {} \:
+-----------------------------------------------------
+
 
 
 

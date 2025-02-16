@@ -2,6 +2,8 @@
 
 ## Resources:
 
+- <https://www.charset.org/>
+
 - <https://www.w3.org/International/articles/definitions-characters/>
 
 - <https://www.rapidtables.com/>

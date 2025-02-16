@@ -3,8 +3,7 @@
 - <https://www.xitalogy.com/linux-unix/2020/02/06/using-tar-to-archive-extract-compress-uncompress-files.html>
 
 
-`tar` IS NOT a compression algorithm. Is short for Tape Archive, and is used to create archive files. In short, a single file that consists of one or more files. It is used to bundle files together so that they can be compressed by a compressor that is only able to compress a single file.
-- <https://unix.stackexchange.com/questions/322746/7zip-xz-gzip-tar-etc-what-are-the-differences>
+
 
 
 
@@ -158,10 +157,15 @@ Volume Index = 0
 
 
 ## tar
+`tar` IS NOT a compression algorithm. Is short for Tape Archive, and is used to create archive files. In short, a single file that consists of one or more files. It is used to bundle files together so that they can be compressed by a compressor that is only able to compress a single file.
+- <https://unix.stackexchange.com/questions/322746/7zip-xz-gzip-tar-etc-what-are-the-differences>
+
 
 ```
 # Uncompress / Extract
 tar -xf file.tar
+
+tar xvf [file] -C [DEST]
 
 # List content without extracting
 tar -tf file.tar

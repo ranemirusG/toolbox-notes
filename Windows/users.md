@@ -26,7 +26,8 @@ NetworkService
 
 
 ## Well-known SIDs
-are constant across all systems. They're created when the operating system or domain is installed. They're called well-known SIDs because they identify generic users or generic groups.
+Identify generic users or generic groups.
+They're created when the operating system or domain is installed and are constant across all systems.
 
 
 
@@ -78,8 +79,25 @@ Get-LocalUser | Sort-Object -Property Enabled | Format-Table Name, Enabled, Last
 
 
 
+
+
+
+
+
+
 # list all SIDs on a system
+
+reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList"
+
+wmic useraccount get name,sid # CMD
+
+
+# PowerShell
 gcim Win32_Account | ft Name, SID
+Get-WmiObject Win32_UserAccount | Select-Object Name, SID
+
+
+
 
 # list all User SID
 gcim Win32_UserAccount | ft Name, SID
