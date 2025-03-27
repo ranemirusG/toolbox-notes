@@ -57,9 +57,6 @@ type file1.txt file2.txt > merged.txt
 
 
 
-REM Rename files
-ren old new
-rename old new
 
 
 

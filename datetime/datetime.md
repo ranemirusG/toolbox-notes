@@ -2,16 +2,9 @@
 Useful date & time resources and notes.
 
 
-
 ## Online Tools
 
 - <https://www.epochconverter.com/>
-
-
-
-
-
-
 
 
 ## Time
@@ -23,10 +16,34 @@ Useful date & time resources and notes.
 
 
 
+###  Windows
+
+tzutil.exe
+
+```cmd
+tzutil.exe | find "Buenos Aires"
+tzutil /l | findstr /I "Buenos Argentina" & more +1
+
+# Get current timezone
+tzutil /g
+
+```
+
+```powershell
+Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Argentina" }
+
+tzutil /l | Select-String "Buenos|Argentina"
+
+
+# Set timezone
+Set-TimeZone "Eastern Standard Time"
+tzutil /s "Eastern Standard Time"
+
+```
 
 
 
-###  Windows FILETIME / Win32 epoch
+Windows FILETIME / Win32 epoch
 Windows tracks time in 100ns units since January 1, 1601.
 Why was that date chosen? The Gregorian calendar operates on a 400-year cycle, and 1601 is the first year of the cycle that was active at the time Windows NT was being designed. In other words, it was chosen to make the math come out nicely.
 
@@ -61,7 +78,6 @@ time_t unix_time_seconds = winrt::clock::to_time_t(
 
 ```powershell
 
-
 # Convert from Unix Time to Normal, human readable
 $unixTime = 1716302955
 
@@ -78,22 +94,14 @@ $formattedTime = $convertedTime.ToString("yyyy-MM-ddTHH:mm:ss")
 $formattedTime
 
 
-
-
-
-
-
-
-
 # <https://devblogs.microsoft.com/scripting/create-custom-date-formats-with-powershell/>
 
 Get-TimeZone
 
 Get-Date ([datetime]::UtcNow) -UFormat "%H:%M"
-
-
-
 ```
+
+
 
 #### Interesting script using Notepad++ File Modification Timestamp
 ```python
@@ -170,16 +178,6 @@ print("Normal Date:", normal_date)
 ```
 
 
-
-
-
-
-
-
-
-
-
-
 ### UTC
 Coordinated Universal Time is the primary time standard by which the world regulates clocks and time.
 
@@ -229,10 +227,6 @@ ISO 8601 format `YYYY-MM-DD`. Examples:
 
 ```
 
-
-
-
-
 ### Examples
 
 | Language  | Example 1                 | Example 2                   |
@@ -275,27 +269,21 @@ https://en.wikipedia.org/wiki/CalDAV
 
 
 
-
-
-
 ## Days
 
 <https://www.timeanddate.com/calendar/days/first-day-of-the-week.html>
 
-### Week days and abbreviation
+### Week days abbreviations
 
-| Language  | Monday         | Tuesday        | Wednesday      | Thursday       | Friday         | Saturday       | Sunday         |
-|-----------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Català    | Dl (dilluns)   | Dt (dimarts)   | Dc (dimecres)  | Dj (dijous)     | Dv (divendres) | Ds (dissabte)  | Dg (diumenge)  |
-| Deutsche  | Mo (Montag)     | Di (Dienstag)  | Mi (Mittwoch)  | Do (Donnerstag) | Fr (Freitag)   | Sa (Samstag)   | So (Sonntag)   |
-| English   | Mon (Monday)    | Tue (Tuesday)  | Wed (Wednesday)| Thu (Thursday)  | Fri (Friday)    | Sat (Saturday) | Sun (Sunday)   |
-| Español   | Lun (lunes)    | Mar (martes)   | Mié (miércoles)| Jue (jueves)   | Vie (viernes)  | Sáb (sábado)   | Dom (domingo)  |
-| Français  | Lun (lundi)    | Mar (mardi)    | Mer (mercredi) | Jeu (jeudi)     | Ven (vendredi) | Sam (samedi)   | Dim (dimanche) |
-| Italiano  | Lun (Lunedì)   | Mar (Martedì)  | Mer (Mercoledì)| Gio (Giovedì)   | Ven (Venerdì)  | Sab (Sabato)   | Dom (Domenica) |
-| Português | Seg (segunda)  | Ter (terça)    | Qua (quarta)   | Qui (quinta)   | Sex (sexta)    | Sáb (sábado)   | Dom (domingo)  |
-
-
-
+| Language | Monday       | Tuesday      | Wednesday      | Thursday       | Friday        | Saturday      | Sunday        |
+|----------|--------------|--------------|----------------|----------------|---------------|---------------|---------------|
+| Català   | Dl (dilluns) | Dt (dimarts) | Dc (dimecres)  | Dj (dijous)    | Dv (divendres)| Ds (dissabte) | Dg (diumenge) |
+| Deutsche | Mo (Montag)  | Di (Dienstag)| Mi (Mittwoch)  | Do (Donnerstag)| Fr (Freitag)  | Sa (Samstag)  | So (Sonntag)  |
+| English  | Mon (Monday) | Tue (Tuesday)| Wed (Wednesday)| Thu (Thursday) | Fri (Friday)  | Sat (Saturday)| Sun (Sunday)  |
+| Español  | Lun (lunes)  | Mar (martes) | Mié (miércoles)| Jue (jueves)   | Vie (viernes) | Sáb (sábado)  | Dom (domingo) |
+| Français | Lun (lundi)  | Mar (mardi)  | Mer (mercredi) | Jeu (jeudi)    | Ven (vendredi)| Sam (samedi)  | Dim (dimanche)|
+| Italiano | Lun (Lunedì) | Mar (Martedì)| Mer (Mercoledì)| Gio (Giovedì)  | Ven (Venerdì) | Sab (Sabato)  | Dom (Domenica)|
+| Português| Seg (segunda)| Ter (terça)  | Qua (quarta)   | Qui (quinta)   | Sex (sexta)   | Sáb (sábado)  | Dom (domingo) |
 
 
 
@@ -305,23 +293,12 @@ https://en.wikipedia.org/wiki/CalDAV
 ## Month
 
 
-| Language  | January        | February       | March          | April          | May            | June           | July           | August         | September      | October        | November       | December       |
-|-----------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Català    | Gen (gener)    | Feb (febrer)   | Mar (març)     | Abr (abril)    | Maig (maig)    | Juny (juny)    | Jul (juliol)   | Ago (agost)    | Set (setembre) | Oct (octubre)  | Nov (novembre) | Des (desembre) |
-| Deutsche  | Jan (Januar)   | Feb (Februar)  | März (März)    | Apr (April)    | Mai (Mai)      | Jun (Juni)     | Jul (Juli)     | Aug (August)   | Sep (September)| Okt (Oktober)  | Nov (November) | Dez (Dezember) |
-| English   | Jan (January)  | Feb (February) | Mar (March)    | Apr (April)    | May (May)      | Jun (June)     | Jul (July)     | Aug (August)   | Sep (September)| Oct (October)  | Nov (November) | Dec (December) |
-| Español   | Ene (enero)    | Feb (febrero)  | Mar (marzo)    | Abr (abril)    | May (mayo)     | Jun (junio)    | Jul (julio)    | Ago (agosto)   | Sep (septiembre)| Oct (octubre)  | Nov (noviembre)| Dic (diciembre)|
-| Français  | Janv (janvier) | Fév (février)  | Mar (mars)     | Avr (avril)    | Mai (mai)      | Juin (juin)    | Juil (juillet) | Aoû (août)     | Sep (septembre)| Oct (octobre)  | Nov (novembre) | Déc (décembre) |
-| Italiano  | Gen (gennaio)  | Feb (febbraio) | Mar (marzo)    | Apr (aprile)   | Mag (maggio)   | Giu (giugno)  | Lug (luglio)   | Ago (agosto)   | Set (settembre)| Ott (ottobre)  | Nov (novembre) | Dic (dicembre) |
-| Português | Jan (janeiro)  | Fev (fevereiro)| Mar (março)    | Abr (abril)    | Mai (maio)     | Jun (junho)    | Jul (julho)    | Ago (agosto)   | Set (setembro) | Out (outubro)  | Nov (novembro) | Dez (dezembro) |
-
-
-
-
-
-
-
-
-
-
-
+| Language | January       | February       | March      | April       | May         | June        | July          | August      | September       | October      | November       | December       |
+|----------|---------------|----------------|------------|-------------|-------------|-------------|---------------|-------------|-----------------|--------------|----------------|----------------|
+| Català   | Gen (gener)   | Feb (febrer)   | Mar (març) | Abr (abril) | Maig (maig) | Juny (juny) | Jul (juliol)  | Ago (agost) | Set (setembre)  | Oct (octubre)| Nov (novembre) | Des (desembre) |
+| Deutsche | Jan (Januar)  | Feb (Februar)  | März (März)| Apr (April) | Mai (Mai)   | Jun (Juni)  | Jul (Juli)    | Aug (August)| Sep (September) | Okt (Oktober)| Nov (November) | Dez (Dezember) |
+| English  | Jan (January) | Feb (February) | Mar (March)| Apr (April) | May (May)   | Jun (June)  | Jul (July)    | Aug (August)| Sep (September) | Oct (October)| Nov (November) | Dec (December) |
+| Español  | Ene (enero)   | Feb (febrero)  | Mar (marzo)| Abr (abril) | May (mayo)  | Jun (junio) | Jul (julio)   | Ago (agosto)| Sep (septiembre)| Oct (octubre)| Nov (noviembre)| Dic (diciembre)|
+| Français | Janv (janvier)| Fév (février)  | Mar (mars) | Avr (avril) | Mai (mai)   | Juin (juin) | Juil (juillet)| Aoû (août)  | Sep (septembre) | Oct (octobre)| Nov (novembre) | Déc (décembre) |
+| Italiano | Gen (gennaio) | Feb (febbraio) | Mar (marzo)| Apr (aprile)| Mag (maggio)| Giu (giugno)| Lug (luglio)  | Ago (agosto)| Set (settembre) | Ott (ottobre)| Nov (novembre) | Dic (dicembre) |
+| Português| Jan (janeiro) | Fev (fevereiro)| Mar (março)| Abr (abril) | Mai (maio)  | Jun (junho) | Jul (julho)   | Ago (agosto)| Set (setembro)  | Out (outubro)| Nov (novembro) | Dez (dezembro) |

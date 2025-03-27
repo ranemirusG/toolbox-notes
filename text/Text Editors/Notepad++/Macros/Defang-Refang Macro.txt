@@ -1,0 +1,54 @@
+<Macro name="Defang" Ctrl="no" Alt="no" Shift="no" Key="0">
+	<Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+	<Action type="3" message="1601" wParam="0" lParam="0" sParam="(?i)([0-9a-f]{1,4})?(::?)?([0-9a-f]{1,4})?(::?)?([0-9a-f]{1,4})?(::?)?([0-9a-f]{1,4})?(::?)?([0-9a-f]{1,4})?(::?)?([0-9a-f]{1,4})?(::?)?([0-9a-f]{1,4})?(::?)([0-9a-f]{1,4})(\])?(:)?([0-9]{1,5})?(/)?(.*?)(?=\s|$)" />
+	<Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+	<Action type="3" message="1602" wParam="0" lParam="0" sParam="$1$2$3$4$5$6$7$8$9${10}${11}${12}${13}[${14}]${15}(?{16}${16}${17}${18}${19}${20}:${19}${20})" />
+	<Action type="3" message="1702" wParam="0" lParam="640" sParam="" />
+	<Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+	<Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+	<Action type="3" message="1601" wParam="0" lParam="0" sParam="(http)?(s?://)" />
+	<Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+	<Action type="3" message="1602" wParam="0" lParam="0" sParam="(?{1}hxxp$2:)" />
+	<Action type="3" message="1702" wParam="0" lParam="640" sParam="" />
+	<Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+	<Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+	<Action type="3" message="1601" wParam="0" lParam="0" sParam="(?&lt;!\d)(hxxp)?(s?://)?([^/\s]*)(\.)([^/\s]*)(/?)(.*?)(?=\s|$|hxxps?://)" />
+	<Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+	<Action type="3" message="1602" wParam="0" lParam="0" sParam="(?{1}hxxp$2:)$3[.]$5$6$7" />
+	<Action type="3" message="1702" wParam="0" lParam="640" sParam="" />
+	<Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+	<Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+	<Action type="3" message="1601" wParam="0" lParam="0" sParam="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\[\.\])(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\[:\])([0-9]{1,5})" />
+	<Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+	<Action type="3" message="1602" wParam="0" lParam="0" sParam="$1$2$3$4$5$6$7:$9" />
+	<Action type="3" message="1702" wParam="0" lParam="640" sParam="" />
+	<Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+	<Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+	<Action type="3" message="1601" wParam="0" lParam="0" sParam="(\[:\])(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\[\.\])(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" />
+	<Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+	<Action type="3" message="1602" wParam="0" lParam="0" sParam=":$2$3$4$5$6$7$8" />
+	<Action type="3" message="1702" wParam="0" lParam="640" sParam="" />
+	<Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+</Macro>
+
+
+<Macro name="Refang" Ctrl="no" Alt="no" Shift="no" Key="0">
+	<Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+	<Action type="3" message="1601" wParam="0" lParam="0" sParam="(hxxp)?(s?://)" />
+	<Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+	<Action type="3" message="1602" wParam="0" lParam="0" sParam="(?{1}http$2:)" />
+	<Action type="3" message="1702" wParam="0" lParam="640" sParam="" />
+	<Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+	<Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+	<Action type="3" message="1601" wParam="0" lParam="0" sParam="\[\.\]" />
+	<Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+	<Action type="3" message="1602" wParam="0" lParam="0" sParam="\." />
+	<Action type="3" message="1702" wParam="0" lParam="640" sParam="" />
+	<Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+	<Action type="3" message="1700" wParam="0" lParam="0" sParam="" />
+	<Action type="3" message="1601" wParam="0" lParam="0" sParam="\[:\]" />
+	<Action type="3" message="1625" wParam="0" lParam="2" sParam="" />
+	<Action type="3" message="1602" wParam="0" lParam="0" sParam=":" />
+	<Action type="3" message="1702" wParam="0" lParam="640" sParam="" />
+	<Action type="3" message="1701" wParam="0" lParam="1609" sParam="" />
+</Macro>
